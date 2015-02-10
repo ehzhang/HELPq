@@ -1,0 +1,56 @@
+<template name="user">
+  {{> nav }}
+  {{> banner }}
+
+  <section id="user">
+    <div class="container">
+      <div class="ticket {{#if currentUser.profile.active}}active{{/if}}">
+
+        {{#if currentUser.profile.active}}
+
+        <p>
+          Awesome! Someone should be right with you :)
+        </p>
+
+        {{else}}
+
+        <p>
+          {{#if currentUser.profile.name}}
+            Hey, my name is {{ currentUser.profile.name }}!
+          {{/if}}
+        </p>
+        <p>
+          I need help with:
+          <br>
+          <input type="text" id="topic" class="clean" placeholder="something"
+                 value={{currentUser.profile.ticket.topic}}>
+        </p>
+        <p>
+          You can find me at table:
+          <br>
+          <input type="text" id="location" class="clean" placeholder="i.e A6"
+                 value={{currentUser.profile.ticket.location}}>
+        </p>
+
+        {{/if}}
+
+        <br>
+        {{#unless currentUser.profile.active}}
+        <button id="submit" class="green fluid small push button"> Help me!</button>
+        {{/unless}}
+        {{#if currentUser.profile.active}}
+        <button id="cancel" class="red fluid small push button">Nevermind!</button>
+        {{/if}}
+      </div>
+    </div>
+  </section>
+
+  {{> queue }}
+
+</template>
+
+<template name="queue">
+  <section id="queue">
+    People currently in the queue:
+  </section>
+</template>

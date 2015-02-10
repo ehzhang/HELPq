@@ -1,0 +1,28 @@
+@mixin font-stack(){
+  font-family: 'Lato', 'Helvetica Neue', 'Helvetica', sans-serif;
+  font-weighT: 300;
+}
+
+@mixin logo-font(){
+  font-family: 'Montserrat', 'Helvetica Neue', 'Helvetica', sans-serif;
+  font-weight: 700;
+}
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  border-radius: $radius;
+}
+
+@mixin bold(){
+  font-weight: 700;
+}
+
+@mixin vertical-align {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}

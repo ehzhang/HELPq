@@ -1,0 +1,13 @@
+input.clean {
+  background: none;
+  font-size: 1em;
+  border: none;
+  border-bottom: 1px solid $black;
+  margin: 8px auto;
+  text-align: center;
+
+
+  &:focus {
+    outline: none;
+  }
+}
