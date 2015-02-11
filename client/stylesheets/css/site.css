@@ -1,6 +1,6 @@
 button.push {
   font-family: 'Lato', 'Helvetica Neue', 'Helvetica', sans-serif;
-  font-weighT: 300;
+  font-weight: 300;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   -ms-border-radius: 2px;
@@ -42,7 +42,8 @@ input.clean {
   border: none;
   border-bottom: 1px solid #2d2d2d;
   margin: 8px auto;
-  text-align: center; }
+  text-align: center;
+  padding-bottom: 4px; }
   input.clean:focus {
     outline: none; }
 
@@ -51,7 +52,7 @@ html,
 button,
 input {
   font-family: 'Lato', 'Helvetica Neue', 'Helvetica', sans-serif;
-  font-weighT: 300;
+  font-weight: 300;
   color: #303030; }
 
 body,
@@ -63,7 +64,7 @@ body {
   height: 100%; }
 
 #banner {
-  margin-bottom: 36px;
+  margin-bottom: 12px;
   background: url(assets/images/banner.jpg) fixed center center no-repeat;
   background-size: cover; }
   #banner .content {
@@ -75,27 +76,27 @@ body {
     text-align: center;
     padding: 1em 0; }
 
-#home {
+#splash {
   background: url(assets/images/background.jpg) fixed center center no-repeat;
   background-size: cover;
   height: 100%;
   width: 100%;
   color: white; }
-  #home > .container {
+  #splash > .container {
     position: relative;
     top: 50%;
     -webkit-transform: translateY(-50%);
     -ms-transform: translateY(-50%);
     transform: translateY(-50%); }
-    #home > .container button {
+    #splash > .container button {
       margin: 0 auto; }
-    #home > .container .header,
-    #home > .container .subheader {
+    #splash > .container .header,
+    #splash > .container .subheader {
       text-align: center; }
-    #home > .container .subheader {
+    #splash > .container .subheader {
       font-size: 1.5em;
       margin-bottom: .5em; }
-    #home > .container .header {
+    #splash > .container .header {
       font-family: 'Montserrat', 'Helvetica Neue', 'Helvetica', sans-serif;
       font-weight: 700;
       font-size: 4em;
@@ -115,33 +116,56 @@ body {
   text-align: center;
   font-size: 1.5em; }
 
-#user .container,
-#tickets .container {
+#home,
+#admin,
+#mentor {
+  padding: 12px; }
+
+#home .feed-title {
+  font-size: 1.2em;
+  margin-bottom: 8px; }
+
+.ticketPanel {
   text-align: center; }
-#user .ticket,
-#tickets .ticket {
-  font-size: 2em;
-  display: inline-block;
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  -ms-border-radius: 2px;
-  border-radius: 2px;
-  padding: 1em; }
-#user button,
-#tickets button {
+  .ticketPanel .title {
+    font-size: 1.8em;
+    margin-bottom: 12px; }
+  .ticketPanel .content {
+    font-size: 1.3em; }
+  .ticketPanel input {
+    width: 100%; }
+
+.ticket {
+  font-size: 1.2em; }
+  .ticket.claimed {
+    border: 1px solid #3498db;
+    -webkit-animation-name: borderPulse;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-iteration-count: infinite; }
+  .ticket button {
+    margin-bottom: 4px;
+    font-size: .8em; }
+
+#home button {
   margin-right: auto;
   margin-left: auto; }
 
-@-webkit-keyframes greenPulse {
+@-webkit-keyframes iconPulse {
   from {
-    -webkit-box-shadow: 0 0 18px rgba(51, 51, 51, 0.2); }
+    opacity: 1; }
   50% {
-    -webkit-box-shadow: 0 0 36px #7ee2a8; }
+    opacity: .5; }
   to {
-    -webkit-box-shadow: 0 0 18px rgba(51, 51, 51, 0.2); } }
-.ticket.active {
-  -webkit-animation-name: greenPulse;
+    opacity: 1; } }
+@-webkit-keyframes borderPulse {
+  from {
+    border-color: #3498db; }
+  50% {
+    border-color: white; }
+  to {
+    border-color: #3498db; } }
+.feed .claimed.icon {
+  -webkit-animation-name: iconPulse;
   -webkit-animation-duration: 2s;
   -webkit-animation-iteration-count: infinite; }
 

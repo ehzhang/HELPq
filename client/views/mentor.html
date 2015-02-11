@@ -1,0 +1,71 @@
+<template name="mentor">
+  <div id="mentor">
+    <div class="ui three column stackable centered grid">
+      <div class="column">
+        <div id="tickets">
+          {{#if activeTickets}}
+            {{#each activeTickets}}
+              {{> ticket }}
+            {{/each}}
+          {{else}}
+            No tickets right now :)
+          {{/if}}
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="ticket">
+  <div class="ui fluid card ticket {{#if statusIs 'CLAIMED'}}claimed{{/if}}">
+    <div class="content">
+      <div class="header">
+        {{#if name }}
+          {{name}}
+        {{else}}
+          Somebody
+        {{/if}}
+      </div>
+      <div class="meta">
+        <div class="date">
+          {{fromNow}}
+        </div>
+      </div>
+
+      <div class="description">
+
+        {{#if topic}}
+          {{topic}}
+        {{else}}
+          something.
+        {{/if}}
+
+        <br>
+
+        ({{location}})
+
+      </div>
+
+      <strong> Contact: </strong>
+        {{contact}}
+    </div>
+    <div class="extra content">
+      {{#if statusIs "OPEN"}}
+        <button class="blue fluid push button claim">Claim Ticket</button>
+      {{/if}}
+
+      {{#if statusIs "CLAIMED"}}
+        {{#if claimer}}
+          <button class="fluid green push button complete">Mark as Complete</button>
+          <button class="fluid blue push button reopen">Reopen Ticket</button>
+          <button class="fluid red push button cancel">Cancel Ticket</button>
+        {{else}}
+          <div class="right floated author">
+            Claimed by {{claimName}}
+          </div>
+        {{/if}}
+      {{/if}}
+    </div>
+
+  </div>
+</template>

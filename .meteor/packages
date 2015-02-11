@@ -9,3 +9,5 @@ service-configuration
 iron:router
 
 nooitaf:semantic-ui
+accounts-facebook
+momentjs:moment

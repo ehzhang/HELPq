@@ -1,0 +1,74 @@
+<template name="home">
+  <section id="home">
+
+    <div class="ui centered stackable grid">
+      <div class="six wide column">
+        {{> ticketPanel }}
+      </div>
+      <div class="four wide column">
+        <div class="feed-title">
+          Currently in the queue:
+        </div>
+        {{> feed }}
+      </div>
+    </div>
+
+  </section>
+</template>
+
+<template name="ticketPanel">
+  <div class="ticketPanel">
+    <div class="ui teal segment">
+      {{#if currentTicket}}
+        {{#if currentTicketIs "OPEN"}}
+          <div class="title">
+            Your ticket is open.
+          </div>
+          <div class="content">
+            We'll let you know when your ticket has been claimed!
+          </div>
+        {{/if}}
+        {{#if currentTicketIs "CLAIMED"}}
+          <div class="title">
+            Your ticket has been claimed!
+          </div>
+          <div class="content">
+            {{currentTicket.claimName}} has claimed your ticket.
+            <br>
+            They're on the way!
+          </div>
+        {{/if}}
+      {{else}}
+
+      <div class="title">
+        Hey, I'm
+        {{#if currentUser.profile.name}}
+          {{currentUser.profile.name}}!
+        {{else}}
+          {{currentUser.services.github.username}}!
+        {{/if}}
+      </div>
+      <div class="content">
+        I need help with
+        <br>
+        <input id="topic" type="text" name="topic" class="clean" placeholder="describe your problem">
+        <br>
+        and you can find me at
+        <br>
+        <input id="location" type="text" name="location" class="clean" placeholder="where are you?">
+        <br>
+        You can contact me through
+        <br>
+        <input id="contact" type="text" name="location" class="clean" placeholder="your cell phone #, email, etc">
+      </div>
+      <br>
+      <button id="submit" class="green push fluid button">
+        Help me!
+      </button>
+
+      {{/if}}
+
+    </div>
+  </div>
+</template>
+

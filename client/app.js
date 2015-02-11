@@ -1,4 +1,7 @@
 Tickets = new Meteor.Collection("tickets");
 
+Meteor.subscribe("allUsers");
 Meteor.subscribe("userData");
-Meteor.subscribe("allActiveTickets");
+Meteor.subscribe("activeTickets");
+//Meteor.subscribe("allTickets");
+

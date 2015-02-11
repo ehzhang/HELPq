@@ -1,0 +1,61 @@
+<template name="admin">
+  <div id="admin">
+    {{> userTable }}
+  </div>
+</template>
+
+<template name="userTable">
+  <table class="ui striped table">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Github</th>
+      <th>Email</th>
+      <th>Mentor</th>
+      <th>Admin</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#each users}}
+      <tr>
+        <td>
+          <strong>
+            {{ profile.name }}
+          </strong>
+        </td>
+        <td>
+          {{ services.github.username }}
+        </td>
+        <td>
+          {{ services.github.email }}
+        </td>
+
+        <td class="">
+        {{#if profile.mentor}}
+          <span class="ui tiny blue button toggle-mentor">
+            Mentor
+          </span>
+        {{else}}
+          <span class="ui tiny basic button toggle-mentor">
+            Mentor
+          </span>
+        {{/if}}
+        </td>
+
+        <td class="">
+        {{#if profile.admin}}
+          <span class="ui tiny blue button toggle-admin">
+            Admin
+          </span>
+        {{else}}
+          <span class="ui tiny basic button toggle-admin">
+            Admin
+          </span>
+        {{/if}}
+        </td>
+
+      </tr>
+    {{/each}}
+    </tbody>
+  </table>
+</template>

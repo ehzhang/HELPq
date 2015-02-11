@@ -1,37 +1,28 @@
-var authorize = {
-  user: function(){
-    return Meteor.userId() ? true : false;
-  },
-  mentor: function(){
-    return Meteor.user() && Meteor.user().profile.mentor;
-  },
-  admin: function(){
-    return Meteor.user() && Meteor.user().profile.admin;
-  }
-};
-
 Router.onBeforeAction(function() {
-  if (! Meteor.userId()) {
-    this.render('login');
+  if (!Meteor.userId()) {
+    this.render('splash');
   } else {
     this.next();
   }
 });
 
 Router.route('/', function(){
-  this.render('user');
+  this.layout('bannerLayout');
+  this.render('home');
 });
 
 Router.route('/mentor', function(){
-  if (authorize.mentor()){
-    this.render('tickets');
+  this.layout('bannerLayout');
+  if (authorized.mentor()){
+    this.render('mentor');
   } else {
     this.render('error', { data: { msg: "You're not a mentor!" }});
   }
 });
 
 Router.route('/admin', function(){
-  if (authorize.admin()){
+  this.layout('bannerLayout');
+  if (authorized.admin()){
     this.render('admin');
   } else {
     this.render('error', { data: { msg: "You're not an admin!" }});

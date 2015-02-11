@@ -10,9 +10,11 @@
  *     location: STRING,
  *     contact: STRING,
  *     timestamp: Number (Milliseconds),
- *     status: STRING [OPEN, CLAIMED, COMPLETE],
+ *     status: STRING [OPEN, CLAIMED, COMPLETE, CANCELLED],
  *     claimId: STRING
  *     claimName: STRING
+ *     claimTime: Number (Milliseconds)
+ *     completeTime: Number (Milliseconds)
  *  }
  *
  */
@@ -22,15 +24,19 @@ Tickets = new Meteor.Collection('tickets');
 // Basic Roles
 // ----------------------------------------
 
+// Admin have all rights
 var authorized = {
-  user: function(){
-    return Meteor.user() ? true : false;
+  user: function(id){
+    var user = _getUser(id);
+    return user ? true : false;
   },
-  admin: function(){
-    return Meteor.user().profile.admin
+  admin: function(id){
+    var user = _getUser(id);
+    return user.profile.admin
   },
-  mentor: function(){
-    return Meteor.user().profile.mentor
+  mentor: function(id){
+    var user = _getUser(id);
+    return user.profile.admin || user.profile.mentor
   }
 };
 
@@ -73,12 +79,15 @@ Tickets.allow({
 Meteor.methods({
   createTicket: createTicket,
   claimTicket: claimTicket,
-  completeTicket: completeTicket
+  completeTicket: completeTicket,
+  cancelTicket: cancelTicket,
+  reopenTicket: reopenTicket,
+  toggleRole: toggleRole
 });
 
 function createTicket(topic, location, contact) {
   // Must be logged in
-  if (authorized.user()) {
+  if (authorized.user(this.userId)) {
     // User can't have more than one
     var userActiveTickets = Tickets.find(
         {
@@ -95,7 +104,7 @@ function createTicket(topic, location, contact) {
 
     Tickets.insert({
       userId: user._id,
-      name: user.profile.name,
+      name: _getUserName(user),
       topic: topic,
       location: location,
       contact: contact,
@@ -109,52 +118,126 @@ function createTicket(topic, location, contact) {
 
 function claimTicket(id){
   // Mentor only
-  if (authorized.mentor()){
-    var user = _getUser(id);
+  if (authorized.mentor(this.userId)){
+    var user = _getUser(this.userId);
     Tickets.update({
       _id: id
     },{
       $set: {
         status: "CLAIMED",
         claimId: user._id,
-        claimName: user.profile.name
+        claimName: _getUserName(user),
+        claimTime: Date.now()
       }
     });
 
     console.log("[", new Date().toLocaleString(), "]", "Ticket Claimed by", user.profile.name);
     return true;
   }
-
+  return false;
 }
 
 function completeTicket(id){
   // Mentor only
-  if (authorized.mentor()){
-    var user = _getUser(id);
+  if (authorized.mentor(this.userId)){
+    var user = _getUser(this.userId);
     Tickets.update({
       _id: id
     },{
       $set: {
         status: "COMPLETE",
         claimId: user._id,
-        claimName: user.profile.name
+        claimName: _getUserName(user),
+        completeTime: Date.now()
       }
     });
 
     console.log("[", new Date().toLocaleString(), "]", "Ticket Completed by", user.profile.name);
     return true;
   }
+  return false;
 }
+
+function reopenTicket(id){
+  // Mentor only
+  if (authorized.mentor(this.userId)){
+    Tickets.update({
+      _id: id
+    },{
+      $set: {
+        status: 'OPEN',
+        claimId: null,
+        claimName: null
+      }
+    });
+    console.log("[", new Date().toLocaleString(), "]", "Ticket Reopened: " + id);
+    return true;
+  }
+  return false;
+}
+
+function cancelTicket(id){
+
+  // Ticket owner or mentor
+  var ticket = Tickets.findOne({_id: id});
+
+  if (ticket.userId ){
+    Tickets.update({
+      _id: id
+    },{
+      $set: {
+        status: "CANCELLED"
+      }
+    });
+    console.log("[", new Date().toLocaleString(), "]", "Ticket Cancelled by", user.profile.name);
+    return true;
+  }
+}
+
+function toggleRole(role, id){
+  if (authorized.admin(this.userId)){
+    // can only toggle available roles
+    var roles = ["admin", "mentor"];
+    if (roles.indexOf(role) < 0) return;
+
+    var user = _getUser(id);
+    var setRole = {};
+    setRole['profile.' + role] = !user.profile[role];
+
+    Meteor.users.update({
+      _id: id
+    },{
+      $set: setRole
+    });
+    return true;
+  }
+}
+
 
 // ---------------------------------------
 // Publish Data
 // ---------------------------------------
 
 Meteor.publish("userData", getUserData);
-Meteor.publish("allActiveTickets", getActiveTickets);
+Meteor.publish("allUsers", getAllUsers);
+Meteor.publish("activeTickets", getActiveTickets);
 Meteor.publish("allTickets", getAllTickets);
 
 // Get user data on yourself
+function getAllUsers(){
+  if (authorized.admin(this.userId)) {
+    return Meteor.users.find({},
+        {
+          fields: {
+            'services': 1,
+            'profile': 1
+          }
+        });
+  } else {
+    this.ready();
+  }
+}
+
 function getUserData(){
   if (this.userId) {
     return Meteor.users.find({_id: this.userId},
@@ -172,18 +255,16 @@ function getUserData(){
 // Get all of the active tickets
 function getActiveTickets(){
   if (this.userId) {
-    return Tickets.find({'active': true},
-        {
-          sort: {
-            date: 1
-          },
-
-          fields: {
-            'services': 1,
-            'profile': 1
-          }
-        }
-    )
+    return Tickets.find(
+    {
+      status: {
+        $in: ["OPEN", "CLAIMED"]
+      }
+    }, {
+      sort: {
+        timestamp: 1
+      }
+    });
   } else {
     this.ready();
   }
@@ -201,4 +282,15 @@ function getAllTickets(){
 
 function _getUser(id){
   return Meteor.users.findOne({_id: id});
+}
+
+function _getUserName(user){
+  if (user.profile.name){
+    return user.profile.name;
+  }
+
+  if (user.services.github.username){
+    return user.services.github.username;
+  }
+  return "Anonymous";
 }

@@ -2,8 +2,19 @@
   {{#if currentUser }}
     <div id="nav">
       <div class="ui secondary inverted menu">
-        <div class="item">
-        </div>
+        {{#if currentUser.profile.admin}}
+          <a class="item" href="/admin">
+            Admin
+          </a>
+        {{/if}}
+        {{#if currentUser.profile.mentor}}
+          <a class="item" href="/mentor">
+            Mentor
+          </a>
+        {{/if}}
+        <a class="item" href="/">
+          Queue
+        </a>
         <div class="right menu">
           <div class="item">
             {{ currentUser.profile.name }}

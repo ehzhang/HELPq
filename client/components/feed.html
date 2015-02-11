@@ -1,0 +1,34 @@
+<template name="feed">
+  <section id="queue">
+    <div class="ui feed">
+      {{#if tickets}}
+        {{#each tickets}}
+          {{> feedTicket }}
+        {{/each}}
+      {{else}}
+        No tickets yet!
+      {{/if}}
+    </div>
+  </section>
+</template>
+
+<template name="feedTicket">
+  <div class="event feedTicket">
+    <div class="label">
+      {{#if open}}
+        <i class="circle thin icon"></i>
+      {{/if}}
+      {{#if claimed}}
+        <i class="blue circle icon claimed"></i>
+      {{/if}}
+    </div>
+    <div class="content">
+      <div class="summary">
+        {{ feedName }}
+        <div class="date">
+          {{fromNow timestamp}}
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
