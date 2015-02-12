@@ -1,4 +1,42 @@
 <template name="userTable">
+  <div class="ui form">
+    <div class="fields">
+      <div class="thirteen wide field">
+        <div class="ui left icon fluid input">
+          <i class="search icon"></i>
+          <input type="text" class="searchText" placeholder="Search..." value="{{searchText}}">
+        </div>
+      </div>
+      <div class="three wide field">
+        <div class="ui right aligned pointing top right dropdown labeled icon fluid button">
+          <i class="filter icon"></i>
+          <span class="text">Filter Users</span>
+          <div class="menu">
+            <div class="header">
+              <i class="tags icon"></i>
+              Filter By Permissions
+            </div>
+            <div class="filter item" data-filter="all">
+              <div class="ui empty circular label"></div>
+              All
+            </div>
+            <div class="filter item" data-filter="mentor">
+              <div class="ui blue empty circular label"></div>
+              Mentor
+            </div>
+            <div class="filter item" data-filter="admin">
+              <div class="ui yellow empty circular label"></div>
+              Admin
+            </div>
+            <div class="filter item" data-filter="student">
+              <div class="ui black empty circular label"></div>
+              Student
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   <table class="ui striped table">
     <thead>
     <tr>

@@ -1,10 +1,42 @@
+var filters = {
+  all: {}
+  ,
+  student: {
+    'profile.mentor': false,
+    'profile.admin': false
+  },
+  mentor: {
+    'profile.mentor': true
+  },
+  admin: {
+    'profile.admin': true
+  }
+};
+
+Template.userTable.created = function(){
+  this.searchText = new ReactiveVar();
+  this.filter = new ReactiveVar({});
+};
+
+Template.userTable.rendered = function(){
+  $(this.find('.ui.dropdown')).dropdown();
+};
+
 Template.userTable.helpers({
+  filter: function(){
+    return Template.instance().filter.get();
+  },
+  searchText: function() {
+    return Template.instance().searchText.get();
+  },
   users: function(){
-    return Meteor.users.find({},{
+    var t = Template.instance();
+    var users = Meteor.users.find(t.filter.get(),{
       sort: {
         createdAt: 1
       }
-    })
+    }).fetch();
+    return filterBySearchText(users, t.searchText.get());
   }
 });
 
@@ -20,5 +52,20 @@ Template.userTable.events({
     } else {
       Meteor.call("toggleRole", "admin", this._id);
     }
+  },
+  'keyup .searchText': function(e, t){
+    var currentValue=t.find(".searchText").value;
+    t.searchText.set(currentValue);
+  },
+  'click .filter': function(e, t){
+    var filter = filters[e.target.getAttribute('data-filter')];
+    t.filter.set(filter);
   }
 });
+
+function filterBySearchText(users, searchText){
+  return users.filter(function(user){
+    if (!searchText) return true;
+    return JSON.stringify(user).toLowerCase().indexOf(searchText.toLowerCase()) > -1;
+  })
+}

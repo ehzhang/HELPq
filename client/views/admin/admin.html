@@ -2,7 +2,7 @@
   <div id="admin">
     <div class="sixteen column centered stackable ui grid">
       <div class="three wide column">
-        <div class="ui vertical pointing fluid menu">
+        <div class="ui vertical pointing fluid admin menu">
           <a class="{{isActive 'announce'}} item" data-goto="announce">
             <i class="announcement icon"></i> Announce
           </a>
@@ -25,7 +25,7 @@
         {{/if}}
 
         {{#if pageIs 'users'}}
-          {{> userStats }}
+          <!--{{> userStats }}-->
           {{> userTable }}
         {{/if}}
 

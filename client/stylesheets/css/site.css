@@ -28,14 +28,14 @@ button.push {
   padding: .7em 1em;
   border: none;
   background: grey;
-  border-bottom: 6px solid grey;
+  border-bottom: 4px solid grey;
   border-bottom-color: #9a9a9a;
   text-transform: uppercase;
-  transition-duration: .5s; }
+  transition-duration: .2s; }
   button.push:focus {
     outline: none; }
   button.push:active {
-    margin-top: 6px;
+    margin-top: 4px;
     border-bottom-width: 0; }
   button.push.small {
     font-size: .75em; }
@@ -46,7 +46,7 @@ button.push {
     cursor: auto; }
     button.push.disabled:active {
       margin-top: 0;
-      border-bottom-width: 6px; }
+      border-bottom-width: 4px; }
   button.push.primary {
     background: #3498db;
     border-bottom-color: #5faee3; }

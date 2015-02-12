@@ -10,17 +10,17 @@ button.push {
   padding: .7em 1em;
   border: none;
   background: grey;
-  border-bottom: 6px solid grey;
+  border-bottom: 4px solid grey;
   border-bottom-color: lighten(grey, 10);
   text-transform: uppercase;
-  transition-duration: .5s;
+  transition-duration: .2s;
 
   &:focus {
     outline: none;
   }
 
   &:active {
-    margin-top: 6px;
+    margin-top: 4px;
     border-bottom-width: 0;
   }
 
@@ -37,7 +37,7 @@ button.push {
     cursor: auto;
     &:active {
       margin-top: 0;
-      border-bottom-width: 6px;
+      border-bottom-width: 4px;
     }
 
   }

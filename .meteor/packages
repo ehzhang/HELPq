@@ -11,3 +11,4 @@ iron:router
 nooitaf:semantic-ui
 accounts-facebook
 momentjs:moment
+reactive-var

@@ -10,7 +10,7 @@ Template.admin.helpers({
 });
 
 Template.admin.events({
-  'click .menu .item': function(e){
+  'click .admin.menu .item': function(e){
     var page = e.target.getAttribute('data-goto');
     Session.set("admin", page);
   }
