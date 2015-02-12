@@ -5,8 +5,7 @@
       <th>Name</th>
       <th>Github</th>
       <th>Email</th>
-      <th>Mentor</th>
-      <th>Admin</th>
+      <th></th>
     </tr>
     </thead>
     <tbody>
@@ -24,7 +23,7 @@
           {{ services.github.email }}
         </td>
 
-        <td class="">
+        <td class="right aligned">
           {{#if profile.mentor}}
             <span class="ui tiny blue button toggle-mentor">
             Mentor
@@ -34,9 +33,7 @@
             Mentor
           </span>
           {{/if}}
-        </td>
 
-        <td class="">
           {{#if profile.admin}}
             <span class="ui tiny blue button toggle-admin">
             Admin
