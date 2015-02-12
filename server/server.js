@@ -189,7 +189,7 @@ function cancelTicket(id){
         status: "CANCELLED"
       }
     });
-    console.log("[", new Date().toLocaleString(), "]", "Ticket Cancelled by", user.profile.name);
+    console.log("[", new Date().toLocaleString(), "]", "Ticket Cancelled by");
     return true;
   }
 }

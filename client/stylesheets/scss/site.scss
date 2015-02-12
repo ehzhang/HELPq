@@ -105,22 +105,28 @@ body {
   input {
     width: 100%;
   }
-
+  button {
+    font-size: 1.3em;
+  }
 }
 
-.ticket {
-  font-size: 1.2em;
+.tickets {
+  text-align: center;
+  .ticket {
+    text-align: left;
+    font-size: 1.2em;
 
-  &.claimed {
-    border: 1px solid $blue;
-    -webkit-animation-name: borderPulse;
-    -webkit-animation-duration: 2s;
-    -webkit-animation-iteration-count: infinite;
-  }
+    &.claimed {
+      border: 1px solid $blue;
+      -webkit-animation-name: borderPulse;
+      -webkit-animation-duration: 2s;
+      -webkit-animation-iteration-count: infinite;
+    }
 
-  button {
-    margin-bottom: 4px;
-    font-size: .8em;
+    button {
+      margin-bottom: 4px;
+      font-size: .8em;
+    }
   }
 }
 

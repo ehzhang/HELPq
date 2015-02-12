@@ -8,13 +8,8 @@ Template.ticketPanel.helpers({
       }
     })
   },
-  currentTicketIs: function(status){
-    return Tickets.findOne({
-      userId: Meteor.userId(),
-      status: {
-        $in: ["OPEN", "CLAIMED"]
-      }
-    }).status === status;
+  statusIs: function(status){
+    return this.status === status;
   }
 });
 
@@ -26,8 +21,10 @@ Template.ticketPanel.events({
   'click #submit': function(){
     return createTicket();
   },
-  'click #cancel': function(){
-    return cancelTicket();
+  'click .cancel': function(){
+    if(confirm('Are you sure you would like to cancel your ticket?')){
+      return Meteor.call("cancelTicket", this._id);
+    }
   },
   'keydown input': function(e){
     if (e.keyCode == 13){
@@ -48,9 +45,3 @@ function createTicket(){
   var ticket = getTicket();
   Meteor.call('createTicket', ticket.topic, ticket.location, ticket.contact);
 }
-
-function cancelTicket(){
-  var ticket = getTicket();
-}
-
-

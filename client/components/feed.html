@@ -1,15 +1,13 @@
 <template name="feed">
-  <section id="queue">
-    <div class="ui feed">
-      {{#if tickets}}
-        {{#each tickets}}
-          {{> feedTicket }}
-        {{/each}}
-      {{else}}
-        No tickets yet!
-      {{/if}}
-    </div>
-  </section>
+  <div class="ui feed">
+    {{#if tickets}}
+      {{#each tickets}}
+        {{> feedTicket }}
+      {{/each}}
+    {{else}}
+      Nobody in the queue!
+    {{/if}}
+  </div>
 </template>
 
 <template name="feedTicket">

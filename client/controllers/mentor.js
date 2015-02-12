@@ -1,4 +1,4 @@
-Template.mentor.helpers({
+Template.tickets.helpers({
   activeTickets: function () {
     return Tickets.find({
       status: {

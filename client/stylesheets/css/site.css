@@ -11,7 +11,7 @@ button.push {
   position: relative;
   background: none;
   font-size: 1.5em;
-  padding: .75em;
+  padding: .5em .75em;
   border: none;
   background: grey;
   border-bottom: 6px solid grey;
@@ -134,17 +134,22 @@ body {
     font-size: 1.3em; }
   .ticketPanel input {
     width: 100%; }
+  .ticketPanel button {
+    font-size: 1.3em; }
 
-.ticket {
-  font-size: 1.2em; }
-  .ticket.claimed {
-    border: 1px solid #3498db;
-    -webkit-animation-name: borderPulse;
-    -webkit-animation-duration: 2s;
-    -webkit-animation-iteration-count: infinite; }
-  .ticket button {
-    margin-bottom: 4px;
-    font-size: .8em; }
+.tickets {
+  text-align: center; }
+  .tickets .ticket {
+    text-align: left;
+    font-size: 1.2em; }
+    .tickets .ticket.claimed {
+      border: 1px solid #3498db;
+      -webkit-animation-name: borderPulse;
+      -webkit-animation-duration: 2s;
+      -webkit-animation-iteration-count: infinite; }
+    .tickets .ticket button {
+      margin-bottom: 4px;
+      font-size: .8em; }
 
 #home button {
   margin-right: auto;

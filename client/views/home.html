@@ -1,7 +1,7 @@
 <template name="home">
   <section id="home">
 
-    <div class="ui centered stackable grid">
+    <div class="ui centered stackable page grid">
       <div class="six wide column">
         {{> ticketPanel }}
       </div>
@@ -20,24 +20,33 @@
   <div class="ticketPanel">
     <div class="ui teal segment">
       {{#if currentTicket}}
-        {{#if currentTicketIs "OPEN"}}
-          <div class="title">
-            Your ticket is open.
-          </div>
-          <div class="content">
-            We'll let you know when your ticket has been claimed!
-          </div>
-        {{/if}}
-        {{#if currentTicketIs "CLAIMED"}}
-          <div class="title">
-            Your ticket has been claimed!
-          </div>
-          <div class="content">
-            {{currentTicket.claimName}} has claimed your ticket.
-            <br>
-            They're on the way!
-          </div>
-        {{/if}}
+        {{#with currentTicket}}
+          {{#if statusIs "OPEN"}}
+            <div class="title">
+              Your ticket is open.
+            </div>
+            <div class="content">
+              We'll let you know when your ticket has been claimed!
+            </div>
+          {{/if}}
+          {{#if statusIs "CLAIMED"}}
+            <div class="title">
+              Your ticket has been claimed!
+            </div>
+            <div class="content">
+              {{claimName}} has claimed your ticket.
+              <br>
+              They're on the way!
+            </div>
+          {{/if}}
+
+        <br>
+
+          <button class="fluid red push button cancel">
+            Nevermind!
+          </button>
+        {{/with}}
+
       {{else}}
 
       <div class="title">

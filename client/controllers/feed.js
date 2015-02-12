@@ -6,7 +6,7 @@ Template.feed.helpers({
       }
     }, {
       $sort: {timestamp: 1}
-    });
+    }).fetch();
   }
 });
 
