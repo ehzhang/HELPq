@@ -61,7 +61,7 @@ input.clean {
   background: none;
   font-size: 1em;
   border: none;
-  border-bottom: 1px solid #2d2d2d;
+  border-bottom: 1px solid #c6c6c6;
   margin: 8px auto;
   text-align: center;
   padding-bottom: 4px; }
@@ -116,6 +116,12 @@ input.clean {
   -webkit-animation-name: iconPulse;
   -webkit-animation-duration: 2s;
   -webkit-animation-iteration-count: infinite; }
+
+.userStats .statistics {
+  float: right;
+  margin-right: 12px; }
+  .userStats .statistics .statistic {
+    margin-bottom: 1.3em; }
 
 #splash {
   background: url(assets/images/background.jpg) fixed center center no-repeat;
