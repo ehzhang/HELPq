@@ -1,8 +1,6 @@
-.bannerLayout {
-  #container {
-    min-height: 100%;
-    position: relative;
-  }
+#container.bannerLayout {
+  min-height: 100%;
+  position: relative;
 
   #content {
     padding: 12px 12px 40px 12px;

@@ -30,8 +30,22 @@ Template.ticketPanel.events({
     if (e.keyCode == 13){
       createTicket();
     }
+  },
+  'keyup input': function(){
+    var $submit = $('#submit');
+    if (isValid()){
+      $submit.removeClass('disabled');
+    } else {
+      $submit.addClass('disabled');
+    }
   }
 });
+
+function isValid(){
+  return $('#topic').val().length > 0 &&
+         $('#location').val().length > 0 &&
+         $('#contact').val().length > 0
+}
 
 function getTicket(){
   return {
@@ -42,6 +56,8 @@ function getTicket(){
 }
 
 function createTicket(){
-  var ticket = getTicket();
-  Meteor.call('createTicket', ticket.topic, ticket.location, ticket.contact);
+  if (isValid()){
+    var ticket = getTicket();
+    Meteor.call('createTicket', ticket.topic, ticket.location, ticket.contact);
+  }
 }

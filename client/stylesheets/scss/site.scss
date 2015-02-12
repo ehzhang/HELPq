@@ -6,9 +6,6 @@
 @import 'elements/pushbuttons';
 @import 'elements/cleaninput';
 
-// Layout
-@import 'layouts/bannerLayout';
-
 // Components
 @import 'components/banner';
 @import 'components/nav';
@@ -20,6 +17,7 @@
 @import 'views/splash';
 @import 'views/home';
 @import 'views/error';
+@import 'views/admin';
 
 
 body,
@@ -37,4 +35,6 @@ html {
   height: 100%;
 }
 
+// Layout
+@import 'layouts/bannerLayout';
 

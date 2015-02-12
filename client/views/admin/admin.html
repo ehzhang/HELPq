@@ -1,5 +1,34 @@
 <template name="admin">
   <div id="admin">
-    {{> userTable }}
+    <div class="sixteen column centered stackable ui grid">
+      <div class="three wide column">
+        <div class="ui vertical pointing fluid menu">
+          <a class="{{isActive 'users'}} item" data-goto="users">
+            <i class="user icon"></i> Users
+          </a>
+          <a class="{{isActive 'tickets'}} item" data-goto="tickets">
+            <i class="help icon"></i> Tickets
+          </a>
+          <a class="{{isActive 'metrics'}} item" data-goto="metrics">
+            <i class="bar chart icon"></i> Metrics
+          </a>
+        </div>
+
+      </div>
+      <div class="thirteen wide column">
+        {{#if isPage 'users'}}
+          {{> userTable }}
+        {{/if}}
+
+        {{#if isPage 'tickets'}}
+          {{> ticketTable }}
+        {{/if}}
+
+        {{#if isPage 'metrics'}}
+          {{> metrics}}
+        {{/if}}
+      </div>
+    </div>
+
   </div>
 </template>

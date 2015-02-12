@@ -13,6 +13,7 @@ button.push {
   border-bottom: 6px solid grey;
   border-bottom-color: lighten(grey, 10);
   text-transform: uppercase;
+  transition-duration: .5s;
 
   &:focus {
     outline: none;
@@ -20,7 +21,7 @@ button.push {
 
   &:active {
     margin-top: 6px;
-    border-bottom: none;
+    border-bottom-width: 0;
   }
 
   &.small {
@@ -29,6 +30,16 @@ button.push {
 
   &.fluid {
     width: 100%;
+  }
+
+  &.disabled {
+    opacity: .7;
+    cursor: auto;
+    &:active {
+      margin-top: 0;
+      border-bottom-width: 6px;
+    }
+
   }
 
   &.primary {

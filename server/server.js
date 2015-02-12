@@ -239,7 +239,7 @@ function getAllUsers(){
 }
 
 function getUserData(){
-  if (this.userId) {
+  if (authorized.user(this.userId)) {
     return Meteor.users.find({_id: this.userId},
         {
           fields: {
@@ -254,7 +254,7 @@ function getUserData(){
 
 // Get all of the active tickets
 function getActiveTickets(){
-  if (this.userId) {
+  if (authorized.user(this.userId)) {
     return Tickets.find(
     {
       status: {
@@ -271,7 +271,7 @@ function getActiveTickets(){
 }
 
 function getAllTickets(){
-  if (this.userId){
+  if (authorized.admin(this.userId)){
     return Tickets.find({});
   }
 }

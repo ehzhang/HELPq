@@ -1,0 +1,43 @@
+<template name="ticketTable">
+  <table class="ui striped table">
+    <thead>
+    <tr>
+      <th>_id</th>
+      <th>userId</th>
+      <th>Name</th>
+      <th>Topic</th>
+      <th>Location</th>
+      <th>Contact</th>
+      <th>Timestamp</th>
+      <th>Status</th>
+      <th>ClaimId</th>
+      <th>ClaimName</th>
+      <th>ClaimTime</th>
+      <th>CompleteTime</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#each tickets}}
+      <tr class="{{rowClass}}">
+        <td>
+          <strong>
+            {{ _id }}
+          </strong>
+        </td>
+        <td>{{userId}}</td>
+        <td>{{name}}</td>
+        <td>{{topic}}</td>
+        <td>{{location}}</td>
+        <td>{{contact}}</td>
+        <td>{{timestamp}}</td>
+        <td>{{status}}</td>
+        <td>{{claimId}}</td>
+        <td>{{claimName}}</td>
+        <td>{{claimTime}}</td>
+        <td>{{completeTime}}</td>
+
+      </tr>
+    {{/each}}
+    </tbody>
+  </table>
+</template>
