@@ -1,0 +1,18 @@
+<template name="announcementsTable">
+  {{#each announcements}}
+    <div class="ui message">
+      <div class="header">
+        {{header}}
+      </div>
+      <p class="date">
+        {{time}}
+      </p>
+      <p>
+        {{content}}
+      </p>
+      <p>
+        - {{name}}
+      </p>
+    </div>
+  {{/each}}
+</template>

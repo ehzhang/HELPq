@@ -2,14 +2,21 @@
   <section id="home">
 
     <div class="ui centered stackable page grid">
-      <div class="six wide column">
-        {{> ticketPanel }}
-      </div>
-      <div class="four wide column">
-        <div class="feed-title">
-          Currently in the queue:
+      <div class="centered row">
+        <div class="twelve wide column">
+          {{> announcement }}
         </div>
-        {{> feed }}
+      </div>
+      <div class="centered row">
+        <div class="six wide column">
+          {{> ticketPanel }}
+        </div>
+        <div class="six wide column">
+          <div class="feed-title">
+            Currently in the queue:
+          </div>
+          {{> feed }}
+        </div>
       </div>
     </div>
 

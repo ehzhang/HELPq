@@ -16,3 +16,9 @@ Template.ticketTable.helpers({
     if (this.status === "CLAIMED") return "warning"
   }
 });
+
+Template.ticketTable.events({
+  'click .delete': function(){
+    Meteor.call('deleteTicket', this._id);
+  }
+});

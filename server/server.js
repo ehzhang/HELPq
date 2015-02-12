@@ -20,6 +20,18 @@
  */
 Tickets = new Meteor.Collection('tickets');
 
+/**
+ * Announcement:
+ *  {
+ *    userId: STRING,
+  *   name: STRING,
+  *   header: STRING,
+  *   content: STRING,
+  *   timestamp: Number (Milliseconds)
+ *  }
+ */
+Announcements = new Meteor.Collection('announcements');
+
 // ----------------------------------------
 // Basic Roles
 // ----------------------------------------
@@ -72,6 +84,12 @@ Tickets.allow({
   }
 });
 
+Announcements.allow({
+  insert: function() {return false},
+  update: function() {return false},
+  remove: function() {return false}
+});
+
 // ---------------------------------------
 // Meteor Methods
 // ---------------------------------------
@@ -81,7 +99,10 @@ Meteor.methods({
   claimTicket: claimTicket,
   completeTicket: completeTicket,
   cancelTicket: cancelTicket,
+  deleteTicket: deleteTicket,
   reopenTicket: reopenTicket,
+  createAnnouncement: createAnnouncement,
+  deleteAnnouncement: deleteAnnouncement,
   toggleRole: toggleRole
 });
 
@@ -112,7 +133,7 @@ function createTicket(topic, location, contact) {
       status: "OPEN"
     });
 
-    console.log("[", new Date().toLocaleString(), "]", "Ticket Created:", user.profile.name, topic, location);
+    _log("Ticket Created by " + this.userId);
   }
 }
 
@@ -131,7 +152,7 @@ function claimTicket(id){
       }
     });
 
-    console.log("[", new Date().toLocaleString(), "]", "Ticket Claimed by", user.profile.name);
+    _log("Ticket Claimed by " + this.userId);
     return true;
   }
   return false;
@@ -152,7 +173,7 @@ function completeTicket(id){
       }
     });
 
-    console.log("[", new Date().toLocaleString(), "]", "Ticket Completed by", user.profile.name);
+    _log("Ticket Completed by " + this.userId);
     return true;
   }
   return false;
@@ -170,7 +191,7 @@ function reopenTicket(id){
         claimName: null
       }
     });
-    console.log("[", new Date().toLocaleString(), "]", "Ticket Reopened: " + id);
+    _log("Ticket Reopened: " + id);
     return true;
   }
   return false;
@@ -181,7 +202,7 @@ function cancelTicket(id){
   // Ticket owner or mentor
   var ticket = Tickets.findOne({_id: id});
 
-  if (ticket.userId ){
+  if (authorized.mentor(this.userId) || ticket.userId === this.userId){
     Tickets.update({
       _id: id
     },{
@@ -189,9 +210,47 @@ function cancelTicket(id){
         status: "CANCELLED"
       }
     });
+    _log("Ticket Cancelled by " + this.userId);
     console.log("[", new Date().toLocaleString(), "]", "Ticket Cancelled by");
     return true;
   }
+}
+
+function deleteTicket(id){
+  // Admin only
+  if (authorized.admin(this.userId)){
+    Tickets.remove({
+      _id: id
+    });
+    _log("Ticket Deleted by " + this.userId);
+  }
+}
+
+function createAnnouncement(header, content){
+  if (authorized.admin(this.userId)){
+    var user = _getUser(this.userId);
+    Announcements.insert({
+      userId: user._id,
+      name: _getUserName(user),
+      timestamp: Date.now(),
+      header: header,
+      content: content
+    });
+    _log("Announcement created by " + this.userId);
+    return true;
+  }
+  return false
+}
+
+function deleteAnnouncement(id){
+  if (authorized.admin(this.userId)){
+    Announcements.remove({
+      _id: id
+    });
+    _log("Announcement deleted by " + this.userId);
+    return true;
+  }
+  return false;
 }
 
 function toggleRole(role, id){
@@ -222,6 +281,7 @@ Meteor.publish("userData", getUserData);
 Meteor.publish("allUsers", getAllUsers);
 Meteor.publish("activeTickets", getActiveTickets);
 Meteor.publish("allTickets", getAllTickets);
+Meteor.publish("allAnnouncements", getAllAnnouncements);
 
 // Get user data on yourself
 function getAllUsers(){
@@ -276,6 +336,12 @@ function getAllTickets(){
   }
 }
 
+function getAllAnnouncements(){
+  if (authorized.user(this.userId)){
+    return Announcements.find({});
+  }
+}
+
 // ---------------------------------------
 // Helper Functions
 // ---------------------------------------
@@ -293,4 +359,8 @@ function _getUserName(user){
     return user.services.github.username;
   }
   return "Anonymous";
+}
+
+function _log(message){
+  console.log("[", new Date().toLocaleString(), "]", message);
 }

@@ -3,6 +3,9 @@
     <div class="sixteen column centered stackable ui grid">
       <div class="three wide column">
         <div class="ui vertical pointing fluid menu">
+          <a class="{{isActive 'announce'}} item" data-goto="announce">
+            <i class="announcement icon"></i> Announce
+          </a>
           <a class="{{isActive 'users'}} item" data-goto="users">
             <i class="user icon"></i> Users
           </a>
@@ -16,15 +19,20 @@
 
       </div>
       <div class="thirteen wide column">
-        {{#if isPage 'users'}}
+        {{#if pageIs 'announce'}}
+          {{> announcer }}
+          {{> announcementsTable}}
+        {{/if}}
+
+        {{#if pageIs 'users'}}
           {{> userTable }}
         {{/if}}
 
-        {{#if isPage 'tickets'}}
+        {{#if pageIs 'tickets'}}
           {{> ticketTable }}
         {{/if}}
 
-        {{#if isPage 'metrics'}}
+        {{#if pageIs 'metrics'}}
           {{> metrics}}
         {{/if}}
       </div>

@@ -1,7 +1,7 @@
-Session.set('admin', 'users');
+Session.set('admin', 'announce');
 
 Template.admin.helpers({
-  isPage: function(page){
+  pageIs: function(page){
     return Session.equals("admin", page);
   },
   isActive: function(page){

@@ -1,0 +1,20 @@
+<template name="announcement">
+  {{#if announcement}}
+    {{#with announcement}}
+    <div class="ui message">
+      <div class="header">
+        {{header}}
+      </div>
+      <p class="date">
+        {{time}}
+      </p>
+      <p>
+        {{content}}
+      </p>
+      <p class="float right">
+        - {{name}}
+      </p>
+    </div>
+    {{/with}}
+  {{/if}}
+</template>
