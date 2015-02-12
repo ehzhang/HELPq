@@ -1,0 +1,17 @@
+.tickets {
+  text-align: center;
+  .ticket {
+    text-align: left;
+    font-size: 1.2em;
+
+    &.claimed {
+      border: 1px solid $brand-primary;
+      @include pulse(borderPulse, 2s);
+    }
+
+    button {
+      margin-bottom: 4px;
+      font-size: .8em;
+    }
+  }
+}

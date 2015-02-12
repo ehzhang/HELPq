@@ -1,0 +1,5 @@
+.feed {
+  .claimed.icon {
+    @include pulse(iconPulse, 2s);
+  }
+}

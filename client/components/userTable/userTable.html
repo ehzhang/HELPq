@@ -1,9 +1,3 @@
-<template name="admin">
-  <div id="admin">
-    {{> userTable }}
-  </div>
-</template>
-
 <template name="userTable">
   <table class="ui striped table">
     <thead>
@@ -31,27 +25,27 @@
         </td>
 
         <td class="">
-        {{#if profile.mentor}}
-          <span class="ui tiny blue button toggle-mentor">
+          {{#if profile.mentor}}
+            <span class="ui tiny blue button toggle-mentor">
             Mentor
           </span>
-        {{else}}
-          <span class="ui tiny basic button toggle-mentor">
+          {{else}}
+            <span class="ui tiny basic button toggle-mentor">
             Mentor
           </span>
-        {{/if}}
+          {{/if}}
         </td>
 
         <td class="">
-        {{#if profile.admin}}
-          <span class="ui tiny blue button toggle-admin">
+          {{#if profile.admin}}
+            <span class="ui tiny blue button toggle-admin">
             Admin
           </span>
-        {{else}}
-          <span class="ui tiny basic button toggle-admin">
+          {{else}}
+            <span class="ui tiny basic button toggle-admin">
             Admin
           </span>
-        {{/if}}
+          {{/if}}
         </td>
 
       </tr>

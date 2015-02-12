@@ -1,3 +1,17 @@
+@-webkit-keyframes iconPulse {
+  from {
+    opacity: 1; }
+  50% {
+    opacity: .5; }
+  to {
+    opacity: 1; } }
+@-webkit-keyframes borderPulse {
+  from {
+    border-color: #3498db; }
+  50% {
+    border-color: white; }
+  to {
+    border-color: #3498db; } }
 button.push {
   font-family: 'Lato', 'Helvetica Neue', 'Helvetica', sans-serif;
   font-weight: 300;
@@ -26,12 +40,12 @@ button.push {
     font-size: .75em; }
   button.push.fluid {
     width: 100%; }
-  button.push.green {
-    background: #2ecc71;
-    border-bottom-color: #54d98c; }
-  button.push.blue {
+  button.push.primary {
     background: #3498db;
     border-bottom-color: #5faee3; }
+  button.push.secondary {
+    background: #2ecc71;
+    border-bottom-color: #54d98c; }
   button.push.red {
     background: #e74c3c;
     border-bottom-color: #ed7669; }
@@ -47,21 +61,22 @@ input.clean {
   input.clean:focus {
     outline: none; }
 
-body,
-html,
-button,
-input {
-  font-family: 'Lato', 'Helvetica Neue', 'Helvetica', sans-serif;
-  font-weight: 300;
-  color: #303030; }
-
-body,
-html {
-  margin: 0;
-  padding: 0; }
-
-body {
-  height: 100%; }
+.bannerLayout #container {
+  min-height: 100%;
+  position: relative; }
+.bannerLayout #content {
+  padding: 12px 12px 40px 12px; }
+.bannerLayout #footer {
+  position: absolute;
+  bottom: 0;
+  height: 40px;
+  width: 100%;
+  background: #3498db;
+  color: white; }
+  .bannerLayout #footer footer {
+    text-align: center;
+    padding-top: 8px;
+    padding-bottom: 8px; }
 
 #banner {
   margin-bottom: 12px;
@@ -75,6 +90,42 @@ body {
     color: white;
     text-align: center;
     padding: 1em 0; }
+
+#nav {
+  position: absolute;
+  padding: 12px;
+  width: 100%; }
+
+.tickets {
+  text-align: center; }
+  .tickets .ticket {
+    text-align: left;
+    font-size: 1.2em; }
+    .tickets .ticket.claimed {
+      border: 1px solid #3498db;
+      -webkit-animation-name: borderPulse;
+      -webkit-animation-duration: 2s;
+      -webkit-animation-iteration-count: infinite; }
+    .tickets .ticket button {
+      margin-bottom: 4px;
+      font-size: .8em; }
+
+.ticketPanel {
+  text-align: center; }
+  .ticketPanel .title {
+    font-size: 1.8em;
+    margin-bottom: 12px; }
+  .ticketPanel .content {
+    font-size: 1.3em; }
+  .ticketPanel input {
+    width: 100%; }
+  .ticketPanel button {
+    font-size: 1.3em; }
+
+.feed .claimed.icon {
+  -webkit-animation-name: iconPulse;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite; }
 
 #splash {
   background: url(assets/images/background.jpg) fixed center center no-repeat;
@@ -102,76 +153,27 @@ body {
       font-size: 4em;
       letter-spacing: .2em; }
 
-#nav {
-  position: absolute;
-  padding: 12px;
-  width: 100%; }
-
-#error {
-  position: relative;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  text-align: center;
-  font-size: 1.5em; }
-
-#home,
-#admin,
-#mentor {
-  padding: 12px; }
-
 #home .feed-title {
   font-size: 1.2em;
   margin-bottom: 8px; }
 
-.ticketPanel {
-  text-align: center; }
-  .ticketPanel .title {
-    font-size: 1.8em;
-    margin-bottom: 12px; }
-  .ticketPanel .content {
-    font-size: 1.3em; }
-  .ticketPanel input {
-    width: 100%; }
-  .ticketPanel button {
-    font-size: 1.3em; }
+#error {
+  text-align: center;
+  font-size: 1.5em;
+  margin-top: 30px; }
 
-.tickets {
-  text-align: center; }
-  .tickets .ticket {
-    text-align: left;
-    font-size: 1.2em; }
-    .tickets .ticket.claimed {
-      border: 1px solid #3498db;
-      -webkit-animation-name: borderPulse;
-      -webkit-animation-duration: 2s;
-      -webkit-animation-iteration-count: infinite; }
-    .tickets .ticket button {
-      margin-bottom: 4px;
-      font-size: .8em; }
+body,
+html,
+button,
+input {
+  font-family: 'Lato', 'Helvetica Neue', 'Helvetica', sans-serif;
+  font-weight: 300;
+  color: #303030; }
 
-#home button {
-  margin-right: auto;
-  margin-left: auto; }
-
-@-webkit-keyframes iconPulse {
-  from {
-    opacity: 1; }
-  50% {
-    opacity: .5; }
-  to {
-    opacity: 1; } }
-@-webkit-keyframes borderPulse {
-  from {
-    border-color: #3498db; }
-  50% {
-    border-color: white; }
-  to {
-    border-color: #3498db; } }
-.feed .claimed.icon {
-  -webkit-animation-name: iconPulse;
-  -webkit-animation-duration: 2s;
-  -webkit-animation-iteration-count: infinite; }
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%; }
 
 /*# sourceMappingURL=site.css.map */

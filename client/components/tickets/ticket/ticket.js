@@ -1,13 +1,3 @@
-Template.tickets.helpers({
-  activeTickets: function () {
-    return Tickets.find({
-      status: {
-        $in: ['OPEN', 'CLAIMED']
-      }
-    }).fetch();
-  }
-});
-
 Template.ticket.rendered = function(){
   $(this.findAll('.ticket')).addClass('animated bounceInUp');
 };

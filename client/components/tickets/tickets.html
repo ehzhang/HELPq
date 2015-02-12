@@ -1,0 +1,14 @@
+<template name="tickets">
+  <div class="tickets">
+    {{#if activeTickets}}
+      {{#each activeTickets}}
+        {{> ticket }}
+      {{/each}}
+    {{else}}
+      <i class="ui huge smile icon"></i>
+      <br>
+      <br>
+      Looks like it's all clear!
+    {{/if}}
+  </div>
+</template>

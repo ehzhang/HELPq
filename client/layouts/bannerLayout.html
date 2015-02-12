@@ -1,6 +1,14 @@
 <template name="bannerLayout">
+  <div id="container" class="bannerLayout">
   {{> nav }}
   {{> banner }}
 
+  <div id="content">
   {{> yield }}
+  </div>
+
+  <div id="footer">
+    {{> footer }}
+  </div>
+  </div>
 </template>

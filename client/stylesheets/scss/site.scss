@@ -1,7 +1,26 @@
 @import 'color';
+@import 'keyframes';
 @import 'mixins';
-@import 'pushbuttons';
-@import 'cleaninput';
+
+// Individual Elements
+@import 'elements/pushbuttons';
+@import 'elements/cleaninput';
+
+// Layout
+@import 'layouts/bannerLayout';
+
+// Components
+@import 'components/banner';
+@import 'components/nav';
+@import 'components/tickets';
+@import 'components/ticketPanel';
+@import 'components/feed';
+
+// Views
+@import 'views/splash';
+@import 'views/home';
+@import 'views/error';
+
 
 body,
 html,
@@ -15,140 +34,7 @@ body,
 html {
   margin: 0;
   padding: 0;
-}
-
-body {
   height: 100%;
 }
 
-#banner {
-  margin-bottom: 12px;
-  background: url(assets/images/banner.jpg) fixed center center no-repeat;
-  background-size: cover;
-
-  .content {
-    @include logo-font();
-    font-size: 3em;
-    letter-spacing: .2em;
-    color: white;
-    text-align: center;
-    padding: 1em 0;
-  }
-}
-
-#splash {
-  background: url(assets/images/background.jpg) fixed center center no-repeat;
-  background-size: cover;
-  height: 100%;
-  width: 100%;
-  color: white;
-
-  >.container {
-    @include vertical-align();
-    button {
-      margin: 0 auto;
-    }
-
-    .header,
-    .subheader {
-      text-align: center;
-    }
-
-    .subheader {
-      font-size: 1.5em;
-      margin-bottom: .5em;
-    }
-
-    .header {
-      @include logo-font();
-      font-size: 4em;
-      letter-spacing: .2em;
-    }
-  }
-
-}
-
-#nav {
-  position: absolute;
-  padding: 12px;
-  width: 100%;
-}
-
-#error {
-  @include vertical-align();
-  text-align: center;
-  font-size: 1.5em;
-}
-
-#home,
-#admin,
-#mentor, {
-  padding: 12px;
-}
-
-#home {
-  .feed-title {
-    font-size: 1.2em;
-    margin-bottom: 8px;
-  }
-}
-
-.ticketPanel {
-  text-align: center;
-  .title {
-    font-size: 1.8em;
-    margin-bottom: 12px;
-  }
-  .content {
-    font-size: 1.3em;
-  }
-  input {
-    width: 100%;
-  }
-  button {
-    font-size: 1.3em;
-  }
-}
-
-.tickets {
-  text-align: center;
-  .ticket {
-    text-align: left;
-    font-size: 1.2em;
-
-    &.claimed {
-      border: 1px solid $blue;
-      -webkit-animation-name: borderPulse;
-      -webkit-animation-duration: 2s;
-      -webkit-animation-iteration-count: infinite;
-    }
-
-    button {
-      margin-bottom: 4px;
-      font-size: .8em;
-    }
-  }
-}
-
-@import 'home';
-
-@-webkit-keyframes iconPulse {
-  from {opacity: 1 }
-  50% {opacity: .5}
-  to {opacity: 1}
-}
-
-@-webkit-keyframes borderPulse {
-  from {border-color: $blue}
-  50% {border-color: lighten($blue, 80%)}
-  to {border-color: $blue}
-}
-
-.feed {
-  .claimed.icon {
-    -webkit-animation-name: iconPulse;
-    -webkit-animation-duration: 2s;
-    -webkit-animation-iteration-count: infinite;
-  }
-}
 

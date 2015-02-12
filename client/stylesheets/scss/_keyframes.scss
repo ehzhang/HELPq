@@ -1,0 +1,11 @@
+@-webkit-keyframes iconPulse {
+  from {opacity: 1 }
+  50% {opacity: .5}
+  to {opacity: 1}
+}
+
+@-webkit-keyframes borderPulse {
+  from {border-color: $brand-primary}
+  50% {border-color: lighten($brand-primary, 80%)}
+  to {border-color: $brand-primary}
+}

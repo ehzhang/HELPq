@@ -1,0 +1,31 @@
+#splash {
+  background: url(assets/images/background.jpg) fixed center center no-repeat;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  color: white;
+
+  >.container {
+    @include vertical-align();
+    button {
+      margin: 0 auto;
+    }
+
+    .header,
+    .subheader {
+      text-align: center;
+    }
+
+    .subheader {
+      font-size: 1.5em;
+      margin-bottom: .5em;
+    }
+
+    .header {
+      @include logo-font();
+      font-size: 4em;
+      letter-spacing: .2em;
+    }
+  }
+
+}

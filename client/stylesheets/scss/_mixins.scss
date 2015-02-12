@@ -19,10 +19,16 @@
   font-weight: 700;
 }
 
-@mixin vertical-align {
+@mixin vertical-align() {
   position: relative;
   top: 50%;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
+}
+
+@mixin pulse($name, $duration){
+  -webkit-animation-name: $name;
+  -webkit-animation-duration: $duration;
+  -webkit-animation-iteration-count: infinite;
 }

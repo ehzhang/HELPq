@@ -31,19 +31,19 @@ button.push {
     width: 100%;
   }
 
-  &.green {
-    background: $green;
-    border-bottom-color: lighten($green, 10);
+  &.primary {
+    background: $brand-primary;
+    border-bottom-color: lighten($brand-primary, 10);
   }
 
-  &.blue {
-    background: $blue;
-    border-bottom-color: lighten($blue, 10);
+  &.secondary {
+    background: $brand-secondary;
+    border-bottom-color: lighten($brand-secondary, 10);
   }
 
   &.red {
-    background: $red;
-    border-bottom-color: lighten($red, 10);
+    background: $brand-danger;
+    border-bottom-color: lighten($brand-danger, 10);
   }
 
 }

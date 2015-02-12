@@ -1,4 +1,14 @@
-Template.admin.events({
+Template.userTable.helpers({
+  users: function(){
+    return Meteor.users.find({},{
+      sort: {
+        createdAt: 1
+      }
+    })
+  }
+});
+
+Template.userTable.events({
   'click .toggle-mentor': function(){
     Meteor.call("toggleRole", "mentor", this._id);
   },

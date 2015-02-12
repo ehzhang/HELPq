@@ -1,28 +1,3 @@
-<template name="mentor">
-  <div id="mentor">
-    <div class="ui two column stackable centered page grid">
-      <div class="centered column">
-        {{> tickets }}
-      </div>
-    </div>
-  </div>
-</template>
-
-<template name="tickets">
-  <div class="tickets">
-    {{#if activeTickets}}
-      {{#each activeTickets}}
-        {{> ticket }}
-      {{/each}}
-    {{else}}
-      <i class="ui huge smile icon"></i>
-      <br>
-      <br>
-      Looks like it's all clear!
-    {{/if}}
-  </div>
-</template>
-
 <template name="ticket">
   <div class="ui fluid card ticket {{#if statusIs 'CLAIMED'}}claimed{{/if}}">
     <div class="content">
@@ -56,17 +31,17 @@
       </div>
 
       <strong> Contact: </strong>
-        {{contact}}
+      {{contact}}
     </div>
     <div class="extra content">
       {{#if statusIs "OPEN"}}
-        <button class="blue fluid push button claim">Claim Ticket</button>
+        <button class="primary fluid push button claim">Claim Ticket</button>
       {{/if}}
 
       {{#if statusIs "CLAIMED"}}
         {{#if claimer}}
-          <button class="fluid green push button complete">Mark as Complete</button>
-          <button class="fluid blue push button reopen">Reopen Ticket</button>
+          <button class="fluid primary push button complete">Mark as Complete</button>
+          <button class="fluid secondary push button reopen">Reopen Ticket</button>
         {{else}}
           <div class="right floated author">
             Claimed by {{claimName}}
