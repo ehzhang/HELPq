@@ -31,10 +31,12 @@ Template.userTable.helpers({
   },
   users: function(){
     var t = Template.instance();
-    var users = Meteor.users.find(t.filter.get(),{
-      sort: {
-        createdAt: 1
-      }
+    var users = Meteor.users.find(
+        t.filter.get()
+        , {
+          sort: {
+            createdAt: 1
+          }
     }).fetch();
     return filterBySearchText(users, t.searchText.get());
   }

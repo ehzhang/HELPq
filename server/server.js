@@ -289,6 +289,7 @@ function getAllUsers(){
     return Meteor.users.find({},
         {
           fields: {
+            'createdAt': 1,
             'services': 1,
             'profile': 1
           }
