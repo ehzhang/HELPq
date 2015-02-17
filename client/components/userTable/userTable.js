@@ -69,7 +69,16 @@ Template.userTable.events({
   },
   'click .edit-user.button': function(e, t){
     t.selectedUser.set(this);
-    $('.ui.edit-user.modal').modal('show');
+
+    // Semantic-UI wants to remove the modal from the template and add it
+    // to a page dimmer.
+    // Modal needs to be detachable, so that it is not removed
+    // from the template and pile up in the body.
+    $('.ui.edit-user.modal')
+        .modal({
+          'detachable': false
+        })
+        .modal('show');
   }
 });
 
