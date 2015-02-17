@@ -30,7 +30,8 @@ Template.userEdit.events({
     var profile = {};
 
     // Get the profile inputs
-    $('.form input.profile').each(function(idx, el){
+    // Look in this template only
+    $(t.firstNode).find('input.profile').each(function(idx, el){
       var $el = $(el);
       profile[$el.attr('name')] = $el.val();
     });

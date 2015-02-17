@@ -69,7 +69,7 @@ Template.userTable.events({
   },
   'click .edit-user': function(e, t){
     t.selectedUser.set(this);
-    $('.ui.modal').modal('show');
+    $('.ui.edit-user.modal').modal('show');
   }
 });
 
