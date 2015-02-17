@@ -52,7 +52,11 @@
       <tr>
         <td>
           <strong>
-            {{ profile.name }}
+            {{#if profile.name }}
+              {{ profile.name }}
+            {{else}}
+              {{ services.github.username }}
+            {{/if}}
           </strong>
         </td>
         <td>
