@@ -41,8 +41,9 @@
     <thead>
     <tr>
       <th>Name</th>
-      <th>Github</th>
       <th>Email</th>
+      <th>Phone</th>
+      <th>Skills</th>
       <th></th>
     </tr>
     </thead>
@@ -55,13 +56,27 @@
           </strong>
         </td>
         <td>
-          {{ services.github.username }}
+          {{#if profile.email }}
+            {{ profile.email }}
+          {{else}}
+            {{ services.github.email }}
+          {{/if}}
         </td>
+
         <td>
-          {{ services.github.email }}
+          {{ profile.phone }}
+        </td>
+
+        <td>
+          {{#each profile.skills }}
+            <span class="ui label">
+              {{this}}
+            </span>
+          {{/each}}
         </td>
 
         <td class="right aligned">
+
           {{#if profile.mentor}}
             <span class="ui tiny blue button toggle-mentor">
             Mentor
@@ -81,10 +96,27 @@
             Admin
           </span>
           {{/if}}
+
+          <span class="ui tiny button edit-user">
+            Edit
+          </span>
+
         </td>
 
       </tr>
     {{/each}}
     </tbody>
   </table>
+
+  <div class="ui modal">
+    <i class="close icon"></i>
+    <div class="header">
+      Edit User
+    </div>
+    <div class="content">
+      {{#with selectedUser}}
+        {{> userEdit}}
+      {{/with}}
+    </div>
+  </div>
 </template>

@@ -12,3 +12,5 @@ nooitaf:semantic-ui
 accounts-facebook
 momentjs:moment
 reactive-var
+underscore
+accounts-password

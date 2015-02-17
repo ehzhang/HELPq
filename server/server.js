@@ -103,7 +103,9 @@ Meteor.methods({
   reopenTicket: reopenTicket,
   createAnnouncement: createAnnouncement,
   deleteAnnouncement: deleteAnnouncement,
-  toggleRole: toggleRole
+  toggleRole: toggleRole,
+  updateUser: updateUser,
+  createAccount: createAccount
 });
 
 function createTicket(topic, location, contact) {
@@ -272,6 +274,55 @@ function toggleRole(role, id){
   }
 }
 
+// Admin or user
+// Editable fields:
+// Name, Email. Phone, Skills
+function updateUser(id, profile){
+  var user = _getUser(id);
+
+  if (authorized.admin(this.userId) || user._id === this.userId){
+    var validFields = [
+      'name',
+      'email',
+      'phone'
+    ];
+
+    // Copy the user profile
+    var userProfile = user.profile;
+
+    // Pick valid fields from the submitted changes
+    validFields.forEach(function(field){
+      if (_.isString(profile[field])){
+        userProfile[field] = profile[field];
+      }
+    });
+
+    if(_.isArray(profile['skills'])){
+      userProfile['skills'] = profile['skills'];
+    }
+
+    Meteor.users.update({
+      _id: id
+    },{
+      $set: {
+        profile: userProfile
+      }
+    }, function(err){
+      return err;
+    });
+  }
+}
+
+// Only admin can create user accounts
+function createAccount(username, password, profile){
+  if (authorized.admin(this.userId)){
+    Accounts.createUser({
+      username: username,
+      password: password,
+      profile: profile
+    });
+  }
+}
 
 // ---------------------------------------
 // Publish Data
@@ -281,9 +332,10 @@ Meteor.publish("userData", getUserData);
 Meteor.publish("allUsers", getAllUsers);
 Meteor.publish("activeTickets", getActiveTickets);
 Meteor.publish("allTickets", getAllTickets);
+Meteor.publish("userTickets", getUserTickets);
 Meteor.publish("allAnnouncements", getAllAnnouncements);
 
-// Get user data on yourself
+// Get all users
 function getAllUsers(){
   if (authorized.admin(this.userId)) {
     return Meteor.users.find({},
@@ -299,6 +351,7 @@ function getAllUsers(){
   }
 }
 
+// Get user data on yourself
 function getUserData(){
   if (authorized.user(this.userId)) {
     return Meteor.users.find({_id: this.userId},
@@ -331,12 +384,23 @@ function getActiveTickets(){
   }
 }
 
+// Get all of the tickets
 function getAllTickets(){
   if (authorized.admin(this.userId)){
     return Tickets.find({});
   }
 }
 
+// Get the tickets for the current user
+function getUserTickets(){
+  if (authorized.user(this.userId)){
+    return Tickets.find({
+      userId: this.userId
+    })
+  }
+}
+
+// Get all of the announcements
 function getAllAnnouncements(){
   if (authorized.user(this.userId)){
     return Announcements.find({});

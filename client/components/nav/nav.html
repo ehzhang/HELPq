@@ -16,9 +16,13 @@
           Queue
         </a>
         <div class="right menu">
-          <div class="item">
-            {{ currentUser.profile.name }}
-          </div>
+          <a class="item" href="/profile">
+            {{#if currentUser.profile.name }}
+              {{ currentUser.profile.name }}
+            {{else}}
+              Profile
+            {{/if}}
+          </a>
           <!--<a class="ui icon item" href="/user">-->
             <!--<i class="ui setting icon"></i>-->
           <!--</a>-->

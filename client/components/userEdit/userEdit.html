@@ -1,0 +1,50 @@
+<template name="userEdit">
+  <div class="user-edit">
+    <div class="ui form">
+
+
+      <h4 class="ui dividing header">Edit Profile</h4>
+      <div class="field">
+        <label>Name</label>
+        <input type="text" class="profile" name='name' value="{{profile.name}}" placeholder="Your Name" required>
+      </div>
+      <div class="field">
+        <label>Email</label>
+        <input type="email" class="profile" name='email' value="{{profile.email}}" placeholder="Email Address" required>
+      </div>
+      <div class="field">
+        <label>Phone</label>
+        <input type="tel" class="profile" name='phone' value="{{profile.phone}}" placeholder="Phone Number" required>
+      </div>
+      <div class="field">
+        <label>Skills</label>
+        {{#each skills}}
+          <div class="ui label">
+            {{skill}}
+            <i class="delete skill icon" data-index="{{index}}"></i>
+          </div>
+        {{/each}}
+        <div class="ui fluid action input">
+          <input type="text" name="skills" placeholder="node.js, ruby, python, machine learning, etc...">
+          <div class="ui blue button add-skill">Add Skill</div>
+        </div>
+      </div>
+      <div class="field">
+        <div class="ui fluid green save button">Save Profile</div>
+      </div>
+
+      {{#if success }}
+        <div class="ui positive message">
+          <div class="header">Saved Successfully!</div>
+        </div>
+      {{/if}}
+
+      {{#if error }}
+        <div class="ui negative message">
+          <div class="header">Uh oh, something went wrong!</div>
+        </div>
+      {{/if}}
+
+    </div>
+  </div>
+</template>

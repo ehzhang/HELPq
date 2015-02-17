@@ -16,6 +16,7 @@ var filters = {
 Template.userTable.created = function(){
   this.searchText = new ReactiveVar();
   this.filter = new ReactiveVar({});
+  this.selectedUser = new ReactiveVar(Meteor.user());
 };
 
 Template.userTable.rendered = function(){
@@ -28,6 +29,9 @@ Template.userTable.helpers({
   },
   searchText: function() {
     return Template.instance().searchText.get();
+  },
+  selectedUser: function(){
+    return Template.instance().selectedUser.get();
   },
   users: function(){
     var t = Template.instance();
@@ -62,6 +66,10 @@ Template.userTable.events({
   'click .filter': function(e, t){
     var filter = filters[e.target.getAttribute('data-filter')];
     t.filter.set(filter);
+  },
+  'click .edit-user': function(e, t){
+    t.selectedUser.set(this);
+    $('.ui.modal').modal('show');
   }
 });
 

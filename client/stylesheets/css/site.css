@@ -123,6 +123,9 @@ input.clean {
   .userStats .statistics .statistic {
     margin-bottom: 1.3em; }
 
+.user-edit .label {
+  margin-bottom: 8px; }
+
 #splash {
   background: url(assets/images/background.jpg) fixed center center no-repeat;
   background-size: cover;
@@ -161,6 +164,9 @@ input.clean {
 #admin {
   padding-bottom: 40px; }
 
+#profile .title {
+  text-align: center; }
+
 body,
 html,
 button,
@@ -179,17 +185,16 @@ html {
   min-height: 100%;
   position: relative; }
   #container.bannerLayout #content {
-    padding: 12px 12px 40px 12px; }
+    padding: 12px 12px 60px 12px; }
   #container.bannerLayout #footer {
     position: absolute;
     bottom: 0;
-    height: 40px;
     width: 100%;
     background: #3498db;
     color: white; }
     #container.bannerLayout #footer footer {
       text-align: center;
-      padding-top: 8px;
-      padding-bottom: 8px; }
+      padding-top: 12px;
+      padding-bottom: 12px; }
 
 /*# sourceMappingURL=site.css.map */

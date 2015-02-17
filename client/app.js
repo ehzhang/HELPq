@@ -6,7 +6,7 @@ Meteor.subscribe("activeTickets");
 Meteor.subscribe("allAnnouncements");
 
 Tracker.autorun(function(){
-  if (authorized.admin()){
+  if (authorized.admin() && Session.equals('admin', 'users')){
     Meteor.subscribe("allUsers");
   }
 });

@@ -13,13 +13,14 @@
 @import 'components/ticketPanel';
 @import 'components/feed';
 @import 'components/userStats';
+@import 'components/userEdit';
 
 // Views
 @import 'views/splash';
 @import 'views/home';
 @import 'views/error';
 @import 'views/admin';
-
+@import 'views/profile';
 
 body,
 html,

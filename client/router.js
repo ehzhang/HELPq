@@ -11,6 +11,11 @@ Router.route('/', function(){
   this.render('home');
 });
 
+Router.route('/profile', function(){
+  this.layout('bannerLayout');
+  this.render('profile');
+});
+
 Router.route('/mentor', function(){
   this.layout('bannerLayout');
   if (authorized.mentor()){

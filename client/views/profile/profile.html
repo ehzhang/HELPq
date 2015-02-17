@@ -1,0 +1,14 @@
+<template name="profile">
+  <div id="profile">
+    <div class="sixteen column centered ui stackable page grid">
+      <div class="eight wide column">
+        <h1 class="ui title header">Your Account</h1>
+        <div class="ui fluid segment">
+          {{#with currentUser}}
+            {{> userEdit }}
+          {{/with}}
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

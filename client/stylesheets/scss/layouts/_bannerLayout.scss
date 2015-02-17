@@ -3,20 +3,19 @@
   position: relative;
 
   #content {
-    padding: 12px 12px 40px 12px;
+    padding: 12px 12px 60px 12px;
   }
 
   #footer {
     position: absolute;
     bottom: 0;
-    height: 40px;
     width: 100%;
     background: $brand-primary;
     color: white;
     footer {
       text-align: center;
-      padding-top: 8px;
-      padding-bottom: 8px;
+      padding-top: 12px;
+      padding-bottom: 12px;
     }
   }
 }
