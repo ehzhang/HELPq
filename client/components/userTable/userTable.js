@@ -67,7 +67,7 @@ Template.userTable.events({
     var filter = filters[e.target.getAttribute('data-filter')];
     t.filter.set(filter);
   },
-  'click .edit-user': function(e, t){
+  'click .edit-user.button': function(e, t){
     t.selectedUser.set(this);
     $('.ui.edit-user.modal').modal('show');
   }
