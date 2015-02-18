@@ -2,8 +2,12 @@ var filters = {
   all: {}
   ,
   student: {
-    'profile.mentor': false,
-    'profile.admin': false
+    'profile.mentor': {
+      $in: [false, null]
+    },
+    'profile.admin': {
+      $in: [false, null]
+    }
   },
   mentor: {
     'profile.mentor': true
