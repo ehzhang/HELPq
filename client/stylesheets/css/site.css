@@ -214,8 +214,8 @@ html {
   background: linear-gradient(rgba(0, 136, 255, 0.85), rgba(0, 84, 165, 0.85)), url(/assets/images/background-blueprint.jpg) no-repeat center center;
   background-size: cover; }
 
-#footer {
+#footer footer {
   color: white;
-  background: #0088ff; }
+  background: #007ae6; }
 
 /*# sourceMappingURL=site.css.map */

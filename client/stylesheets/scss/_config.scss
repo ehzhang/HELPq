@@ -23,7 +23,8 @@
 
 // Footer, which appears on each page.
 #footer {
-  color: white;
-
-  background: $brand-primary;
+  footer {
+    color: white;
+    background: darken($brand-primary, 5%);
+  }
 }
