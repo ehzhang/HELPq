@@ -15,8 +15,9 @@
 #banner {
   color: white;
 
-  background: linear-gradient(rgba(0, 136, 255, 0.85),
-              rgba(0, 84, 165, 0.85)),
+  background: linear-gradient(
+              rgba(0, 136, 255, 0.85),
+              rgba(0, 109, 215, 0.85)),
               url(/assets/images/background-blueprint.jpg) no-repeat center center;
   background-size: cover;
 }
