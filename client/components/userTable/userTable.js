@@ -16,7 +16,7 @@ var filters = {
 Template.userTable.created = function(){
   this.searchText = new ReactiveVar();
   this.filter = new ReactiveVar({});
-  this.selectedUser = new ReactiveVar(Meteor.user());
+  this.modal = new ReactiveVar();
 };
 
 Template.userTable.rendered = function(){
@@ -29,9 +29,6 @@ Template.userTable.helpers({
   },
   searchText: function() {
     return Template.instance().searchText.get();
-  },
-  selectedUser: function(){
-    return Template.instance().selectedUser.get();
   },
   users: function(){
     var t = Template.instance();
@@ -68,7 +65,10 @@ Template.userTable.events({
     t.filter.set(filter);
   },
   'click .edit-user.button': function(e, t){
-    t.selectedUser.set(this);
+    t.modal.set(Blaze.renderWithData(
+        Template.userEdit,
+        this,
+        $('.edit-user.modal .content').get(0)));
 
     // Semantic-UI wants to remove the modal from the template and add it
     // to a page dimmer.
@@ -76,9 +76,13 @@ Template.userTable.events({
     // from the template and pile up in the body.
     $('.ui.edit-user.modal')
         .modal({
-          'detachable': false
+          'detachable': false,
+          'closable': false
         })
         .modal('show');
+  },
+  'click .edit-user.modal .close': function(e, t){
+    Blaze.remove(t.modal.get());
   }
 });
 

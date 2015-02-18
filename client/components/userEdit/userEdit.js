@@ -1,16 +1,18 @@
 Template.userEdit.created = function (){
-  this.skills = new ReactiveVar([]);
+  var skills = this.data.profile.skills ? this.data.profile.skills : [];
+
+  this.skills = new ReactiveVar(skills);
   this.success = new ReactiveVar();
+  this.error = new ReactiveVar();
 };
 Template.userEdit.helpers({
   success: function(){
     return Template.instance().success.get();
   },
+  error: function(){
+    return Template.instance().error.get();
+  },
   skills: function(){
-    // Get the skills from the current user
-    var skills = this.profile.skills ? this.profile.skills : [];
-    Template.instance().skills.set(skills);
-
     return Template.instance().skills.get().map(function(skill, idx){
       return {
         index: idx,
