@@ -7,11 +7,11 @@
     opacity: 1; } }
 @-webkit-keyframes borderPulse {
   from {
-    border-color: #3498db; }
+    border-color: #0088ff; }
   50% {
     border-color: white; }
   to {
-    border-color: #3498db; } }
+    border-color: #0088ff; } }
 button.push {
   font-family: 'Lato', 'Helvetica Neue', 'Helvetica', sans-serif;
   font-weight: 300;
@@ -48,9 +48,12 @@ button.push {
       margin-top: 0;
       border-bottom-width: 4px; }
   button.push.primary {
-    background: #3498db;
-    border-bottom-color: #5faee3; }
+    background: #0088ff;
+    border-bottom-color: #33a0ff; }
   button.push.secondary {
+    background: #f2c61f;
+    border-bottom-color: #f5d24f; }
+  button.push.success {
     background: #2ecc71;
     border-bottom-color: #54d98c; }
   button.push.red {
@@ -70,6 +73,7 @@ input.clean {
 
 #banner {
   margin-bottom: 12px;
+  background: #0088ff;
   background: url(assets/images/banner.jpg) fixed center center no-repeat;
   background-size: cover; }
   #banner .content {
@@ -92,7 +96,7 @@ input.clean {
     text-align: left;
     font-size: 1.2em; }
     .tickets .ticket.claimed {
-      border: 1px solid #3498db;
+      border: 1px solid #0088ff;
       -webkit-animation-name: borderPulse;
       -webkit-animation-duration: 2s;
       -webkit-animation-iteration-count: infinite; }
@@ -113,6 +117,7 @@ input.clean {
     font-size: 1.3em; }
 
 .feed .claimed.icon {
+  color: #0088ff !important;
   -webkit-animation-name: iconPulse;
   -webkit-animation-duration: 2s;
   -webkit-animation-iteration-count: infinite; }
@@ -127,6 +132,7 @@ input.clean {
   margin-bottom: 8px; }
 
 #splash {
+  background: #0088ff;
   background: url(assets/images/background.jpg) fixed center center no-repeat;
   background-size: cover;
   height: 100%;
@@ -190,11 +196,26 @@ html {
     position: absolute;
     bottom: 0;
     width: 100%;
-    background: #3498db;
+    background: #0088ff;
     color: white; }
     #container.bannerLayout #footer footer {
       text-align: center;
       padding-top: 12px;
       padding-bottom: 12px; }
+
+#splash {
+  color: white;
+  background: #0088ff;
+  background: linear-gradient(rgba(0, 136, 255, 0.85), rgba(0, 84, 165, 0.85)), url(/assets/images/background-blueprint.jpg) no-repeat center center;
+  background-size: cover; }
+
+#banner {
+  color: white;
+  background: linear-gradient(rgba(0, 136, 255, 0.85), rgba(0, 84, 165, 0.85)), url(/assets/images/background-blueprint.jpg) no-repeat center center;
+  background-size: cover; }
+
+#footer {
+  color: white;
+  background: #0088ff; }
 
 /*# sourceMappingURL=site.css.map */

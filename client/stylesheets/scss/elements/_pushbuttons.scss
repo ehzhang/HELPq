@@ -52,6 +52,11 @@ button.push {
     border-bottom-color: lighten($brand-secondary, 10);
   }
 
+  &.success {
+    background: $brand-success;
+    border-bottom-color: lighten($brand-success, 10);
+  }
+
   &.red {
     background: $brand-danger;
     border-bottom-color: lighten($brand-danger, 10);

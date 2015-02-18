@@ -1,0 +1,29 @@
+// Configure for branding!
+
+// Splash is the main screen.
+#splash {
+  color: white;
+
+  background: $brand-primary;
+  background: linear-gradient(rgba(0, 136, 255, 0.85),
+              rgba(0, 84, 165, 0.85)),
+              url(/assets/images/background-blueprint.jpg) no-repeat center center;
+  background-size: cover;
+}
+
+// Banner which appears under the nav, and on each page.
+#banner {
+  color: white;
+
+  background: linear-gradient(rgba(0, 136, 255, 0.85),
+              rgba(0, 84, 165, 0.85)),
+              url(/assets/images/background-blueprint.jpg) no-repeat center center;
+  background-size: cover;
+}
+
+// Footer, which appears on each page.
+#footer {
+  color: white;
+
+  background: $brand-primary;
+}

@@ -1,5 +1,6 @@
 .feed {
   .claimed.icon {
+    color: $brand-primary !important;
     @include pulse(iconPulse, 2s);
   }
 }
