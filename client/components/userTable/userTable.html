@@ -80,22 +80,22 @@
         </td>
 
         <td class="right aligned collapsing">
-          {{#if userIs 'mentor'}}
+          {{#if profile.mentor}}
             <span class="ui tiny blue button toggle-mentor">
             Mentor
           </span>
           {{else}}
-            <span class="ui tiny button toggle-mentor">
+            <span class="ui tiny basic button toggle-mentor">
             Mentor
           </span>
           {{/if}}
 
-          {{#if userIs 'admin'}}
+          {{#if profile.admin}}
             <span class="ui tiny blue button toggle-admin">
             Admin
           </span>
           {{else}}
-            <span class="ui tiny button toggle-admin">
+            <span class="ui tiny basic button toggle-admin">
             Admin
           </span>
           {{/if}}

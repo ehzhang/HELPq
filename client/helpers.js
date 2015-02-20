@@ -13,5 +13,5 @@ UI.registerHelper('constant', function(variable){
 
 // Check if a user is a certain role
 UI.registerHelper('userIs', function(role){
-  return authorized[role](Meteor.userId());
+  return authorized[role]();
 });
