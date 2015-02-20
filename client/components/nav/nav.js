@@ -3,3 +3,12 @@ Template.nav.events({
     Meteor.logout();
   }
 });
+
+Template.nav.helpers({
+  profile: function(){
+    if (Meteor.user().profile.name){
+      return Meteor.user().profile.name;
+    }
+    return "Profile";
+  }
+});

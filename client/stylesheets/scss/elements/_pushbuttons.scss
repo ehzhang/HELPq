@@ -33,7 +33,7 @@ button.push {
   }
 
   &.disabled {
-    opacity: .7;
+    opacity: .3;
     cursor: auto;
     &:active {
       margin-top: 0;
@@ -57,9 +57,21 @@ button.push {
     border-bottom-color: lighten($brand-success, 10);
   }
 
-  &.red {
+  &.danger {
     background: $brand-danger;
     border-bottom-color: lighten($brand-danger, 10);
   }
+
+  &.github {
+    color: darken($github-gray, 50);
+    background: $github-gray;
+    border-bottom-color: lighten($github-gray, 3);
+  }
+
+  &.facebook {
+    background: $facebook-blue;
+    border-bottom-color: lighten($facebook-blue, 10);
+  }
+
 
 }

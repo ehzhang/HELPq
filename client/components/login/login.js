@@ -1,9 +1,13 @@
 Template.login.events({
   'click #login-github': function(){
-    Meteor.loginWithGithub();
+    Meteor.loginWithGithub({
+      loginStyle: 'redirect'
+    });
   },
   'click #login-facebook': function(){
-    Meteor.loginWithFacebook();
+    Meteor.loginWithFacebook({
+      loginStyle: 'redirect'
+    });
   }
 });
 

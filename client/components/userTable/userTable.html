@@ -37,7 +37,7 @@
       </div>
     </div>
   </div>
-  <table class="ui striped table">
+  <table class="ui striped table userTable">
     <thead>
     <tr>
       <th>Name</th>
@@ -79,23 +79,23 @@
           {{/each}}
         </td>
 
-        <td class="right aligned">
-          {{#if profile.mentor}}
+        <td class="right aligned collapsing">
+          {{#if userIs 'mentor'}}
             <span class="ui tiny blue button toggle-mentor">
             Mentor
           </span>
           {{else}}
-            <span class="ui tiny basic button toggle-mentor">
+            <span class="ui tiny button toggle-mentor">
             Mentor
           </span>
           {{/if}}
 
-          {{#if profile.admin}}
+          {{#if userIs 'admin'}}
             <span class="ui tiny blue button toggle-admin">
             Admin
           </span>
           {{else}}
-            <span class="ui tiny basic button toggle-admin">
+            <span class="ui tiny button toggle-admin">
             Admin
           </span>
           {{/if}}

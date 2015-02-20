@@ -1,0 +1,18 @@
+{
+  "admin": {
+    "username": "admin",
+    "password": "hunter2"
+  },
+  "github": {
+    "clientId": "github-client-id",
+    "secret": "github-secret"
+  },
+  "facebook": {
+    "clientId": "facebook-client-id",
+    "secret": "facebook-secret"
+  },
+  "google": {
+    "clientId": "google-client-id",
+    "secret": "google-secret"
+  }
+}

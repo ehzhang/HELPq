@@ -5,15 +5,15 @@
         {{#with currentTicket}}
           {{#if statusIs "OPEN"}}
             <div class="title">
-              Your ticket is open.
+              {{constant 'TICKET_PANEL_OPEN'}}
             </div>
             <div class="content">
-              We'll let you know when your ticket has been claimed!
+              {{constant 'TICKET_PANEL_OPEN_MESSAGE'}}
             </div>
           {{/if}}
           {{#if statusIs "CLAIMED"}}
             <div class="title">
-              Your ticket has been claimed!
+              {{constant 'TICKET_PANEL_CLAIMED'}}
             </div>
             <div class="content">
               {{claimName}} has claimed your ticket.
@@ -24,8 +24,8 @@
 
           <br>
 
-          <button class="fluid red push button cancel">
-            Nevermind!
+          <button class="fluid danger push button cancel">
+            {{constant 'TICKET_PANEL_CANCEL'}}
           </button>
         {{/with}}
 
@@ -40,21 +40,33 @@
           {{/if}}
         </div>
         <div class="content">
-          I need help with
+          {{constant 'TICKET_PANEL_TOPIC'}}
           <br>
-          <input id="topic" type="text" name="topic" class="clean" placeholder="describe your problem">
+          <input id="topic"
+                 type="text"
+                 name="topic"
+                 class="clean"
+                 placeholder="{{constant 'TICKET_PANEL_TOPIC_PLACEHOLDER'}}">
           <br>
-          and you can find me at
+          {{constant 'TICKET_PANEL_LOCATION'}}
           <br>
-          <input id="location" type="text" name="location" class="clean" placeholder="where are you?">
+          <input id="location"
+                 type="text"
+                 name="location"
+                 class="clean"
+                 placeholder="{{constant 'TICKET_PANEL_LOCATION_PLACEHOLDER'}}">
           <br>
-          You can contact me through
+          {{constant 'TICKET_PANEL_CONTACT'}}
           <br>
-          <input id="contact" type="text" name="location" class="clean" placeholder="your cell phone #, email, etc">
+          <input id="contact"
+                 type="text"
+                 name="contact"
+                 class="clean"
+                 placeholder="{{constant 'TICKET_PANEL_CONTACT_PLACEHOLDER'}}">
         </div>
         <br>
         <button id="submit" class="primary push disabled fluid button">
-          Help me!
+          {{constant 'TICKET_PANEL_HELP'}}
         </button>
 
       {{/if}}

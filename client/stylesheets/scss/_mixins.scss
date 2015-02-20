@@ -1,12 +1,4 @@
-@mixin font-stack(){
-  font-family: 'Lato', 'Helvetica Neue', 'Helvetica', sans-serif;
-  font-weight: 300;
-}
 
-@mixin logo-font(){
-  font-family: 'Montserrat', 'Helvetica Neue', 'Helvetica', sans-serif;
-  font-weight: 700;
-}
 
 @mixin border-radius($radius) {
   -webkit-border-radius: $radius;

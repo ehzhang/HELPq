@@ -16,4 +16,3 @@ Tracker.autorun(function(){
     Meteor.subscribe("allTickets");
   }
 });
-

@@ -1,3 +1,18 @@
+#splash {
+  color: white;
+  background: #0088ff;
+  background: linear-gradient(rgba(0, 136, 255, 0.85), rgba(0, 84, 165, 0.85)), url(/assets/images/background-blueprint.jpg) no-repeat center center;
+  background-size: cover; }
+
+#banner {
+  color: white;
+  background: linear-gradient(rgba(0, 136, 255, 0.85), rgba(0, 109, 215, 0.85)), url(/assets/images/background-blueprint.jpg) no-repeat center center;
+  background-size: cover; }
+
+footer {
+  color: white;
+  background: #007ae6; }
+
 @-webkit-keyframes iconPulse {
   from {
     opacity: 1; }
@@ -42,7 +57,7 @@ button.push {
   button.push.fluid {
     width: 100%; }
   button.push.disabled {
-    opacity: .7;
+    opacity: .3;
     cursor: auto; }
     button.push.disabled:active {
       margin-top: 0;
@@ -56,9 +71,16 @@ button.push {
   button.push.success {
     background: #2ecc71;
     border-bottom-color: #54d98c; }
-  button.push.red {
+  button.push.danger {
     background: #e74c3c;
     border-bottom-color: #ed7669; }
+  button.push.github {
+    color: #656565;
+    background: #e4e4e4;
+    border-bottom-color: #ececec; }
+  button.push.facebook {
+    background: #3b5998;
+    border-bottom-color: #4c70ba; }
 
 input.clean {
   background: none;
@@ -72,10 +94,7 @@ input.clean {
     outline: none; }
 
 #banner {
-  margin-bottom: 12px;
-  background: #0088ff;
-  background: url(assets/images/banner.jpg) fixed center center no-repeat;
-  background-size: cover; }
+  margin-bottom: 12px; }
   #banner .content {
     font-family: 'Montserrat', 'Helvetica Neue', 'Helvetica', sans-serif;
     font-weight: 700;
@@ -84,6 +103,8 @@ input.clean {
     color: white;
     text-align: center;
     padding: 1em 0; }
+    #banner .content a {
+      color: white; }
 
 #nav {
   position: absolute;
@@ -131,10 +152,10 @@ input.clean {
 .user-edit .label {
   margin-bottom: 8px; }
 
+.userTable .label {
+  margin-bottom: 6px; }
+
 #splash {
-  background: #0088ff;
-  background: url(assets/images/background.jpg) fixed center center no-repeat;
-  background-size: cover;
   height: 100%;
   width: 100%;
   color: white; }
@@ -195,27 +216,10 @@ html {
   #container.bannerLayout #footer {
     position: absolute;
     bottom: 0;
-    width: 100%;
-    background: #0088ff;
-    color: white; }
+    width: 100%; }
     #container.bannerLayout #footer footer {
       text-align: center;
       padding-top: 12px;
       padding-bottom: 12px; }
-
-#splash {
-  color: white;
-  background: #0088ff;
-  background: linear-gradient(rgba(0, 136, 255, 0.85), rgba(0, 84, 165, 0.85)), url(/assets/images/background-blueprint.jpg) no-repeat center center;
-  background-size: cover; }
-
-#banner {
-  color: white;
-  background: linear-gradient(rgba(0, 136, 255, 0.85), rgba(0, 109, 215, 0.85)), url(/assets/images/background-blueprint.jpg) no-repeat center center;
-  background-size: cover; }
-
-#footer footer {
-  color: white;
-  background: #007ae6; }
 
 /*# sourceMappingURL=site.css.map */

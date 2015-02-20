@@ -1,4 +1,4 @@
-@import 'color';
+@import 'branding';
 @import 'keyframes';
 @import 'mixins';
 
@@ -14,6 +14,7 @@
 @import 'components/feed';
 @import 'components/userStats';
 @import 'components/userEdit';
+@import 'components/userTable';
 
 // Views
 @import 'views/splash';
@@ -40,6 +41,6 @@ html {
 // Layout
 @import 'layouts/bannerLayout';
 
-// Config Overrides
-@import 'config';
+// Any overrides
+@import 'override';
 

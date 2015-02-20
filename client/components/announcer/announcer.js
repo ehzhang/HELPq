@@ -21,6 +21,7 @@ function createAnnouncement(){
   if(isValid()){
     var a = getAnnouncement();
     Meteor.call("createAnnouncement", a.header, a.content);
+    clearFields();
   }
 }
 
@@ -29,6 +30,11 @@ function getAnnouncement(){
     header: $('#a-header').val(),
     content: $('#a-content').val()
   }
+}
+
+function clearFields(){
+  $('#a-header').val("");
+  $('#a-content').val("");
 }
 
 function isValid(){

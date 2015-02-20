@@ -1,8 +1,5 @@
 #banner {
   margin-bottom: 12px;
-  background: $brand-primary;
-  background: url(assets/images/banner.jpg) fixed center center no-repeat;
-  background-size: cover;
 
   .content {
     @include logo-font();
@@ -11,5 +8,8 @@
     color: white;
     text-align: center;
     padding: 1em 0;
+    a {
+      color: white;
+    }
   }
 }
