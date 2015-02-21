@@ -8,7 +8,7 @@ Meteor.startup(function(){
 
 
   // Add Service Integrations
-  addServiceIntegration('github', config.github.clientId, config.github.clientId);
+  addServiceIntegration('github', config.github.clientId, config.github.secret);
   //addServiceIntegration('facebook', config.facebook.clientId, config.facebook.secret);
   //addServiceIntegration('google', config.google.clientId, config.google.secret);
 
