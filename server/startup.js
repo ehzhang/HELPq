@@ -9,8 +9,8 @@ Meteor.startup(function(){
 
   // Add Service Integrations
   addServiceIntegration('github', config.github.clientId, config.github.secret);
-  //addServiceIntegration('facebook', config.facebook.clientId, config.facebook.secret);
-  //addServiceIntegration('google', config.google.clientId, config.google.secret);
+  addFacebookIntegration(config.facebook.appId, config.facebook.secret);
+  addServiceIntegration('google', config.google.clientId, config.google.secret);
 
 });
 
@@ -45,6 +45,17 @@ function addServiceIntegration(service, clientId, secret){
   },{
     $set: {
       clientId: clientId,
+      secret: secret
+    }
+  });
+}
+
+function addFacebookIntegration(appId, secret){
+  ServiceConfiguration.configurations.upsert({
+    service: 'facebook'
+  },{
+    $set: {
+      appId: appId,
       secret: secret
     }
   });
