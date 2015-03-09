@@ -24,6 +24,14 @@ To configure login:
 ```
 Edit `private/config.json`.
 
+This will also contain the admin account username and password you'll use to login later.
+
 Startup with `meteor`
 
 Deploy with `meteor deploy <your domain name>.meteor.com`
+
+Login as an Admin to grant yourself mentor/admin access. In the javascript console, type:
+```sh
+Meteor.loginWithPassword("<your admin username>", "your admin password");
+```
+
