@@ -8,10 +8,10 @@
 //------------------------------
 
 // Primary color of your brand
-$brand-primary: rgb(0, 136, 255);
+$brand-primary: #3BC7FC;
 
 // Secondary color of your brand
-$brand-secondary: #f2c61f;
+$brand-secondary: rgb(92, 204, 119);
 
 // Success Buttons
 $brand-success: rgb(46, 204, 113);
@@ -64,24 +64,18 @@ $github-gray: #e4e4e4;
 #splash {
   color: white;
   background: $brand-primary;
-  background: linear-gradient(rgba(0, 136, 255, 0.85),
-          rgba(0, 84, 165, 0.85)),
-  url(/assets/images/background-blueprint.jpg) no-repeat center center;
+  background: url(/assets/images/background.jpg) no-repeat center center;
   background-size: cover;
 }
 
 // Banner which appears under the nav, and on each page.
 #banner {
   color: white;
-  background: linear-gradient(
-                  rgba(0, 136, 255, 0.85),
-                  rgba(0, 109, 215, 0.85)),
-  url(/assets/images/background-blueprint.jpg) no-repeat center center;
+  background: url(/assets/images/background.jpg) no-repeat center center;
   background-size: cover;
 }
 
 // Footer, which appears on each page.
 footer {
-  color: white;
-  background: darken($brand-primary, 5%);
+  color: darken(white, 25%);
 }

@@ -1,17 +1,16 @@
 #splash {
   color: white;
-  background: #0088ff;
-  background: linear-gradient(rgba(0, 136, 255, 0.85), rgba(0, 84, 165, 0.85)), url(/assets/images/background-blueprint.jpg) no-repeat center center;
+  background: #3BC7FC;
+  background: url(/assets/images/background.jpg) no-repeat center center;
   background-size: cover; }
 
 #banner {
   color: white;
-  background: linear-gradient(rgba(0, 136, 255, 0.85), rgba(0, 109, 215, 0.85)), url(/assets/images/background-blueprint.jpg) no-repeat center center;
+  background: url(/assets/images/background.jpg) no-repeat center center;
   background-size: cover; }
 
 footer {
-  color: white;
-  background: #007ae6; }
+  color: #bfbfbf; }
 
 @-webkit-keyframes iconPulse {
   from {
@@ -22,11 +21,11 @@ footer {
     opacity: 1; } }
 @-webkit-keyframes borderPulse {
   from {
-    border-color: #0088ff; }
+    border-color: #3BC7FC; }
   50% {
     border-color: white; }
   to {
-    border-color: #0088ff; } }
+    border-color: #3BC7FC; } }
 button.push {
   font-family: 'Lato', 'Helvetica Neue', 'Helvetica', sans-serif;
   font-weight: 300;
@@ -63,11 +62,11 @@ button.push {
       margin-top: 0;
       border-bottom-width: 4px; }
   button.push.primary {
-    background: #0088ff;
-    border-bottom-color: #33a0ff; }
+    background: #3BC7FC;
+    border-bottom-color: #6dd5fd; }
   button.push.secondary {
-    background: #f2c61f;
-    border-bottom-color: #f5d24f; }
+    background: #5ccc77;
+    border-bottom-color: #83d897; }
   button.push.success {
     background: #2ecc71;
     border-bottom-color: #54d98c; }
@@ -117,7 +116,7 @@ input.clean {
     text-align: left;
     font-size: 1.2em; }
     .tickets .ticket.claimed {
-      border: 1px solid #0088ff;
+      border: 1px solid #3BC7FC;
       -webkit-animation-name: borderPulse;
       -webkit-animation-duration: 2s;
       -webkit-animation-iteration-count: infinite; }
@@ -138,7 +137,7 @@ input.clean {
     font-size: 1.3em; }
 
 .feed .claimed.icon {
-  color: #0088ff !important;
+  color: #3BC7FC !important;
   -webkit-animation-name: iconPulse;
   -webkit-animation-duration: 2s;
   -webkit-animation-iteration-count: infinite; }
