@@ -1,7 +1,7 @@
 Q
 ====
 
-An extensible, customizable real-time queue system, built with meteor.
+An extensible, customizable real-time queue system, built with Meteor.
 
 To edit:
 
