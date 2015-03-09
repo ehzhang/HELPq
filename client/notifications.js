@@ -1,3 +1,5 @@
+var Q_NAME = window["CONSTANTS"]["Q_NAME"];
+
 // Title Notification
 var intervalId;
 var timeoutId;

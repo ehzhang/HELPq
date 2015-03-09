@@ -4,7 +4,7 @@
 
 // Get a constant from the constants.js
 UI.registerHelper('constant', function(variable){
-  return window[variable];
+  return window["CONSTANTS"][variable];
 });
 
 // -----------------------
