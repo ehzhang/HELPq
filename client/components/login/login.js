@@ -11,6 +11,16 @@ Template.login.events({
   }
 });
 
+Template.login.helpers({
+  enabled: function(){
+    var services = {};
+    ServiceConfiguration.configurations.find({}).fetch().forEach(function(service){
+      services[service.service] = true;
+    });
+    return services;
+  }
+});
+
 Template.login.rendered = function(){
   $(this.findAll('.container')).addClass('animated fadeIn');
 };

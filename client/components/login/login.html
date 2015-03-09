@@ -1,5 +1,10 @@
 <template name="login">
+  {{#if enabled.github}}
   <button id="login-github" class="github push button"> Login with Github </button>
   <br>
+  {{/if}}
+
+  {{#if enabled.facebook}}
   <button id="login-facebook" class="facebook push button"> Login with Facebook</button>
+  {{/if}}
 </template>

@@ -6,11 +6,13 @@ Meteor.startup(function(){
   // Create the admin
   createAdmin(config.admin.username, config.admin.password);
 
+  // Clear Service integrations
+  ServiceConfiguration.configurations.remove({});
 
   // Add Service Integrations
-  addServiceIntegration('github', config.github.clientId, config.github.secret);
-  addFacebookIntegration(config.facebook.appId, config.facebook.secret);
-  addServiceIntegration('google', config.google.clientId, config.google.secret);
+  addServiceIntegration('github', config.github);
+  addFacebookIntegration(config.facebook);
+  addServiceIntegration('google', config.google);
 
 });
 
@@ -39,24 +41,28 @@ function createAdmin(username, password){
   })
 }
 
-function addServiceIntegration(service, clientId, secret){
-  ServiceConfiguration.configurations.upsert({
-    service: service
-  },{
-    $set: {
-      clientId: clientId,
-      secret: secret
-    }
-  });
+function addServiceIntegration(service, config){
+  if (config.enable){
+    ServiceConfiguration.configurations.upsert({
+      service: service
+    },{
+      $set: {
+        clientId: config.clientId,
+        secret: config.secret
+      }
+    });
+  }
 }
 
-function addFacebookIntegration(appId, secret){
-  ServiceConfiguration.configurations.upsert({
-    service: 'facebook'
-  },{
-    $set: {
-      appId: appId,
-      secret: secret
-    }
-  });
+function addFacebookIntegration(fb){
+  if (fb.enable){
+    ServiceConfiguration.configurations.upsert({
+      service: 'facebook'
+    },{
+      $set: {
+        appId: fb.appId,
+        secret: fb.secret
+      }
+    });
+  }
 }
