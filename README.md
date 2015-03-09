@@ -31,7 +31,7 @@ Startup with `meteor`
 Deploy with `meteor deploy <your domain name>.meteor.com`
 
 Login as an Admin to grant yourself mentor/admin access. In the javascript console, type:
-```sh
+```js
 Meteor.loginWithPassword("<your admin username>", "your admin password");
 ```
 
