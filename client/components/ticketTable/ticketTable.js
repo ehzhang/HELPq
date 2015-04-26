@@ -1,7 +1,10 @@
+Template.ticketTable.onCreated(function(){
+  this.subscribe("allTickets");
+});
+
 Template.ticketTable.helpers({
   tickets: function(){
     return Tickets.find({
-
         },{
           sort: {
             timestamp: -1

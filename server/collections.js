@@ -32,6 +32,13 @@ Tickets = new Meteor.Collection('tickets');
  */
 Announcements = new Meteor.Collection('announcements');
 
+/**
+ * Settings contain all of the information that can be edited on the client side.
+ *
+ * There is and should only be a single document.
+ */
+Settings = new Meteor.Collection('settings');
+
 // ----------------------------------------
 // Collection Permissions
 // ----------------------------------------
@@ -65,6 +72,12 @@ Tickets.allow({
 });
 
 Announcements.allow({
+  insert: function() {return false},
+  update: function() {return false},
+  remove: function() {return false}
+});
+
+Settings.allow({
   insert: function() {return false},
   update: function() {return false},
   remove: function() {return false}

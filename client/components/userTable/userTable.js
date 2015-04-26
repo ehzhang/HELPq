@@ -21,6 +21,8 @@ Template.userTable.created = function(){
   this.searchText = new ReactiveVar();
   this.filter = new ReactiveVar({});
   this.modal = new ReactiveVar();
+
+  this.subscribe("allUsers");
 };
 
 Template.userTable.rendered = function(){

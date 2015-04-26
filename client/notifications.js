@@ -61,7 +61,7 @@ function notifyDesktop(body){
   if (window["Notification"]){
     if (Notification.permission == "granted"){
       var notification = new Notification(Q_NAME, {
-        icon: NOTIFICATION_ICON,
+        icon: CONSTANTS.NOTIFICATION_ICON,
         body: body
       });
     }

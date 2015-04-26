@@ -1,0 +1,17 @@
+/*
+  DO NOT MODIFY - This file has been generated and will be regenerated
+  Semantic UI v1.12.0
+*/
+/*******************************
+          Advertisement
+*******************************/
+
+@margin: 1em 0em;
+@overflow: hidden;
+
+@testBackground: @lightBlack;
+@testColor: @white;
+@testFontWeight: bold;
+@testText: 'Ad';
+@testFontSize: 1em;
+@testMobileFontSize: 0.85714em;

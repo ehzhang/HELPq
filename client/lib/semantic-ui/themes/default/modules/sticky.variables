@@ -1,0 +1,16 @@
+/*
+  DO NOT MODIFY - This file has been generated and will be regenerated
+  Semantic UI v1.12.0
+*/
+/*******************************
+            Sticky
+*******************************/
+
+@transitionDuration: 0.2s;
+@transition:
+  width @transitionDuration @defaultEasing,
+  height @transitionDuration @defaultEasing,
+  top @transitionDuration @defaultEasing,
+  bottom @transitionDuration @defaultEasing
+;
+@zIndex: 800;

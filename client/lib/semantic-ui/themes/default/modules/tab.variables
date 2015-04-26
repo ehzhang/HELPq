@@ -1,0 +1,17 @@
+/*
+  DO NOT MODIFY - This file has been generated and will be regenerated
+  Semantic UI v1.12.0
+*/
+/*******************************
+              Tab
+*******************************/
+
+/* Loading */
+@loadingMinHeight: 250px;
+@loadingContentPosition: relative;
+@loadingContentOffset: -10000px;
+
+@loaderDistanceFromTop: 100px;
+@loaderSize: 2.5em;
+@loaderOffset: -(@loaderSize / 2);
+@loaderMargin: @loaderOffset 0em 0em @loaderOffset;

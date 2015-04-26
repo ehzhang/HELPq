@@ -8,9 +8,10 @@ accounts-github
 service-configuration
 iron:router
 
-nooitaf:semantic-ui
 accounts-facebook
 momentjs:moment
 reactive-var
 underscore
 accounts-password
+semantic:ui
+flemay:less-autoprefixer

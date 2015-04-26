@@ -15,6 +15,9 @@
           <a class="{{isActive 'metrics'}} item" data-goto="metrics">
             <i class="bar chart icon"></i> Metrics
           </a>
+          <a class="{{isActive 'settings'}} item" data-goto="settings">
+            <i class="settings icon"></i> Settings
+          </a>
         </div>
       </div>
 
@@ -35,6 +38,10 @@
 
         {{#if pageIs 'metrics'}}
           {{> metrics}}
+        {{/if}}
+
+        {{#if pageIs 'settings'}}
+          {{> settings}}
         {{/if}}
       </div>
     </div>
