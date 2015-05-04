@@ -15,7 +15,9 @@ Meteor.methods({
 
   toggleRole: toggleRole,
   updateUser: updateUser,
-  createAccount: createAccount
+  createAccount: createAccount,
+
+  toggleSetting: toggleSetting
 });
 
 function createTicket(topic, location, contact) {
@@ -241,5 +243,13 @@ function createAccount(username, password, profile){
       password: password,
       profile: profile ? profile : {}
     });
+  }
+}
+
+function toggleSetting(setting, state){
+  if (authorized.admin(this.userId)){
+    var toSet = {};
+    toSet[setting] = state;
+    Settings.update({},{$set: toSet});
   }
 }

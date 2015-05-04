@@ -14,6 +14,9 @@ Meteor.startup(function(){
   addFacebookIntegration(config.facebook);
   addServiceIntegration('google', config.google);
 
+  // Add Base Settings
+  setBasicSettings(config);
+
 });
 
 function createAdmin(username, password){
@@ -64,5 +67,15 @@ function addFacebookIntegration(fb){
         secret: fb.secret
       }
     });
+  }
+}
+
+function setBasicSettings(config){
+  // Check if the settings document already exists
+  var settings = Settings.find({}).fetch();
+  if (settings.length == 0 || settings.length > 1){
+    // Remove all documents and then create the singular settings document.
+    Settings.remove({});
+    Settings.insert(config.settings);
   }
 }

@@ -1,10 +1,17 @@
 <template name="settings">
   <div class="ui top attached tertiary header segment">
     <strong>
-      Branding
+      Settings
     </strong>
   </div>
   <div class="ui bottom attached segment">
-
+    <div class="ui form">
+      <div class="field">
+        <div id="queueEnabled" class="ui toggle checkbox">
+          <input type="checkbox" name="queueEnabled" checked="{{settings.queueEnabled}}">
+          <label>Open/Close Queue</label>
+        </div>
+      </div>
+    </div>
   </div>
 </template>

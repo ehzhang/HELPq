@@ -12,6 +12,8 @@ Meteor.publish("userTickets", getUserTickets);
 
 Meteor.publish("allAnnouncements", getAllAnnouncements);
 
+Meteor.publish("settings", getSettings);
+
 // Get user data on yourself
 function getUserData(){
   if (authorized.user(this.userId)) {
@@ -100,5 +102,11 @@ function getUserTickets(){
 function getAllAnnouncements(){
   if (authorized.user(this.userId)){
     return Announcements.find({});
+  }
+}
+
+function getSettings(){
+  if (authorized.user(this.userId)){
+    return Settings.find({});
   }
 }

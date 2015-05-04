@@ -10,6 +10,15 @@ Template.ticketPanel.helpers({
   },
   statusIs: function(status){
     return this.status === status;
+  },
+  queueEnabled: function(){
+    var settings = Settings.findOne({});
+    if (settings){
+      return settings.queueEnabled;
+    }
+  },
+  hasUnratedTicket: function(){
+    // If there is an unrated ticket
   }
 });
 

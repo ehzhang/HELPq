@@ -1,76 +1,82 @@
 <template name="ticketPanel">
   <div class="ticketPanel">
-    <div class="ui segment">
-      {{#if currentTicket}}
-        {{#with currentTicket}}
-          {{#if statusIs "OPEN"}}
-            <div class="title">
-              {{constant 'TICKET_PANEL_OPEN'}}
-            </div>
-            <div class="content">
-              {{constant 'TICKET_PANEL_OPEN_MESSAGE'}}
-            </div>
-          {{/if}}
-          {{#if statusIs "CLAIMED"}}
-            <div class="title">
-              {{constant 'TICKET_PANEL_CLAIMED'}}
-            </div>
-            <div class="content">
-              {{claimName}} has claimed your ticket.
-              <br>
-              They're on the way!
-            </div>
-          {{/if}}
+    {{#if queueEnabled}}
+      <div class="ui segment">
+        {{#if currentTicket}}
+          {{#with currentTicket}}
+            {{#if statusIs "OPEN"}}
+              <div class="title">
+                {{constant 'TICKET_PANEL_OPEN'}}
+              </div>
+              <div class="content">
+                {{constant 'TICKET_PANEL_OPEN_MESSAGE'}}
+              </div>
+            {{/if}}
+            {{#if statusIs "CLAIMED"}}
+              <div class="title">
+                {{constant 'TICKET_PANEL_CLAIMED'}}
+              </div>
+              <div class="content">
+                {{claimName}} has claimed your ticket.
+                <br>
+                They're on the way!
+              </div>
+            {{/if}}
 
+            <br>
+
+            <button class="fluid danger push button cancel">
+              {{constant 'TICKET_PANEL_CANCEL'}}
+            </button>
+          {{/with}}
+
+        {{else}}
+
+          <div class="title">
+            Hey, I'm
+            {{#if currentUser.profile.name}}
+              {{currentUser.profile.name}}!
+            {{else}}
+              {{currentUser.services.github.username}}!
+            {{/if}}
+          </div>
+          <div class="content">
+            {{constant 'TICKET_PANEL_TOPIC'}}
+            <br>
+            <input id="topic"
+                   type="text"
+                   name="topic"
+                   class="clean"
+                   placeholder="{{constant 'TICKET_PANEL_TOPIC_PLACEHOLDER'}}">
+            <br>
+            {{constant 'TICKET_PANEL_LOCATION'}}
+            <br>
+            <input id="location"
+                   type="text"
+                   name="location"
+                   class="clean"
+                   placeholder="{{constant 'TICKET_PANEL_LOCATION_PLACEHOLDER'}}">
+            <br>
+            {{constant 'TICKET_PANEL_CONTACT'}}
+            <br>
+            <input id="contact"
+                   type="text"
+                   name="contact"
+                   class="clean"
+                   placeholder="{{constant 'TICKET_PANEL_CONTACT_PLACEHOLDER'}}">
+          </div>
           <br>
-
-          <button class="fluid danger push button cancel">
-            {{constant 'TICKET_PANEL_CANCEL'}}
+          <button id="submit" class="primary push disabled fluid button">
+            {{constant 'TICKET_PANEL_HELP'}}
           </button>
-        {{/with}}
 
-      {{else}}
+        {{/if}}
 
-        <div class="title">
-          Hey, I'm
-          {{#if currentUser.profile.name}}
-            {{currentUser.profile.name}}!
-          {{else}}
-            {{currentUser.services.github.username}}!
-          {{/if}}
-        </div>
-        <div class="content">
-          {{constant 'TICKET_PANEL_TOPIC'}}
-          <br>
-          <input id="topic"
-                 type="text"
-                 name="topic"
-                 class="clean"
-                 placeholder="{{constant 'TICKET_PANEL_TOPIC_PLACEHOLDER'}}">
-          <br>
-          {{constant 'TICKET_PANEL_LOCATION'}}
-          <br>
-          <input id="location"
-                 type="text"
-                 name="location"
-                 class="clean"
-                 placeholder="{{constant 'TICKET_PANEL_LOCATION_PLACEHOLDER'}}">
-          <br>
-          {{constant 'TICKET_PANEL_CONTACT'}}
-          <br>
-          <input id="contact"
-                 type="text"
-                 name="contact"
-                 class="clean"
-                 placeholder="{{constant 'TICKET_PANEL_CONTACT_PLACEHOLDER'}}">
-        </div>
-        <br>
-        <button id="submit" class="primary push disabled fluid button">
-          {{constant 'TICKET_PANEL_HELP'}}
-        </button>
-
-      {{/if}}
-
-    </div>
+      </div>
+    {{else}}
+      <div class="ui segment">
+       {{constant 'TICKET_PANEL_DISABLED_MSG'}}
+      </div>
+    {{/if}}
   </div>
 </template>
