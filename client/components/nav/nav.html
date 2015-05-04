@@ -2,28 +2,46 @@
   {{#if currentUser }}
     <div id="nav">
       <div class="ui secondary inverted menu">
-        {{#if userIs 'admin'}}
-          <a class="item" href="/admin">
-            Admin
-          </a>
-        {{/if}}
-        {{#if userIs 'mentor'}}
-          <a class="item" href="/mentor">
-            Mentor
-          </a>
-        {{/if}}
-        <a class="item" href="/">
-          Queue
+        <a class="icon item" href="/">
+          <i class="ui home icon"></i>
         </a>
+
+        {{#if userIs 'admin'}}
+          <a class="icon item" href="/admin">
+            <i class="ui settings icon"></i>
+          </a>
+        {{/if}}
+
         <div class="right menu">
-          <a class="item" href="/profile">
-            {{profile}}
-          </a>
-          <a class="ui item" id="logout">
-            Logout
-          </a>
+          {{> navMentor }}
+          {{> navAccount }}
         </div>
       </div>
     </div>
   {{/if}}
+</template>
+
+<template name="navMentor">
+  {{#if userIs 'mentor'}}
+    <a class="icon item" href="/mentor">
+      <i class="ui world icon"></i>
+      {{#if openTickets}}
+        <div class="ui tiny floating notification red label">
+          {{ openTickets }}
+        </div>
+      {{/if}}
+    </a>
+  {{/if}}
+</template>
+
+<template name="navAccount">
+
+  <div class="ui dropdown item">
+    {{profile}}<i class="dropdown icon"></i>
+    <div class="menu">
+      <a class="item" href="/profile">Your Profile</a>
+      <a class="item" id="logout">Logout</a>
+    </div>
+  </div>
+
 </template>

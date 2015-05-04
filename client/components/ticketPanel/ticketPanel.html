@@ -33,12 +33,9 @@
         {{else}}
 
           <div class="title">
-            Hey, I'm
-            {{#if currentUser.profile.name}}
-              {{currentUser.profile.name}}!
-            {{else}}
-              {{currentUser.services.github.username}}!
-            {{/if}}
+            {{greeting}}
+            <br>
+            {{constant 'TICKET_PANEL_GREETING'}}
           </div>
           <div class="content">
             {{constant 'TICKET_PANEL_TOPIC'}}

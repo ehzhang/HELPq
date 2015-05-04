@@ -11,7 +11,6 @@ Template.settings.helpers({
 
 Template.settings.events({
   "click #queueEnabled.ui.checkbox": function(e, t){
-    debugger
     Meteor.call("toggleSetting",
         'queueEnabled',
         $('#queueEnabled input').prop('checked'));

@@ -2,4 +2,10 @@
   position: absolute;
   padding: 12px;
   width: 100%;
+
+  .floating.notification.label {
+    top: -0.5em;
+    left: 90%;
+    padding: 0.4em;
+  }
 }

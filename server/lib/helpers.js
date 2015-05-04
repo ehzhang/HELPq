@@ -17,6 +17,10 @@ _getUserName = function(user){
   return "Anonymous";
 };
 
+_settings = function(){
+  return Settings.findOne({});
+};
+
 _log = function(message){
   console.log("[", new Date().toLocaleString(), "]", message);
 };

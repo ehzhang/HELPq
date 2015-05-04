@@ -11,6 +11,19 @@ Template.ticketPanel.helpers({
   statusIs: function(status){
     return this.status === status;
   },
+  greeting: function(){
+    // Return the first name
+    if (Meteor.user().profile.name){
+      return "Hey, " + Meteor.user().profile.name.split(" ")[0] + "!";
+    }
+
+    if (Meteor.user().services.github){
+      return "Hey, " + Meteor.user().services.github.username + "!";
+    }
+
+    return "Hey there!";
+
+  },
   queueEnabled: function(){
     var settings = Settings.findOne({});
     if (settings){

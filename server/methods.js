@@ -21,8 +21,8 @@ Meteor.methods({
 });
 
 function createTicket(topic, location, contact) {
-  // Must be logged in
-  if (authorized.user(this.userId)) {
+  // Must be logged in and queue must be open
+  if (authorized.user(this.userId) && _settings().queueEnabled) {
     // User can't have more than one
     var userActiveTickets = Tickets.find(
         {

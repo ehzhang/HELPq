@@ -1,5 +1,3 @@
-Session.set('admin', 'settings');
-
 Template.admin.helpers({
   pageIs: function(page){
     return Session.equals("admin", page);

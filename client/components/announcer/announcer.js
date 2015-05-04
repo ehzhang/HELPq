@@ -44,7 +44,7 @@ function getAnnouncement(){
 }
 
 function clearFields(){
-  $('.ui.form input, .ui.form textarea').val("");
+  $(".ui.form input[type='text'], .ui.form textarea").val("");
 }
 
 function isValid(){
