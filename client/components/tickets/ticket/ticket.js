@@ -1,5 +1,5 @@
 Template.ticket.rendered = function(){
-  $(this.findAll('.ticket')).addClass('animated bounceInUp');
+
 };
 
 Template.ticket.helpers({
@@ -14,6 +14,9 @@ Template.ticket.helpers({
   },
   formattedDate: function(){
     return moment().format('MMMM Do YYYY, h:mm a');
+  },
+  hasClaimedTicket: function(){
+    return Tickets.find({status: "CLAIMED", claimId: Meteor.user()._id}).fetch().length > 0;
   }
 });
 

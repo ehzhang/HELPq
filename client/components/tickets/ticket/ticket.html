@@ -1,5 +1,6 @@
 <template name="ticket">
-  <div class="ui fluid card ticket {{#if statusIs 'CLAIMED'}}claimed{{/if}}">
+  <div class="animated flipInX
+              ui fluid card ticket {{#if statusIs 'CLAIMED'}}claimed{{/if}}">
     <div class="content">
       <i class="right floated red remove link cancel button icon"></i>
 
@@ -35,7 +36,11 @@
     </div>
     <div class="extra content">
       {{#if statusIs "OPEN"}}
-        <button class="primary fluid push button claim">Claim Ticket</button>
+        {{#if hasClaimedTicket}}
+          <button class="disabled primary fluid push button claim">Claim Ticket</button>
+        {{else}}
+          <button class="primary fluid push button claim">Claim Ticket</button>
+        {{/if}}
       {{/if}}
 
       {{#if statusIs "CLAIMED"}}

@@ -9,8 +9,10 @@ Meteor.methods({
   cancelTicket: cancelTicket,
   deleteTicket: deleteTicket,
   reopenTicket: reopenTicket,
+
   createAnnouncement: createAnnouncement,
   deleteAnnouncement: deleteAnnouncement,
+
   toggleRole: toggleRole,
   updateUser: updateUser,
   createAccount: createAccount
@@ -48,22 +50,30 @@ function createTicket(topic, location, contact) {
 }
 
 function claimTicket(id){
-  // Mentor only
+  // Mentor Only
   if (authorized.mentor(this.userId)){
     var user = _getUser(this.userId);
-    Tickets.update({
-      _id: id
-    },{
-      $set: {
-        status: "CLAIMED",
-        claimId: user._id,
-        claimName: _getUserName(user),
-        claimTime: Date.now()
-      }
-    });
+    // Mentors can only claim one ticket at a time.
+    var currentClaim = Tickets.find({
+      status: "CLAIMED",
+      claimId: this.userId
+    }).fetch();
 
-    _log("Ticket Claimed by " + this.userId);
-    return true;
+    if (currentClaim.length === 0){
+      Tickets.update({
+        _id: id
+      },{
+        $set: {
+          status: "CLAIMED",
+          claimId: user._id,
+          claimName: _getUserName(user),
+          claimTime: Date.now()
+        }
+      });
+
+      _log("Ticket Claimed by " + this.userId);
+      return true;
+    }
   }
   return false;
 }
@@ -136,7 +146,7 @@ function deleteTicket(id){
   }
 }
 
-function createAnnouncement(header, content){
+function createAnnouncement(header, content, type){
   if (authorized.admin(this.userId)){
     var user = _getUser(this.userId);
     Announcements.insert({
@@ -144,7 +154,8 @@ function createAnnouncement(header, content){
       name: _getUserName(user),
       timestamp: Date.now(),
       header: header,
-      content: content
+      content: content,
+      type: type
     });
     _log("Announcement created by " + this.userId);
     return true;

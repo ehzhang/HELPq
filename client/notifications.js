@@ -46,7 +46,7 @@ function setDocumentTitle(text){
 }
 
 
-// Desktop Notifications - EXPERIMENTAL
+// Desktop Notifications
 Tracker.autorun(function(){
   if (authorized.user()){
     // Check to see if the browser supports Notifications
