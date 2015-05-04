@@ -1,3 +1,7 @@
+Template.announcer.rendered = function(){
+  $(this.findAll('.ui.checkbox')).checkbox();
+};
+
 Template.announcer.events({
   'click .submit.button': function(){
     createAnnouncement();
@@ -20,21 +24,27 @@ Template.announcer.events({
 function createAnnouncement(){
   if(isValid()){
     var a = getAnnouncement();
-    Meteor.call("createAnnouncement", a.header, a.content);
+    Meteor.call("createAnnouncement", a.header, a.content, a.type);
     clearFields();
   }
 }
 
 function getAnnouncement(){
+  var form = $('.ui.form input, .ui.form textarea')
+      .serializeArray()
+      .reduce(function(obj, item) {
+        obj[item.name] = item.value;
+        return obj;
+      }, {});
   return {
-    header: $('#a-header').val(),
-    content: $('#a-content').val()
+    header: form.header,
+    content: form.content,
+    type: form.type
   }
 }
 
 function clearFields(){
-  $('#a-header').val("");
-  $('#a-content').val("");
+  $('.ui.form input, .ui.form textarea').val("");
 }
 
 function isValid(){

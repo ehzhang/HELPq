@@ -1,4 +1,4 @@
-Session.set('admin', 'announce');
+Session.set('admin', 'settings');
 
 Template.admin.helpers({
   pageIs: function(page){
