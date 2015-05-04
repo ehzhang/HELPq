@@ -4,10 +4,28 @@
 
 Meteor.publish("userData", getUserData);
 Meteor.publish("allUsers", getAllUsers);
+Meteor.publish("mentorsOnline", getMentorsOnline);
+
 Meteor.publish("activeTickets", getActiveTickets);
 Meteor.publish("allTickets", getAllTickets);
 Meteor.publish("userTickets", getUserTickets);
+
 Meteor.publish("allAnnouncements", getAllAnnouncements);
+
+// Get user data on yourself
+function getUserData(){
+  if (authorized.user(this.userId)) {
+    return Meteor.users.find({_id: this.userId},
+        {
+          fields: {
+            'services': 1,
+            'profile': 1
+          }
+        });
+  } else {
+    this.ready();
+  }
+}
 
 // Get all users
 function getAllUsers(){
@@ -25,18 +43,22 @@ function getAllUsers(){
   }
 }
 
-// Get user data on yourself
-function getUserData(){
+function getMentorsOnline(){
   if (authorized.user(this.userId)) {
-    return Meteor.users.find({_id: this.userId},
-        {
-          fields: {
-            'services': 1,
-            'profile': 1
-          }
-        });
-  } else {
-    this.ready();
+    return Meteor.users.find({
+      'profile.mentor': true,
+      'status.online': true
+    }, {
+      fields: {
+        'profile.name': 1,
+        'profile.email': 1,
+        'profile.phone': 1,
+        'profile.mentor': 1,
+        'profile.skills': 1,
+        'status.idle': 1,
+        'status.online': 1
+      }
+    })
   }
 }
 
