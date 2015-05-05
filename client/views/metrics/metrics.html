@@ -1,5 +1,15 @@
 <template name="metrics">
-  <div class="ui segment metrics">
-    Metrics!
+  <div class="ui three column stackable grid metrics">
+    <div class="column">
+      {{> leaderboard }}
+    </div>
+    <div class="column">
+      {{> userStats }}
+    </div>
+    <div class="column">
+      <div class="ui segment">
+        1
+      </div>
+    </div>
   </div>
 </template>

@@ -1,0 +1,16 @@
+<template name="leaderboard">
+  <div class="ui top attached tertiary header segment">
+    <strong>
+      Leaderboard
+    </strong>
+  </div>
+  <div class="ui bottom attached segment">
+    {{#each users}}
+      {{> leaderboardUsers}}
+    {{/each}}
+  </div>
+</template>
+
+<template name="leaderboardUser">
+
+</template>

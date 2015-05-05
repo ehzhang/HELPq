@@ -1,3 +1,7 @@
+Template.userStats.onCreated = function(){
+  this.subscribe("allUsers");
+};
+
 Template.userStats.helpers({
   users: function(){
     return Meteor.users.find({}).fetch();

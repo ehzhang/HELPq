@@ -146,11 +146,8 @@ input.clean {
   -webkit-animation-duration: 2s;
   -webkit-animation-iteration-count: infinite; }
 
-.userStats .statistics {
-  float: right;
-  margin-right: 12px; }
-  .userStats .statistics .statistic {
-    margin-bottom: 1.3em; }
+.userStats .statistics .statistic {
+  margin-bottom: 1.3em; }
 
 .user-edit .label {
   margin-bottom: 8px; }
