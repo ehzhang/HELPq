@@ -9,6 +9,7 @@ Meteor.methods({
   cancelTicket: cancelTicket,
   deleteTicket: deleteTicket,
   reopenTicket: reopenTicket,
+  rateTicket: rateTicket,
 
   createAnnouncement: createAnnouncement,
   deleteAnnouncement: deleteAnnouncement,
@@ -44,7 +45,8 @@ function createTicket(topic, location, contact) {
       location: location,
       contact: contact,
       timestamp: Date.now(),
-      status: "OPEN"
+      status: "OPEN",
+      rating: null
     });
 
     _log("Ticket Created by " + this.userId);
@@ -114,6 +116,28 @@ function reopenTicket(id){
       }
     });
     _log("Ticket Reopened: " + id);
+    return true;
+  }
+  return false;
+}
+
+function rateTicket(id, rating, comments){
+  // Ticket owner only
+  var ticket = Tickets.findOne({_id: id});
+
+  // Limit rating between 1 and 5
+  var score = Math.max(Math.min(rating, 5), 1);
+
+  if(ticket.userId === this.userId){
+    Tickets.update({
+      _id: id
+    }, {
+      $set: {
+        rating: score,
+        comments: comments
+      }
+    });
+    _log("Ticket " + id + ", Rating: " + rating);
     return true;
   }
   return false;

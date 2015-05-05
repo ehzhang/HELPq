@@ -10,11 +10,13 @@
  *     location: STRING,
  *     contact: STRING,
  *     timestamp: Number (Milliseconds),
- *     status: STRING [OPEN, CLAIMED, COMPLETE, CANCELLED],
+ *     status: STRING [OPEN, CLAIMED, COMPLETE, EXPIRED, CANCELLED],
  *     claimId: STRING
  *     claimName: STRING
  *     claimTime: Number (Milliseconds)
  *     completeTime: Number (Milliseconds)
+ *     rating: NUMBER
+ *     comments: STRING
  *  }
  *
  */

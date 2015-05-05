@@ -2,6 +2,7 @@
   <div class="ticketPanel">
     {{#if queueEnabled}}
       <div class="ui segment">
+
         {{#if currentTicket}}
           {{#with currentTicket}}
             {{#if statusIs "OPEN"}}
@@ -32,40 +33,50 @@
 
         {{else}}
 
-          <div class="title">
-            {{greeting}}
+          {{#if unratedTicket}}
+
+            {{#with unratedTicket }}
+              {{> ticketPanelRating }}
+            {{/with}}
+
+          {{else}}
+            <div class="title">
+              <strong>
+                {{greeting}}
+              </strong>
+              <br>
+              {{constant 'TICKET_PANEL_GREETING'}}
+            </div>
+            <div class="content">
+              {{constant 'TICKET_PANEL_TOPIC'}}
+              <br>
+              <input id="topic"
+                     type="text"
+                     name="topic"
+                     class="clean"
+                     placeholder="{{constant 'TICKET_PANEL_TOPIC_PLACEHOLDER'}}">
+              <br>
+              {{constant 'TICKET_PANEL_LOCATION'}}
+              <br>
+              <input id="location"
+                     type="text"
+                     name="location"
+                     class="clean"
+                     placeholder="{{constant 'TICKET_PANEL_LOCATION_PLACEHOLDER'}}">
+              <br>
+              {{constant 'TICKET_PANEL_CONTACT'}}
+              <br>
+              <input id="contact"
+                     type="text"
+                     name="contact"
+                     class="clean"
+                     placeholder="{{constant 'TICKET_PANEL_CONTACT_PLACEHOLDER'}}">
+            </div>
             <br>
-            {{constant 'TICKET_PANEL_GREETING'}}
-          </div>
-          <div class="content">
-            {{constant 'TICKET_PANEL_TOPIC'}}
-            <br>
-            <input id="topic"
-                   type="text"
-                   name="topic"
-                   class="clean"
-                   placeholder="{{constant 'TICKET_PANEL_TOPIC_PLACEHOLDER'}}">
-            <br>
-            {{constant 'TICKET_PANEL_LOCATION'}}
-            <br>
-            <input id="location"
-                   type="text"
-                   name="location"
-                   class="clean"
-                   placeholder="{{constant 'TICKET_PANEL_LOCATION_PLACEHOLDER'}}">
-            <br>
-            {{constant 'TICKET_PANEL_CONTACT'}}
-            <br>
-            <input id="contact"
-                   type="text"
-                   name="contact"
-                   class="clean"
-                   placeholder="{{constant 'TICKET_PANEL_CONTACT_PLACEHOLDER'}}">
-          </div>
-          <br>
-          <button id="submit" class="primary push disabled fluid button">
-            {{constant 'TICKET_PANEL_HELP'}}
-          </button>
+            <button id="submit" class="primary push disabled fluid button">
+              {{constant 'TICKET_PANEL_HELP'}}
+            </button>
+          {{/if}}
 
         {{/if}}
 
@@ -76,4 +87,34 @@
       </div>
     {{/if}}
   </div>
+</template>
+
+<template name="ticketPanelRating">
+
+  <div class="title">
+    How did it go?
+  </div>
+  <p>
+    Rate your experience with {{claimName}}.
+  </p>
+  <div id="rating">
+    <div class="ui massive yellow star rating"
+         data-max-rating="5"></div>
+    <br>
+    <div class="ui form">
+      <div class="field">
+        <label> Do you have any comments? (Optional) </label>
+        <textarea
+            class="comments"
+            rows="2"
+            ></textarea>
+      </div>
+      <button
+          id="feedback"
+          class="disabled fluid primary push button">
+        Submit Feedback
+      </button>
+    </div>
+  </div>
+
 </template>

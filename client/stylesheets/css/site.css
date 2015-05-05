@@ -82,13 +82,13 @@ button.push {
     border-bottom-color: #4c70ba; }
 
 input.clean {
-  background: none;
+  background: #fafafa;
+  padding: .5em;
   font-size: 1em;
   border: none;
   border-bottom: 1px solid #c6c6c6;
   margin: 8px auto;
-  text-align: center;
-  padding-bottom: 4px; }
+  text-align: center; }
   input.clean:focus {
     outline: none; }
 
@@ -139,6 +139,13 @@ input.clean {
     width: 100%; }
   .ticketPanel button {
     font-size: 1.3em; }
+  .ticketPanel #rating {
+    margin-top: 12px; }
+    .ticketPanel #rating .rating {
+      margin-bottom: 12px; }
+    .ticketPanel #rating .comments {
+      height: auto;
+      min-height: 0; }
 
 .feed .claimed.icon {
   color: #137DC3 !important;

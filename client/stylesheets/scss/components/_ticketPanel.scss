@@ -13,4 +13,15 @@
   button {
     font-size: 1.3em;
   }
+
+  #rating {
+    margin-top: 12px;
+    .rating {
+      margin-bottom: 12px;
+    }
+    .comments {
+      height: auto;
+      min-height: 0;
+    }
+  }
 }

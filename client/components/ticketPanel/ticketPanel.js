@@ -1,3 +1,7 @@
+Template.ticketPanel.onCreated(function(){
+  this.subscribe("userTickets");
+});
+
 Template.ticketPanel.helpers({
   // Return the current open or claimed Ticket held by the user, if it exists
   currentTicket: function(){
@@ -30,8 +34,18 @@ Template.ticketPanel.helpers({
       return settings.queueEnabled;
     }
   },
-  hasUnratedTicket: function(){
-    // If there is an unrated ticket
+  unratedTicket: function(){
+    // If there is an unrated ticket that this user owns
+    return Tickets.findOne({
+      userId: Meteor.user()._id,
+      status: "COMPLETE",
+      rating: null
+    }, {
+      sort: {
+        timestamp: -1,
+        limit: 1
+      }
+    });
   }
 });
 
@@ -83,3 +97,27 @@ function createTicket(){
     Meteor.call('createTicket', ticket.topic, ticket.location, ticket.contact);
   }
 }
+
+Template.ticketPanelRating.rendered = function(){
+  $(this.findAll('.ui.rating')).rating();
+};
+
+Template.ticketPanelRating.events({
+  'click .rating': function(e, t){
+    $('#feedback').removeClass('disabled');
+  },
+  'click #feedback': function(e, t){
+    var $rating = $('#rating .rating');
+    var rating = $rating.rating('get rating');
+    var comments = $('textarea.comments');
+    if (rating > 0){
+      Meteor.call("rateTicket", this._id, rating, comments.val());
+
+      // Clear the rating area. Shouldn't be used, unless there are multiple
+      // unrated tickets.
+      comments.val("");
+      $rating.rating('clear rating');
+      $('#feedback').addClass('disabled');
+    }
+  }
+});
