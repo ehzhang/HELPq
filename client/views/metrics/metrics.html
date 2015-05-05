@@ -1,14 +1,14 @@
 <template name="metrics">
-  <div class="ui three column stackable grid metrics">
-    <div class="column">
-      {{> leaderboard }}
-    </div>
-    <div class="column">
-      {{> userStats }}
-    </div>
-    <div class="column">
-      <div class="ui segment">
-        1
+  <div class="ui stackable grid metrics">
+    <div class="two column row">
+      <div class="column">
+        {{> ticketStats }}
+        <div class="one column row">
+          {{> userStats}}
+        </div>
+      </div>
+      <div class="column">
+        {{> leaderStats }}
       </div>
     </div>
   </div>

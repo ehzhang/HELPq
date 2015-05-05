@@ -55,6 +55,7 @@ function getMentorsOnline(){
         'profile.name': 1,
         'profile.email': 1,
         'profile.phone': 1,
+        'profile.admin': 1,
         'profile.mentor': 1,
         'profile.skills': 1,
         'status.idle': 1,
@@ -86,6 +87,17 @@ function getActiveTickets(){
 function getAllTickets(){
   if (authorized.admin(this.userId)){
     return Tickets.find({});
+  }
+  // If not admin, have limited fields
+  if (authorized.user(this.userId)){
+    return Tickets.find({},
+        {
+          fields: {
+            timestamp: 1,
+            claimId: 1,
+            claimTime: 1
+          }
+        })
   }
 }
 

@@ -1,8 +1,8 @@
-Template.leaderboard.onCreated(function(){
+Template.leaderStats.onCreated(function(){
   this.subscribe("allTickets");
 });
 
-Template.leaderboard.helpers({
+Template.leaderStats.helpers({
   users: function(){
     // Top x Mentors
   }

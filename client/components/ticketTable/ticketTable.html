@@ -2,7 +2,7 @@
   <table class="ui striped table">
     <thead>
     <tr>
-      <th>_id</th>
+      <!--<th>_id</th>-->
       <!--<th>userId</th>-->
       <th>Name</th>
       <th>Topic</th>
@@ -15,19 +15,20 @@
       <!--<th>ClaimTime</th>-->
       <!--<th>CompleteTime</th>-->
       <th>Rating</th>
+      <th>Comments</th>
       <th></th>
     </tr>
     </thead>
     <tbody>
     {{#each tickets}}
       <tr class="{{rowClass}}">
-        <td>
-          <strong>
-            {{ _id }}
-          </strong>
-        </td>
+        <!--<td>-->
+          <!--<strong>-->
+            <!--{{ _id }}-->
+          <!--</strong>-->
+        <!--</td>-->
         <!--<td>{{userId}}</td>-->
-        <td>{{name}}</td>
+        <td><strong>{{name}}</strong></td>
         <td>{{topic}}</td>
         <td>{{location}}</td>
         <td>{{contact}}</td>
@@ -38,6 +39,7 @@
         <!--<td>{{claimTime}}</td>-->
         <!--<td>{{completeTime}}</td>-->
         <td>{{rating}}</td>
+        <td>{{comments}}</td>
         <td><i class="red delete link icon"></i></td>
       </tr>
     {{/each}}

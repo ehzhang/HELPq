@@ -1,13 +1,21 @@
-<template name="leaderboard">
+<template name="leaderStats">
   <div class="ui top attached tertiary header segment">
     <strong>
-      Leaderboard
+      Highest Rated
     </strong>
   </div>
   <div class="ui bottom attached segment">
     {{#each users}}
       {{> leaderboardUsers}}
     {{/each}}
+  </div>
+
+  <div class="ui top attached tertiary header segment">
+    <strong>
+      Fastest Responders
+    </strong>
+  </div>
+  <div class="ui bottom attached segment">
   </div>
 </template>
 

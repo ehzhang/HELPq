@@ -1,0 +1,41 @@
+<template name="ticketStats">
+  <div class="ui blue segment">
+    {{#with claimTimes}}
+      <div>
+        Average response time:
+        <h2>
+          {{meanTime}}
+        </h2>
+        <div>
+          Median: <strong>{{medianTime}}</strong>, Std Dev:<strong>{{stdDevTime}}</strong>
+        </div>
+      </div>
+    {{/with}}
+
+    <div class="ui divider"></div>
+
+    {{#with completeTimes}}
+      <div>
+          Average Completion time:
+        <h2>
+          {{meanTime}}
+        </h2>
+        <div>
+          Median: <strong>{{medianTime}}</strong>, Std Dev: <strong>{{stdDevTime}}</strong>
+        </div>
+      </div>
+    {{/with}}
+
+    <div class="ui divider"></div>
+
+    {{#with ratings}}
+      <div>
+        Average Rating:
+        <h2>
+          {{mean}}
+          <i class="yellow star icon"></i>
+        </h2>
+      </div>
+    {{/with}}
+  </div>
+</template>
