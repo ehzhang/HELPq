@@ -1,12 +1,12 @@
 #splash {
   color: white;
-  background: #3BC7FC;
-  background: url(/assets/images/background.jpg) no-repeat center center;
+  background: #137DC3;
+  background: #137DC3;
   background-size: cover; }
 
 #banner {
   color: white;
-  background: url(/assets/images/background.jpg) no-repeat center center;
+  background: #137DC3;
   background-size: cover; }
 
 footer {
@@ -21,11 +21,11 @@ footer {
     opacity: 1; } }
 @-webkit-keyframes borderPulse {
   from {
-    border-color: #3BC7FC; }
+    border-color: #137DC3; }
   50% {
     border-color: white; }
   to {
-    border-color: #3BC7FC; } }
+    border-color: #137DC3; } }
 button.push {
   font-family: 'Lato', 'Helvetica Neue', 'Helvetica', sans-serif;
   font-weight: 300;
@@ -62,17 +62,17 @@ button.push {
       margin-top: 0;
       border-bottom-width: 4px; }
   button.push.primary {
-    background: #3BC7FC;
-    border-bottom-color: #6dd5fd; }
+    background: #137DC3;
+    border-bottom-color: #2099e9; }
   button.push.secondary {
-    background: #5ccc77;
-    border-bottom-color: #83d897; }
+    background: #FFBF0A;
+    border-bottom-color: #ffcc3d; }
   button.push.success {
     background: #2ecc71;
     border-bottom-color: #54d98c; }
   button.push.danger {
-    background: #e74c3c;
-    border-bottom-color: #ed7669; }
+    background: #FF490A;
+    border-bottom-color: #ff6f3d; }
   button.push.github {
     color: #656565;
     background: #e4e4e4;
@@ -120,7 +120,7 @@ input.clean {
     text-align: left;
     font-size: 1.2em; }
     .tickets .ticket.claimed {
-      border: 1px solid #3BC7FC;
+      border: 1px solid #137DC3;
       -webkit-animation-name: borderPulse;
       -webkit-animation-duration: 2s;
       -webkit-animation-iteration-count: infinite; }
@@ -141,7 +141,7 @@ input.clean {
     font-size: 1.3em; }
 
 .feed .claimed.icon {
-  color: #3BC7FC !important;
+  color: #137DC3 !important;
   -webkit-animation-name: iconPulse;
   -webkit-animation-duration: 2s;
   -webkit-animation-iteration-count: infinite; }

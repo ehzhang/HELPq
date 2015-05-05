@@ -8,16 +8,16 @@
 //------------------------------
 
 // Primary color of your brand
-$brand-primary: #3BC7FC;
+$brand-primary: #137DC3;
 
 // Secondary color of your brand
-$brand-secondary: rgb(92, 204, 119);
+$brand-secondary: #FFBF0A;
 
 // Success Buttons
 $brand-success: rgb(46, 204, 113);
 
 // Danger/Negative Buttons
-$brand-danger: #e74c3c;
+$brand-danger: #FF490A;
 
 // Black
 $black: #2d2d2d;
@@ -64,14 +64,16 @@ $github-gray: #e4e4e4;
 #splash {
   color: white;
   background: $brand-primary;
-  background: url(/assets/images/background.jpg) no-repeat center center;
+//  background: url(/assets/images/background.jpg) no-repeat center center;
+  background: $brand-primary;
   background-size: cover;
 }
 
 // Banner which appears under the nav, and on each page.
 #banner {
   color: white;
-  background: url(/assets/images/background.jpg) no-repeat center center;
+//  background: url(/assets/images/background.jpg) no-repeat center center;
+  background: $brand-primary;
   background-size: cover;
 }
 
