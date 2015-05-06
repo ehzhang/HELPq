@@ -17,13 +17,13 @@ var filters = {
   }
 };
 
-Template.userTable.created = function(){
+Template.userTable.onCreated(function(){
   this.searchText = new ReactiveVar();
   this.filter = new ReactiveVar({});
   this.modal = new ReactiveVar();
 
   this.subscribe("allUsers");
-};
+});
 
 Template.userTable.rendered = function(){
   $(this.find('.ui.dropdown')).dropdown();

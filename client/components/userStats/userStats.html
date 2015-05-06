@@ -2,12 +2,65 @@
   <div class="userStats">
     <div class="ui top attached tertiary header segment">
       <strong>
-        Users
+        User Summary
       </strong>
     </div>
     <div class="ui bottom attached segment">
-      How many users?
-      What do they need help with?
+
+      <div>
+        Total Users:
+        <strong>
+        {{ users.length }}
+        </strong>
+      </div>
+      <div>
+        Total Mentors:
+        <strong>
+          {{ mentors.length }}
+        </strong>
+      </div>
+      <div>
+        Total Tickets:
+        <strong>
+          {{ ticketCount }}
+        </strong>
+      </div>
+
+      <br>
+
+      <p>
+        Of <strong>{{users.length}}</strong> users,
+        <strong>{{activeUsers}}</strong> have submitted tickets.
+      </p>
+
+      <p>
+        Of <strong>{{mentors.length}}</strong> mentors,
+        <strong>{{activeMentors}}</strong> have completed tickets.
+      </p>
+
+      <!--<div class="ui labels">-->
+        <!--<div class="ui green label">-->
+          <!--COMPLETED {{countStatus "COMPLETE"}} ({{percentStatus "COMPLETE"}}%)-->
+        <!--</div>-->
+        <!--<div class="ui red label">-->
+          <!--CANCELLED {{countStatus "CANCELLED"}} ({{percentStatus "CANCELLED"}}%)-->
+        <!--</div>-->
+        <!--<div class="ui orange label">-->
+          <!--EXPIRED {{countStatus "EXPIRED"}} ({{percentStatus "EXPIRED"}}%)-->
+        <!--</div>-->
+      <!--</div>-->
+
+      <h4 class="ui dividing header">Topic Word Frequencies</h4>
+
+      <div class="ui labels">
+        {{#each wordFreqs}}
+          <div class="ui label">
+            {{word}} {{count}}
+          </div>
+        {{/each}}
+      </div>
+
+
     </div>
   </div>
 </template>
