@@ -4,6 +4,7 @@
 
 Meteor.publish("userData", getUserData);
 Meteor.publish("allUsers", getAllUsers);
+Meteor.publish("allMentors", getAllMentors);
 Meteor.publish("mentorsOnline", getMentorsOnline);
 
 Meteor.publish("activeTickets", getActiveTickets);
@@ -40,11 +41,25 @@ function getAllUsers(){
             'profile': 1
           }
         });
-  } else {
-    this.ready();
   }
 }
 
+// Mentors are able to see each other
+function getAllMentors(){
+  if (authorized.mentor(this.userId)){
+    return Meteor.users.find({
+      mentor: true
+    },{
+      fields: {
+        'profile.name': 1,
+        'profile.company': 1,
+        'services.facebook.id': 1
+      }
+    })
+  }
+}
+
+// All users can see any mentor that is currently online
 function getMentorsOnline(){
   if (authorized.user(this.userId)) {
     return Meteor.users.find({
@@ -95,7 +110,9 @@ function getAllTickets(){
           fields: {
             timestamp: 1,
             claimId: 1,
-            claimTime: 1
+            claimTime: 1,
+            status: 1,
+            rating: 1
           }
         })
   }

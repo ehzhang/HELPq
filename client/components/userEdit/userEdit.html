@@ -1,7 +1,6 @@
 <template name="userEdit">
   <div class="user-edit">
     <div class="ui form">
-      <h4 class="ui dividing header">Edit Profile</h4>
       <div class="field">
         <label>Name</label>
         <input type="text" class="profile" name='name' value="{{profile.name}}" placeholder="Your Name" required>
@@ -13,6 +12,10 @@
       <div class="field">
         <label>Phone</label>
         <input type="tel" class="profile" name='phone' value="{{profile.phone}}" placeholder="Phone Number" required>
+      </div>
+      <div class="field">
+        <label>Company</label>
+        <input type="text" class="profile" name='company' value="{{profile.company}}" placeholder="Company/Position">
       </div>
       <div class="field">
         <label>Skills</label>

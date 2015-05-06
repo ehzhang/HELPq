@@ -221,7 +221,7 @@ function toggleRole(role, id){
 
 // Admin or user
 // Editable fields:
-// Name, Email. Phone, Skills
+// Name, Email. Phone, Skills, Company
 function updateUser(id, profile){
   var user = _getUser(id);
 
@@ -229,7 +229,8 @@ function updateUser(id, profile){
     var validFields = [
       'name',
       'email',
-      'phone'
+      'phone',
+      'company'
     ];
 
     // Copy the user profile

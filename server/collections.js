@@ -11,6 +11,7 @@
  *     contact: STRING,
  *     timestamp: Number (Milliseconds),
  *     status: STRING [OPEN, CLAIMED, COMPLETE, EXPIRED, CANCELLED],
+ *     expiresAt: Number (Milliseconds)
  *     claimId: STRING
  *     claimName: STRING
  *     claimTime: Number (Milliseconds)
@@ -38,8 +39,26 @@ Announcements = new Meteor.Collection('announcements');
  * Settings contain all of the information that can be edited on the client side.
  *
  * There is and should only be a single document.
+ * {
+ *  queueEnabled: BOOLEAN
+ * }
  */
 Settings = new Meteor.Collection('settings');
+
+/**
+ * Users:
+ * {
+ *    profile: {
+ *      name: STRING
+ *      email: STRING
+ *      phone: STRING
+ *      company: STRING
+ *      mentor: BOOLEAN
+ *      admin: BOOLEAN
+ *      skills: [STRING]
+ *    }
+ * }
+ */
 
 // ----------------------------------------
 // Collection Permissions

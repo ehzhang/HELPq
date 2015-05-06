@@ -1,7 +1,7 @@
 <template name="ticketPanel">
   <div class="ticketPanel">
-    {{#if queueEnabled}}
-      <div class="ui segment">
+    <div class="ui segment">
+      {{#if queueEnabled}}
 
         {{#if currentTicket}}
           {{#with currentTicket}}
@@ -80,12 +80,10 @@
 
         {{/if}}
 
-      </div>
-    {{else}}
-      <div class="ui segment">
-       {{constant 'TICKET_PANEL_DISABLED_MSG'}}
-      </div>
-    {{/if}}
+      {{else}}
+         {{constant 'TICKET_PANEL_DISABLED_MSG'}}
+      {{/if}}
+    </div>
   </div>
 </template>
 

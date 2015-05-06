@@ -35,7 +35,11 @@ Template.ticketStats.helpers({
   },
   mean: function(){
     return stats.mean(this).toFixed(1);
+  },
+  count: function(num){
+    return this.filter(function(n){return n == num}).length;
   }
+
 });
 
 function formatTime(ms){

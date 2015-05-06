@@ -1,24 +1,27 @@
-<template name="leaderStats">
+<template name="leaderboard">
   <div class="ui top attached tertiary header segment">
     <strong>
-      Highest Rated
+      Leaderboard
     </strong>
   </div>
   <div class="ui bottom attached segment">
-    {{#each users}}
-      {{> leaderboardUsers}}
-    {{/each}}
+    <div class="ui large relaxed ordered list">
+      {{#each topMentors}}
+        {{> leaderboardUser}}
+      {{/each}}
+    </div>
   </div>
 
-  <div class="ui top attached tertiary header segment">
-    <strong>
-      Fastest Responders
-    </strong>
-  </div>
-  <div class="ui bottom attached segment">
-  </div>
 </template>
 
 <template name="leaderboardUser">
-
+  <div class="item">
+    <div class="content">
+      <strong>{{profile.name}}</strong>
+      <em>{{profile.company}}</em>
+      <p>
+        <strong>{{rating}}</strong> <i class="ui yellow star icon"></i> ({{numTickets}} Tickets)
+      </p>
+    </div>
+  </div>
 </template>
