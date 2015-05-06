@@ -1,0 +1,14 @@
+<template name="skillsList">
+  <div class="ui blue segment">
+    <div class="ui dividing header">
+      Mentor Skills
+    </div>
+    <div class="ui relaxed large ordered list">
+      {{#each skills}}
+        <div class="item">
+          <div class="ui label">{{skill}} - {{count}}</div>
+        </div>
+      {{/each}}
+    </div>
+  </div>
+</template>

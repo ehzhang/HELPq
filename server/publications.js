@@ -48,11 +48,13 @@ function getAllUsers(){
 function getAllMentors(){
   if (authorized.mentor(this.userId)){
     return Meteor.users.find({
-      mentor: true
+      'profile.mentor': true
     },{
       fields: {
         'profile.name': 1,
+        'profile.mentor': 1,
         'profile.company': 1,
+        'profile.skills': 1,
         'services.facebook.id': 1
       }
     })

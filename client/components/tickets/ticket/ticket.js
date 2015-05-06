@@ -9,6 +9,9 @@ Template.ticket.helpers({
   claimer: function(){
     return this.claimId === Meteor.user()._id;
   },
+  ownsTicket: function(){
+    return this.userId === Meteor.user()._id;
+  },
   fromNow: function(){
     return moment(this.timestamp).fromNow();
   },

@@ -19,7 +19,7 @@ function topMentors(num){
   var mentors = {};
   var tickets = Tickets.find({
     status: "COMPLETE"
-  }).fetch();
+  }).fetch().filter(function(t){return t.rating > 0});
 
   // Each mentor has a set of ratings
   tickets.forEach(function(t){

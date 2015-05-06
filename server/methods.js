@@ -54,6 +54,11 @@ function createTicket(topic, location, contact) {
 }
 
 function claimTicket(id){
+
+  // You can't complete your own ticket!
+  var ticket = Tickets.findOne({_id: id});
+  if (ticket.userId == this.userId) return;
+
   // Mentor Only
   if (authorized.mentor(this.userId)){
     var user = _getUser(this.userId);
@@ -83,6 +88,10 @@ function claimTicket(id){
 }
 
 function completeTicket(id){
+  // You can't complete your own ticket!
+  var ticket = Tickets.findOne({_id: id});
+  if (ticket.userId == this.userId) return;
+
   // Mentor only
   if (authorized.mentor(this.userId)){
     var user = _getUser(this.userId);

@@ -36,10 +36,16 @@
     </div>
     <div class="extra content">
       {{#if statusIs "OPEN"}}
-        {{#if hasClaimedTicket}}
-          <button class="disabled primary fluid push button claim">Claim Ticket</button>
+        {{#if ownsTicket}}
+          <div class="right floated author">
+            This is you!
+          </div>
         {{else}}
-          <button class="primary fluid push button claim">Claim Ticket</button>
+          {{#if hasClaimedTicket}}
+            <button class="disabled primary fluid push button claim">Claim Ticket</button>
+          {{else}}
+            <button class="primary fluid push button claim">Claim Ticket</button>
+          {{/if}}
         {{/if}}
       {{/if}}
 
