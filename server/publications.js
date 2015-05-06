@@ -9,6 +9,7 @@ Meteor.publish("mentorsOnline", getMentorsOnline);
 
 Meteor.publish("activeTickets", getActiveTickets);
 Meteor.publish("allTickets", getAllTickets);
+Meteor.publish("ticketData", getTicketData);
 Meteor.publish("userTickets", getUserTickets);
 
 Meteor.publish("allAnnouncements", getAllAnnouncements);
@@ -44,7 +45,7 @@ function getAllUsers(){
   }
 }
 
-// Mentors are able to see each other
+// Mentors are able to see each other.
 function getAllMentors(){
   if (authorized.mentor(this.userId)){
     return Meteor.users.find({
@@ -100,12 +101,7 @@ function getActiveTickets(){
   }
 }
 
-// Get all of the tickets
-function getAllTickets(){
-  if (authorized.admin(this.userId)){
-    return Tickets.find({});
-  }
-  // If not admin, have limited fields
+function getTicketData(){
   if (authorized.user(this.userId)){
     return Tickets.find({},
         {
@@ -113,10 +109,32 @@ function getAllTickets(){
             timestamp: 1,
             claimId: 1,
             claimTime: 1,
+            completeTime: 1,
             status: 1,
             rating: 1
           }
         })
+  }
+}
+
+// Get all of the tickets
+function getAllTickets(){
+  if (authorized.admin(this.userId)){
+    return Tickets.find({});
+  } else {
+    // If not admin, have limited fields
+    if (authorized.user(this.userId)){
+      return Tickets.find({},
+          {
+            fields: {
+              timestamp: 1,
+              claimId: 1,
+              claimTime: 1,
+              status: 1,
+              rating: 1
+            }
+          })
+    }
   }
 }
 

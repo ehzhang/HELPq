@@ -1,3 +1,7 @@
+Template.announcement.onCreated(function(){
+  this.subscribe("allAnnouncements");
+});
+
 Template.announcement.rendered = function(){
   $(this.find('.message')).addClass('animated fadeIn');
 };

@@ -1,5 +1,5 @@
 Template.leaderboard.onCreated(function(){
-  this.subscribe("allTickets");
+  this.subscribe("ticketData");
   this.subscribe("allMentors");
   this.rows = new ReactiveVar();
 
@@ -35,10 +35,14 @@ function topMentors(num){
 
   var ids = Object.keys(mentors);
   return ids.map(function(id){
-    return {
-      profile: Meteor.users.findOne({_id: id}).profile,
-      rating: laplaceSmooth(mentors[id].ratings),
-      numTickets: mentors[id].ratings.length
+    // Make sure that this id is stil a mentor
+    var u = Meteor.users.findOne({_id: id, 'profile.mentor': true});
+    if (u){
+      return {
+        profile: u.profile,
+        rating: laplaceSmooth(mentors[id].ratings),
+        numTickets: mentors[id].ratings.length
+      }
     }
   }).sort(function(a, b){
     return b.rating - a.rating;
