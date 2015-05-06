@@ -88,5 +88,5 @@ function wordFreqs(text){
   });
   return freqs.sort(function(a, b){
     return b.count - a.count;
-  });
+  }).slice(0, 50);
 }
