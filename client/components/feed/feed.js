@@ -1,12 +1,16 @@
+Template.feed.onCreated(function(){
+  this.subscribe("activeTickets");
+});
+
 Template.feed.helpers({
   tickets: function () {
-    return Tickets.find({
-      status: {
-        $in: ['OPEN', 'CLAIMED']
-      }
-    }, {
-      $sort: {timestamp: 1}
-    }).fetch();
+    return activeTickets();
+  },
+  mentorsAvailable: function(){
+    return mentorsOnline().length;
+  },
+  estimatedWait: function(){
+    return formatTime(estimatedWait);
   }
 });
 
@@ -30,3 +34,13 @@ Template.feedTicket.helpers({
 Template.feedTicket.rendered = function(){
   $(this.find('.feedTicket')).addClass('animated fadeIn');
 };
+
+function activeTickets(){
+  return Tickets.find({
+    'status': {
+      $in: ['OPEN', 'CLAIMED']
+    }
+  }, {
+    $sort: {timestamp: 1}
+  }).fetch();
+}

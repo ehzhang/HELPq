@@ -130,6 +130,7 @@ function getAllTickets(){
               timestamp: 1,
               claimId: 1,
               claimTime: 1,
+              completeTime: 1,
               status: 1,
               rating: 1
             }

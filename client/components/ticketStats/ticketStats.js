@@ -4,7 +4,7 @@ Template.ticketStats.onCreated(function(){
 
 Template.ticketStats.helpers({
   claimTimes: function(){
-    return Tickets.find({}).fetch()
+    return Tickets.find({status: 'COMPLETE'}).fetch()
       .filter(function(ticket){
         return ticket.claimTime && ticket.timestamp;
       })
@@ -13,7 +13,7 @@ Template.ticketStats.helpers({
       });
   },
   completeTimes: function(){
-    return Tickets.find({})
+    return Tickets.find({status: 'COMPLETE'})
         .fetch()
         .filter(function(t){return t.claimTime && t.completeTime})
         .map(function(t){return t.completeTime - t.claimTime});
