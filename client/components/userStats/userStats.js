@@ -48,7 +48,7 @@ function uniqueProp(key){
   var users = {};
   var count = 0;
   tickets().forEach(function(t){
-    if (!users[t[key]]) {
+    if (t[key] && !users[t[key]]) {
       users[t[key]] = true;
       count += 1;
     }
