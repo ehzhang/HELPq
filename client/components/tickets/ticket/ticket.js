@@ -13,7 +13,7 @@ Template.ticket.helpers({
     return this.userId === Meteor.user()._id;
   },
   fromNow: function(){
-    return moment(this.timestamp).fromNow();
+    return moment(this.timestamp).from(ReactiveNow.get());
   },
   formattedDate: function(){
     return moment().format('MMMM Do YYYY, h:mm a');

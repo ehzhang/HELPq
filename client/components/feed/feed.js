@@ -21,7 +21,7 @@ Template.feedTicket.helpers({
     }
   },
   fromNow: function(time){
-    return moment(time).fromNow();
+    return moment(time).from(ReactiveNow.get());
   },
   open: function(){
     return this.status === "OPEN";
