@@ -1,5 +1,34 @@
 <template name="feedback">
-  <div class="ui segment">
-    Feedback goes here!
+  <div id="feedback" class="ui segment">
+    <h3 class="ui dividing header">
+      Feedback
+    </h3>
+    <div class="ui feed">
+      {{#each tickets}}
+        {{> feedbackItem }}
+      {{/each}}
+    </div>
   </div>
+</template>
+
+<template name="feedbackItem">
+  <div class="event">
+    <div class="content">
+      <div class="summary">
+        {{name}} <div class="ui yellow star rating" data-rating="{{rating}}"></div>
+      </div>
+      {{#if comments}}
+        {{#if negative}}
+          <div class="negative extra text">
+            {{comments}}
+          </div>
+        {{else}}
+          <div class="extra text">
+            {{comments}}
+          </div>
+        {{/if}}
+      {{/if}}
+    </div>
+  </div>
+
 </template>

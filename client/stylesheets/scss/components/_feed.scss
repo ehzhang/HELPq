@@ -3,4 +3,10 @@
     color: $brand-primary !important;
     @include pulse(iconPulse, 2s);
   }
+
+  .content {
+    .negative.extra.text {
+      border-left: 3px solid $brand-danger !important;
+    }
+  }
 }

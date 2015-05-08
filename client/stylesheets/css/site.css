@@ -152,6 +152,8 @@ input.clean {
   -webkit-animation-name: iconPulse;
   -webkit-animation-duration: 2s;
   -webkit-animation-iteration-count: infinite; }
+.feed .content .negative.extra.text {
+  border-left: 3px solid #FF490A !important; }
 
 .userStats .statistics .statistic {
   margin-bottom: 1.3em; }
