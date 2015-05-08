@@ -16,7 +16,8 @@ Template.ticketTable.helpers({
   rowClass: function(){
     if (this.status === "COMPLETE") return "positive";
     if (this.status === "CANCELLED") return "negative";
-    if (this.status === "CLAIMED") return "warning"
+    if (this.status === "CLAIMED") return "active";
+    if (this.status === "EXPIRED") return "warning";
   }
 });
 

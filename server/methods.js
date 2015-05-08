@@ -10,6 +10,7 @@ Meteor.methods({
   deleteTicket: deleteTicket,
   reopenTicket: reopenTicket,
   rateTicket: rateTicket,
+  expireTicket: expireTicket,
 
   createAnnouncement: createAnnouncement,
   deleteAnnouncement: deleteAnnouncement,
@@ -18,7 +19,7 @@ Meteor.methods({
   updateUser: updateUser,
   createAccount: createAccount,
 
-  toggleSetting: toggleSetting
+  setSetting : setSetting
 });
 
 function createTicket(topic, location, contact) {
@@ -46,6 +47,7 @@ function createTicket(topic, location, contact) {
       contact: contact,
       timestamp: Date.now(),
       status: "OPEN",
+      expiresAt: _settings().expirationDelay > 0 ? Date.now() + _settings().expirationDelay : Infinity,
       rating: null
     });
 
@@ -166,7 +168,6 @@ function cancelTicket(id){
       }
     });
     _log("Ticket Cancelled by " + this.userId);
-    console.log("[", new Date().toLocaleString(), "]", "Ticket Cancelled by");
     return true;
   }
 }
@@ -178,6 +179,21 @@ function deleteTicket(id){
       _id: id
     });
     _log("Ticket Deleted by " + this.userId);
+  }
+}
+
+function expireTicket(id){
+  var ticket = Tickets.findOne({_id: id});
+
+  if (ticket.userId == this.userId && ticket.expiresAt < Date.now()){
+    Tickets.update({
+      _id: id
+    }, {
+      $set: {
+        status: "EXPIRED"
+      }
+    });
+    _log("Ticket Expired " + this.userId);
   }
 }
 
@@ -280,10 +296,10 @@ function createAccount(username, password, profile){
   }
 }
 
-function toggleSetting(setting, state){
+function setSetting(setting, value){
   if (authorized.admin(this.userId)){
     var toSet = {};
-    toSet[setting] = state;
-    Settings.update({},{$set: toSet});
+    toSet[setting] = value;
+    Settings.update({}, {$set: toSet});
   }
 }

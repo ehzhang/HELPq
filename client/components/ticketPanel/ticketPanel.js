@@ -42,10 +42,28 @@ Template.ticketPanel.helpers({
       rating: null
     }, {
       sort: {
-        timestamp: -1,
-        limit: 1
+        timestamp: -1
       }
     });
+  },
+  expirationFromNow: function(){
+    var ticket = Tickets.findOne({
+      userId: Meteor.userId(),
+      status: {
+        $in: ["OPEN", "CLAIMED"]
+      }
+    });
+
+    // If the ticket doesn't expire
+    if (ticket.expiresAt == Infinity){
+      return false;
+    }
+
+    if (ticket.expiresAt < ReactiveNow.get()){
+      Meteor.call("expireTicket", ticket._id);
+    }
+
+    return moment(ticket.expiresAt).from(ReactiveNow.get());
   }
 });
 

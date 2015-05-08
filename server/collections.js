@@ -41,6 +41,7 @@ Announcements = new Meteor.Collection('announcements');
  * There is and should only be a single document.
  * {
  *  queueEnabled: BOOLEAN
+ *  expirationDelay: Number (Milliseconds)
  * }
  */
 Settings = new Meteor.Collection('settings');
