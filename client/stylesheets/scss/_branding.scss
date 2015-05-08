@@ -64,17 +64,22 @@ $github-gray: #e4e4e4;
 #splash {
   color: white;
   background: $brand-primary;
-//  background: url(/assets/images/background.jpg) no-repeat center center;
-  background: $brand-primary;
-  background-size: cover;
+
+  // Comment these two lines if you want a single image to cover the entire page.
+  //  background: url(/assets/images/background.jpg) no-repeat center center;
+  //  background-size: cover;
+//  background: $brand-primary;
+  background: url(/assets/images/geometry2.png) repeat;
 }
+
 
 // Banner which appears under the nav, and on each page.
 #banner {
   color: white;
-//  background: url(/assets/images/background.jpg) no-repeat center center;
-  background: $brand-primary;
-  background-size: cover;
+  //  background: url(/assets/images/background.jpg) no-repeat center center;
+  //  background-size: cover;
+  //  background: $brand-primary;
+  background: url(/assets/images/geometry2.png) repeat;
 }
 
 // Footer, which appears on each page.

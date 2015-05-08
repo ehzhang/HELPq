@@ -1,13 +1,11 @@
 #splash {
   color: white;
   background: #137DC3;
-  background: #137DC3;
-  background-size: cover; }
+  background: url(/assets/images/geometry2.png) repeat; }
 
 #banner {
   color: white;
-  background: #137DC3;
-  background-size: cover; }
+  background: url(/assets/images/geometry2.png) repeat; }
 
 footer {
   color: #bfbfbf; }
