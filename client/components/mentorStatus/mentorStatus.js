@@ -8,6 +8,9 @@ Template.mentorStatus.helpers({
   mentorsAvailable: function(){
     return mentorsOnline().length;
   },
+  mentorsText: function(){
+    return mentorsOnline().length == 1 ? "mentor" : "mentors";
+  },
   estimatedWait: function(){
     return formatTime(estimatedWait());
   }
