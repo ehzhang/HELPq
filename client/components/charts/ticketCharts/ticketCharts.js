@@ -1,13 +1,14 @@
 Template.ticketCharts.rendered = function(){
   var t = this;
   var query = Tickets.find({status: 'COMPLETE'});
+  var ctx = $(t.findAll("#ticketChart")).get(0).getContext("2d");
 
   this.subscribe("ticketData", {
     onReady: function(){
-      createCharts(t, query);
+      renderChart(ctx, query);
       query.observeChanges({
         added: function(){
-          createCharts(t, query);
+          renderChart(ctx, query);
         }
       });
     }
@@ -16,33 +17,25 @@ Template.ticketCharts.rendered = function(){
   window.t = t;
 };
 
-function createCharts(t, query){
-  var ctxResponse = $(t.findAll("#ticketResponseChart")).get(0).getContext("2d");
-  var ctxComplete = $(t.findAll("#ticketCompleteChart")).get(0).getContext("2d");
-  t.chartResponse = renderChart(ctxResponse, query
-      .fetch()
-      .map(function(t){
-        return (t.claimTime - t.timestamp) / 1000;
-      }), t);
-  t.chartComplete = renderChart(ctxComplete, query
-      .fetch()
-      .map(function(t){
-        return (t.completeTime - t.claimTime) / 1000;
-      }), t);
-}
-
-function renderChart(ctx, tickets){
+function renderChart(ctx, query){
 
   var data = {
     labels: getLabels(),
     datasets: [
       {
-        label: "Tickets Completed",
+        label: "Tickets Responses",
         fillColor: "rgba(59,131,192,0.5)",
         strokeColor: "rgba(59,131,192,0.8)",
         highlightFill: "rgba(59,131,192,0.75)",
         highlightStroke: "rgba(59,131,192,1)",
-        data: getData(tickets)
+        data: getData(query.fetch().map(function(t){return (t.claimTime - t.timestamp) / 1000}))
+      },{
+        label: "Ticket Completed",
+        fillColor: "rgba(220,220,220,0.5)",
+        strokeColor: "rgba(220,220,220,0.8)",
+        highlightFill: "rgba(220,220,220,0.75)",
+        highlightStroke: "rgba(220,220,220,1)",
+        data: getData(query.fetch().map(function(t){return (t.completeTime - t.claimTime) / 1000}))
       }
     ]
   };
@@ -102,7 +95,10 @@ function getData(tickets){
       3600,
       Infinity
   ];
-  var count = [0];
+  var count = [];
+  labels.forEach(function(){
+    count.push(0);
+  });
 
   var labelIdx = 0;
 
@@ -111,9 +107,8 @@ function getData(tickets){
       .forEach(function(t){
         if (t >= labels[labelIdx]){
           labelIdx++;
-          count.push(0);
         }
-        count[count.length - 1]++;
+        count[labelIdx]++;
       });
 
   return count;
