@@ -9,6 +9,9 @@
           <a class="{{isActive 'users'}} item" data-goto="users">
             <i class="user icon"></i> Users
           </a>
+          <a class="{{isActive 'userCreation'}} item" data-goto="userCreation">
+            <i class="add user icon"></i> User Creation
+          </a>
           <a class="{{isActive 'tickets'}} item" data-goto="tickets">
             <i class="help icon"></i> Tickets
           </a>
@@ -32,6 +35,10 @@
 
         {{#if pageIs 'users'}}
           {{> userTable }}
+        {{/if}}
+
+        {{#if pageIs 'userCreation'}}
+          {{> userCreation}}
         {{/if}}
 
         {{#if pageIs 'tickets'}}

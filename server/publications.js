@@ -38,6 +38,7 @@ function getAllUsers(){
         {
           fields: {
             'createdAt': 1,
+            'username': 1,
             'services': 1,
             'profile': 1
           }
