@@ -49,10 +49,12 @@ Template.ticketPanel.helpers({
   expirationFromNow: function(){
     var ticket = Tickets.findOne({
       userId: Meteor.userId(),
-      status: {
-        $in: ["OPEN", "CLAIMED"]
-      }
+      status: 'OPEN'
     });
+
+    if (!ticket){
+      return
+    }
 
     // If the ticket doesn't expire
     if (ticket.expiresAt == Infinity){

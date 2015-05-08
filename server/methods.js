@@ -122,6 +122,7 @@ function reopenTicket(id){
     },{
       $set: {
         status: 'OPEN',
+        expiresAt: _settings().expirationDelay > 0 ? Date.now() + _settings().expirationDelay : Infinity,
         claimId: null,
         claimName: null
       }
@@ -183,9 +184,9 @@ function deleteTicket(id){
 }
 
 function expireTicket(id){
-  var ticket = Tickets.findOne({_id: id});
+  var ticket = Tickets.findOne({_id: id, status: 'OPEN'});
 
-  if (ticket.userId == this.userId && ticket.expiresAt < Date.now()){
+  if (ticket && ticket.userId == this.userId && ticket.expiresAt < Date.now()){
     Tickets.update({
       _id: id
     }, {
