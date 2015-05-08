@@ -16,13 +16,15 @@ Compile css with
   sass --watch client/stylesheets/scss:client/stylesheets/css
 ```
 
-To edit copy, edit `lib/constants.js`
+To edit text, edit `lib/constants.js`
 
 To configure login:
 ```sh
   cp private/config.json.template private/config.json
 ```
-Edit `private/config.json`.
+
+In `private/config.json`, provide the appropriate application id/secret combinations
+for either facebook or github authentication, or choose to disable them.
 
 This will also contain the admin account username and password you'll use to login later.
 
@@ -30,8 +32,6 @@ Startup with `meteor`
 
 Deploy with `meteor deploy <your domain name>.meteor.com`
 
-Login as an Admin to grant yourself mentor/admin access. In the javascript console, type:
-```js
-Meteor.loginWithPassword("<your admin username>", "your admin password");
-```
+Login as an Admin to grant yourself mentor/admin access using the username/password specified in
+your `config.json` file.
 
