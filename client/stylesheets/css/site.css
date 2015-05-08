@@ -187,6 +187,9 @@ input.clean {
       font-weight: 700;
       font-size: 4em;
       letter-spacing: .2em; }
+    #splash > .container #login {
+      max-width: 320px;
+      margin: 0 auto; }
 
 #home .feed-title {
   font-size: 1.2em;
