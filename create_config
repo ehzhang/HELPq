@@ -1,0 +1,4 @@
+#!/bin/bash
+cp private/config.json.template private/config.json
+echo "Server side config created."
+echo "Edit it in private/config.json to add Facebook or GitHub integration."

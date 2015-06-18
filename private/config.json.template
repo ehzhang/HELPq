@@ -17,5 +17,9 @@
     "enable": false,
     "clientId": "google-client-id",
     "secret": "google-secret"
+  },
+  "settings": {
+    "queueEnabled": true,
+    "expirationDelay": 1800000
   }
 }
