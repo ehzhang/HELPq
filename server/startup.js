@@ -17,6 +17,18 @@ Meteor.startup(function(){
   // Add Base Settings
   setBasicSettings(config);
 
+  Accounts.onCreateUser(function(options, user){
+    if (options.profile){
+      user.profile = options.profile;
+
+      if (config.defaultMentor){
+        user.profile.mentor = true;
+      }
+    }
+
+    return user;
+  });
+
 });
 
 function createAdmin(username, password){
