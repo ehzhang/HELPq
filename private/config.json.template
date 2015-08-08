@@ -10,7 +10,7 @@
   },
   "facebook": {
     "enable": true,
-    "clientId": "facebook-client-id",
+    "appId": "facebook-client-id",
     "secret": "facebook-secret"
   },
   "google": {
