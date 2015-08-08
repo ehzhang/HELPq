@@ -1,5 +1,4 @@
 HELPq
-=====
 
 An extensible, customizable real-time queue system, built with [Meteor](https://www.meteor.com/).
 
