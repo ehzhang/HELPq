@@ -1,37 +1,50 @@
 /*
   DO NOT MODIFY - This file has been generated and will be regenerated
-  Semantic UI v1.12.0
+  Semantic UI v2.1.3
 */
 /*******************************
         Import Directives
 *******************************/
 
-@theme : @@element;
-
 /*------------------
-    Default Theme
+       Theme
 -------------------*/
 
+@theme: @@element;
+
+/*--------------------
+   Site Variables
+---------------------*/
+
+/* Default site.variables */
 @import "@{themesFolder}/default/globals/site.variables";
+
+/* Packaged site.variables */
+@import "@{themesFolder}/@{site}/globals/site.variables";
+
+/* Component's site.variables */
+@import "@{themesFolder}/@{theme}/globals/site.variables";
+
+/* Site theme site.variables */
+@import (optional) "@{siteFolder}/globals/site.variables.import.less";
+
+
+/*-------------------
+ Component Variables
+---------------------*/
+
+/* Default */
 @import "@{themesFolder}/default/@{type}s/@{element}.variables";
 
-/*------------------
-   Packaged Theme
--------------------*/
+/* Packaged Theme */
+@import (optional) "@{themesFolder}/@{theme}/@{type}s/@{element}.variables";
 
-@import "@{themesFolder}/@{site}/globals/site.variables";
-@import "@{themesFolder}/@{theme}/@{type}s/@{element}.variables";
-
-/*------------------
-     Site Theme
--------------------*/
-
-@import "@{siteFolder}/globals/site.variables.import.less";
-@import "@{siteFolder}/@{type}s/@{element}.variables.import.less";
+/* Site Theme */
+@import (optional) "@{siteFolder}/@{type}s/@{element}.variables.import.less";
 
 
 /*******************************
-        Import Mix-ins
+             Mix-ins
 *******************************/
 
 /*------------------
@@ -39,7 +52,7 @@
 -------------------*/
 
 .loadFonts() when (@importGoogleFonts) {
-  @import (css) '@{googleProtocol}fonts.googleapis.com/css?family=@{googleFontRequest}';
+  @import url('@{googleProtocol}fonts.googleapis.com/css?family=@{googleFontRequest}');
 }
 
 /*------------------
@@ -47,6 +60,6 @@
 -------------------*/
 
 .loadUIOverrides() {
-  @import "@{themesFolder}/@{theme}/@{type}s/@{element}.overrides";
-  @import "@{siteFolder}/@{type}s/@{element}.overrides.import.less";
+  @import (optional) "@{themesFolder}/@{theme}/@{type}s/@{element}.overrides";
+  @import (optional) "@{siteFolder}/@{type}s/@{element}.overrides.import.less";
 }

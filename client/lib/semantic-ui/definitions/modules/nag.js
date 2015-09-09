@@ -1,13 +1,13 @@
 /*
   DO NOT MODIFY - This file has been generated and will be regenerated
-  Semantic UI v1.12.0
+  Semantic UI v2.1.3
 */
 /*!
  * # Semantic UI - Nag
  * http://github.com/semantic-org/semantic-ui/
  *
  *
- * Copyright 2014 Contributors
+ * Copyright 2015 Contributors
  * Released under the MIT license
  * http://opensource.org/licenses/MIT
  *
@@ -80,10 +80,8 @@ $.fn.nag = function(parameters) {
           module.verbose('Initializing element');
 
           $module
+            .on('click' + eventNamespace, selector.close, module.dismiss)
             .data(moduleNamespace, module)
-          ;
-          $close
-            .on('click' + eventNamespace, module.dismiss)
           ;
 
           if(settings.detachable && $module.parent()[0] !== $context[0]) {
@@ -200,6 +198,10 @@ $.fn.nag = function(parameters) {
               window.localStorage.setItem(key, value);
               module.debug('Value stored using local storage', key, value);
             }
+            else if(settings.storageMethod == 'sessionstorage' && window.sessionStorage !== undefined) {
+              window.sessionStorage.setItem(key, value);
+              module.debug('Value stored using session storage', key, value);
+            }
             else if($.cookie !== undefined) {
               $.cookie(key, value, options);
               module.debug('Value stored using cookie', key, value, options);
@@ -215,6 +217,9 @@ $.fn.nag = function(parameters) {
             ;
             if(settings.storageMethod == 'localstorage' && window.localStorage !== undefined) {
               storedValue = window.localStorage.getItem(key);
+            }
+            else if(settings.storageMethod == 'sessionstorage' && window.sessionStorage !== undefined) {
+              storedValue = window.sessionStorage.getItem(key);
             }
             // get by cookie
             else if($.cookie !== undefined) {
@@ -232,8 +237,11 @@ $.fn.nag = function(parameters) {
             var
               options = module.get.storageOptions()
             ;
-            if(settings.storageMethod == 'local' && window.store !== undefined) {
+            if(settings.storageMethod == 'localstorage' && window.localStorage !== undefined) {
               window.localStorage.removeItem(key);
+            }
+            else if(settings.storageMethod == 'sessionstorage' && window.sessionStorage !== undefined) {
+              window.sessionStorage.removeItem(key);
             }
             // store by cookie
             else if($.cookie !== undefined) {
@@ -314,7 +322,7 @@ $.fn.nag = function(parameters) {
               });
             }
             clearTimeout(module.performance.timer);
-            module.performance.timer = setTimeout(module.performance.display, 100);
+            module.performance.timer = setTimeout(module.performance.display, 500);
           },
           display: function() {
             var
@@ -427,7 +435,7 @@ $.fn.nag.settings = {
   name        : 'Nag',
 
   debug       : false,
-  verbose     : true,
+  verbose     : false,
   performance : true,
 
   namespace   : 'Nag',
@@ -458,8 +466,9 @@ $.fn.nag.settings = {
   value         : 'dismiss',
 
   error: {
-    noStorage : 'Neither $.cookie or store is defined. A storage solution is required for storing state',
-    method    : 'The method you called is not defined.'
+    noCookieStorage : '$.cookie is not included. A storage solution is required.',
+    noStorage       : 'Neither $.cookie or store is defined. A storage solution is required for storing state',
+    method          : 'The method you called is not defined.'
   },
 
   className     : {

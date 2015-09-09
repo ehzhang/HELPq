@@ -13,8 +13,8 @@ momentjs:moment
 reactive-var
 underscore
 accounts-password
-semantic:ui
-flemay:less-autoprefixer
 mizzao:user-status
 chart:chart
 fourseven:scss
+semantic:ui
+flemay:less-autoprefixer

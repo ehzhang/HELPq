@@ -1,6 +1,6 @@
 /*
   DO NOT MODIFY - This file has been generated and will be regenerated
-  Semantic UI v1.12.0
+  Semantic UI v2.1.3
 */
 /*******************************
              Form
@@ -21,9 +21,9 @@
 @fieldMargin: 0em 0em @rowDistance;
 
 /* Form Label */
-@labelDistance: 0.2857rem;
+@labelDistance: @4px;
 @labelMargin: 0em 0em @labelDistance 0em;
-@labelFontSize: 0.9285em;
+@labelFontSize: @relativeSmall;
 @labelFontWeight: bold;
 @labelTextTransform: none;
 @labelColor: @textColor;
@@ -32,19 +32,13 @@
 @inputFont: @pageFont;
 @inputWidth: 100%;
 @inputFontSize: 1em;
-@inputVerticalPadding: 0.78571em;
-@inputHorizontalPadding: 1em;
-@inputLineHeight: 1.2142em;
 @inputPadding: (@inputVerticalPadding + ((1em - @inputLineHeight) / 2)) @inputHorizontalPadding;
-@inputBackground: #FFFFFF;
 @inputBorder: 1px solid @borderColor;
 @inputBorderRadius: @absoluteBorderRadius;
 @inputColor: @textColor;
 @inputTransition:
-  background-color 0.2s ease,
-  color 0.2s ease,
-  box-shadow 0.2s ease,
-  border-color 0.2s ease
+  color @defaultDuration @defaultEasing,
+  border-color @defaultDuration @defaultEasing
 ;
 @inputBoxShadow: 0em 0em 0em 0em transparent inset;
 
@@ -78,24 +72,26 @@
 @dividerMargin: @rowDistance 0em;
 
 /* Inline Validation Prompt */
-@inlineValidationMargin: -0.5em 0em -0.5em @rowDistance;
-@inlineValidationArrowOffset: -0.3em;
+@promptBackground: @white;
+@promptBorderColor: @formErrorBorder;
+@promptBorder: 1px solid @promptBorderColor;
+@promptTextColor: @formErrorColor;
+@inlinePromptMargin: -0.25em 0em -0.5em 0.5em;
+@inlinePromptBorderWidth: 1px;
 
 /*-------------------
         States
 --------------------*/
 
-/* Disabled */
-
 /* Focus */
-@inputFocusPointerSize: 1px;
+@inputFocusPointerSize: 0px;
 
 /* Input Focus */
 @inputFocusBackground: @inputBackground;
-@inputFocusBorderColor: @selectedBorderColor;
-@inputFocusColor: rgba(0, 0, 0, 0.85);
+@inputFocusBorderColor: @focusedFormBorderColor;
+@inputFocusColor: @selectedTextColor;
 @inputFocusBoxShadow: @inputFocusPointerSize 0em 0em 0em @selectedBorderColor inset;
-@inputFocusBorderRadius: 0em @inputBorderRadius @inputBorderRadius 0em;
+@inputFocusBorderRadius: @inputBorderRadius;
 
 /* Text Area Focus */
 @textAreaFocusBackground: @inputFocusBackground;
@@ -104,32 +100,47 @@
 @textAreaFocusBoxShadow: @inputFocusBoxShadow;
 @textAreaFocusBorderRadius: @inputFocusBorderRadius;
 
-/* Error */
-@formErrorColor: @negativeColor;
+/* Disabled */
+@disabledLabelOpacity: @disabledOpacity;
+
+/* Errored Input */
+@formErrorColor: @negativeTextColor;
 @formErrorBorder: @negativeBorderColor;
 @formErrorBackground: @negativeBackgroundColor;
 
+/* AutoFill */
+@inputAutoFillBackground: #FFFFF0;
+@inputAutoFillBorder: #E5DFA1;
+@inputAutoFillFocusBackground: @inputAutoFillBackground;
+@inputAutoFillFocusBorder: #D5C315;
+@inputAutoFillErrorBackground: #FFFAF0;
+@inputAutoFillErrorBorder: #E0B4B4;
+
+
 /* Input Error */
-@inputErrorPointerSize: 2px;
-@inputErrorBorderRadius: 0em @inputBorderRadius @inputBorderRadius 0em;
-@inputErrorBoxShadow: @inputErrorPointerSize 0em 0em 0em @formErrorColor inset;
+@inputErrorBorderRadius: '';
+@inputErrorBoxShadow: none;
 
 /* Dropdown Error */
 @dropdownErrorHoverBackground: #FBE7E7;
+@dropdownErrorSelectedBackground: @dropdownErrorHoverBackground;
 @dropdownErrorActiveBackground: #FDCFCF;
+@dropdownErrorLabelBackground: #EACBCB;
+@dropdownErrorLabelColor: @errorTextColor;
 
 /* Focused Error */
 @inputErrorFocusBackground: @negativeBackgroundColor;
-@inputErrorFocusColor: @negativeColorHover;
+@inputErrorFocusColor: @negativeTextColor;
 @inputErrorFocusBorder: @negativeBorderColor;
-@inputErrorFocusBoxShadow: @inputErrorPointerSize 0em 0em 0em @negativeColorHover inset;
+@inputErrorFocusBoxShadow: none;
 
 /* Placeholder */
 @inputPlaceholderColor: lighten(@inputColor, 55);
 @inputPlaceholderFocusColor: lighten(@inputColor, 35);
-@inputErrorPlaceholderColor: lighten(@formErrorColor, 10);
-@inputErrorPlaceholderFocusColor: lighten(@formErrorColor, 5);
 
+/* Placeholder Error */
+@inputErrorPlaceholderColor: lighten(@formErrorColor, 40);
+@inputErrorPlaceholderFocusColor: lighten(@formErrorColor, 30);
 
 /* Loading Dimmer */
 @loaderDimmerColor: rgba(255, 255, 255, 0.8);
@@ -137,8 +148,6 @@
 
 /* Loading Spinner */
 @loaderSize: 3em;
-@loaderOffset: -(@loaderSize / 2);
-@loaderMargin: @loaderOffset 0em 0em @loaderOffset;
 @loaderLineZIndex: 101;
 
 /*-------------------
@@ -153,7 +162,12 @@
 @requiredMargin: @requiredVerticalOffset 0em 0em @requiredDistance;
 
 /* Inverted */
+@invertedInputBackground: @inputBackground;
+@invertedInputBorderColor: @whiteBorderColor;
+@invertedInputBoxShadow: @inputBoxShadow;
+@invertedInputColor: @inputColor;
 @invertedLabelColor: @invertedTextColor;
+@invertedInputBoxShadow: none;
 
 /*-------------------
       Variations
@@ -172,23 +186,15 @@
 
 
 /* Inline */
-@inlineLabelFontSize: @labelFontSize;
-@inlineLabelVerticalAlign: middle;
-@inlineGroupedFieldLabelDistance: 0.5rem;
-@inlineCheckboxLabelDistance: 1.75em;
+@inlineInputSize: @relativeMedium;
 
-@inlineLabelMargin: 0em 1em 0em 0em;
-@inlineLabelDistance: @labelDistance;
+@inlineLabelDistance: @relativeTiny;
 @inlineLabelColor: @labelColor;
 @inlineLabelFontSize: @labelFontSize;
 @inlineLabelFontWeight: @labelFontWeight;
 @inlineLabelTextTransform: @labelTextTransform;
 
-/* Sizes */
-@small: 0.875em;
-@medium: auto;
-@large: 1.125em;
-@huge: 1.2em;
+@groupedInlineLabelMargin: 0.035714em 1em 0em 0em;
 
 /*-------------------
        Groups

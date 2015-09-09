@@ -1,6 +1,6 @@
 /*
   DO NOT MODIFY - This file has been generated and will be regenerated
-  Semantic UI v1.12.0
+  Semantic UI v2.1.3
 */
 /*******************************
           Breadcrumb
@@ -10,15 +10,15 @@
      Breadcrumb
 --------------------*/
 
-@verticalMargin: 1em;
+@verticalMargin: 0em;
 @display: inline-block;
 @verticalAlign: middle;
 
-@dividerSpacing: 0.2rem;
-@dividerOpacity: 0.5;
+@dividerSpacing: @3px;
+@dividerOpacity: 0.7;
 @dividerColor: @lightTextColor;
 
-@dividerSize: 0.9em;
+@dividerSize: @relativeSmall;
 @dividerVerticalAlign: baseline;
 
 @iconDividerSize: @relativeTiny;
@@ -28,20 +28,10 @@
 @sectionPadding: 0em;
 
 /* Coupling */
-@segmentPadding: 0.5em 1em;
+@segmentPadding: @relativeMini @relativeMedium;
 
 /*-------------------
        States
 --------------------*/
 
 @activeFontWeight: bold;
-
-/* Sizes */
-@mini: 0.65em;
-@tiny: 0.7em;
-@small: 0.75em;
-@medium: 1em;
-@big: 1.05em;
-@large: 1.1em;
-@huge: 1.3em;
-@massive: 1.5em;

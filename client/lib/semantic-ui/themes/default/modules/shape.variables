@@ -1,6 +1,6 @@
 /*
   DO NOT MODIFY - This file has been generated and will be regenerated
-  Semantic UI v1.12.0
+  Semantic UI v2.1.3
 */
 /*******************************
              Shape
@@ -14,10 +14,15 @@
 @duration: 0.6s;
 @easing: ease-in-out;
 
-@hiddenSideOpacity: 0.4;
+@hiddenSideOpacity: 0.6;
 @animatingZIndex: 100;
 
-@transition: all @duration @easing;
+@transition:
+  transform @duration @easing,
+  left @duration @easing,
+  width @duration @easing,
+  height @duration @easing
+;
 @sideTransition: opacity @duration @easing;
 @backfaceVisibility: hidden;
 

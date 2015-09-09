@@ -1,6 +1,6 @@
 /*
   DO NOT MODIFY - This file has been generated and will be regenerated
-  Semantic UI v1.12.0
+  Semantic UI v2.1.3
 */
 /*******************************
              Grid
@@ -26,35 +26,11 @@
 @tableWidth: ~"calc(100% + "@gutterWidth~")";
 @columnMaxImageWidth: 100%;
 
+@consecutiveGridDistance: (@rowSpacing / 2);
+
 /*******************************
            Variations
 *******************************/
-
-/*--------------
-     Page
----------------*/
-
-/* Column Gutters */
-@mobileWidth: auto;
-@mobileMargin: 0em;
-@mobileGutter: 0em;
-
-@tabletWidth: auto;
-@tabletMargin: 0em;
-@tabletGutter: 4em;
-
-@computerWidth: auto;
-@computerMargin: 0em;
-@computerGutter: 8%;
-
-@largeMonitorWidth: auto;
-@largeMonitorMargin: 0em;
-@largeMonitorGutter: 15%;
-
-@widescreenMonitorWidth: auto;
-@widescreenMargin: 0em;
-@widescreenMonitorGutter: 23%;
-
 
 /*--------------
      Relaxed
@@ -81,9 +57,14 @@
 @celledWidth: 1px;
 @celledBorderColor: @solidBorderColor;
 
-@celledPadding: 0.75em;
-@celledRelaxedPadding: 1em;
+@celledPadding: 1em;
+@celledRelaxedPadding: 1.5em;
 @celledVeryRelaxedPadding: 2em;
+
+@celledGridDivider: 0px 0px 0px @celledWidth @celledBorderColor;
+@celledRowDivider: 0px (-@celledWidth) 0px 0px @celledBorderColor;
+@celledColumnDivider: (-@celledWidth) 0px 0px 0px @celledBorderColor;
+
 
 /*--------------
     Stackable
@@ -94,3 +75,33 @@
 @stackableMobileBorder: 1px solid @borderColor;
 @stackableInvertedMobileBorder: 1px solid @whiteBorderColor;
 
+
+/*******************************
+             Legacy
+*******************************/
+
+/*--------------
+     Page
+---------------*/
+
+/* Legacy (DO NOT USE)
+ */
+@mobileWidth: auto;
+@mobileMargin: 0em;
+@mobileGutter: 0em;
+
+@tabletWidth: auto;
+@tabletMargin: 0em;
+@tabletGutter: 2em;
+
+@computerWidth: auto;
+@computerMargin: 0em;
+@computerGutter: 3%;
+
+@largeMonitorWidth: auto;
+@largeMonitorMargin: 0em;
+@largeMonitorGutter: 15%;
+
+@widescreenMonitorWidth: auto;
+@widescreenMargin: 0em;
+@widescreenMonitorGutter: 23%;

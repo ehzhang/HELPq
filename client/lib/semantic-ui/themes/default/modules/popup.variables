@@ -1,6 +1,6 @@
 /*
   DO NOT MODIFY - This file has been generated and will be regenerated
-  Semantic UI v1.12.0
+  Semantic UI v2.1.3
 */
 /*******************************
              Popup
@@ -14,9 +14,9 @@
 @background: @white;
 
 @maxWidth: 250px;
-@borderColor: #CCCCCC;
+@borderColor: @solidBorderColor;
 @borderWidth: 1px;
-@boxShadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+@boxShadow: @floatingShadow;
 @color: @textColor;
 
 @verticalPadding: 0.833em;
@@ -90,10 +90,4 @@
 
 @invertedHeaderBackground: none;
 @invertedHeaderColor: @white;
-@invertedArrowColor: @black;
-
-/* Sizes */
-@small: 0.785714rem;
-@medium: 0.85714rem;
-@large: 1rem;
-@huge: 1.14285rem;
+@invertedArrowColor: @invertedBackground;

@@ -1,13 +1,13 @@
 /*
   DO NOT MODIFY - This file has been generated and will be regenerated
-  Semantic UI v1.12.0
+  Semantic UI v2.1.3
 */
 /*!
  * # Semantic UI - State
  * http://github.com/semantic-org/semantic-ui/
  *
  *
- * Copyright 2014 Contributors
+ * Copyright 2015 Contributors
  * Released under the MIT license
  * http://opensource.org/licenses/MIT
  *
@@ -476,7 +476,7 @@ $.fn.state = function(parameters) {
               });
             }
             clearTimeout(module.performance.timer);
-            module.performance.timer = setTimeout(module.performance.display, 100);
+            module.performance.timer = setTimeout(module.performance.display, 500);
           },
           display: function() {
             var
@@ -593,7 +593,7 @@ $.fn.state.settings = {
   debug          : false,
 
   // verbose debug output
-  verbose        : true,
+  verbose        : false,
 
   // namespace for events
   namespace      : 'state',

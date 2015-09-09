@@ -1,6 +1,6 @@
 /*
   DO NOT MODIFY - This file has been generated and will be regenerated
-  Semantic UI v1.12.0
+  Semantic UI v2.1.3
 */
 /*******************************
             Rail
@@ -10,10 +10,11 @@
        Element
 --------------------*/
 
-@contentSizing: content-box;
 @width: 300px;
 @height: 100%;
+
 @distance: 4rem;
+@splitDistance: (@distance / 2);
 
 /*-------------------
       Variations
@@ -23,8 +24,15 @@
 @closeDistance: 2em;
 @veryCloseDistance: 1em;
 
-/* Divided */
-@dividedBorder: 1px solid @borderColor;
-@dividedDistance: 5rem;
+@splitCloseDistance: (@closeDistance / 2);
+@splitVeryCloseDistance: (@veryCloseDistance / 2);
 
-@medium: 1em;
+@closeWidth: @width + @splitCloseDistance;
+@veryCloseWidth: @width + @splitVeryCloseDistance;
+
+/* Dividing */
+@dividingBorder: 1px solid @borderColor;
+@dividingDistance: 5rem;
+@splitDividingDistance: (@dividingDistance / 2);
+@dividingWidth: @width + @splitDividingDistance;
+
