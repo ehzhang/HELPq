@@ -59,7 +59,7 @@ function getAllMentors(){
         'profile.skills': 1,
         'services.facebook.id': 1
       }
-    })
+    });
   }
 }
 
@@ -80,7 +80,7 @@ function getMentorsOnline(){
         'status.idle': 1,
         'status.online': 1
       }
-    })
+    });
   }
 }
 
@@ -114,7 +114,7 @@ function getTicketData(){
             status: 1,
             rating: 1
           }
-        })
+        });
   }
 }
 
@@ -135,7 +135,7 @@ function getAllTickets(){
               status: 1,
               rating: 1
             }
-          })
+          });
     }
   }
 }
@@ -145,7 +145,7 @@ function getUserTickets(){
   if (authorized.user(this.userId)){
     return Tickets.find({
       userId: this.userId
-    })
+    });
   }
 }
 
