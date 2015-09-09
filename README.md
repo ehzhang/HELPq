@@ -18,11 +18,6 @@ Configuration
 -------------
 For front end branding, edit `client/stylesheets/scss/_branding.scss`
 
-Compile css with
-```sh
-  sass --watch client/stylesheets/scss:client/stylesheets/css
-```
-
 To edit text, edit `lib/constants.js`
 
 To configure login, edit `private/config.json`
