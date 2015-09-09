@@ -1,5 +1,4 @@
 Template.ticket.rendered = function(){
-
 };
 
 Template.ticket.helpers({
@@ -25,17 +24,17 @@ Template.ticket.helpers({
 
 Template.ticket.events({
   'click .claim.button': function(){
-    Meteor.call('claimTicket', this._id)
+    Meteor.call('claimTicket', this._id);
   },
   'click .complete.button': function(){
-    Meteor.call('completeTicket', this._id)
+    Meteor.call('completeTicket', this._id);
   },
   'click .reopen.button': function(){
-    Meteor.call('reopenTicket', this._id)
+    Meteor.call('reopenTicket', this._id);
   },
   'click .cancel.button': function(){
     if(confirm('Are you sure you would like to cancel this ticket?')){
-      Meteor.call('cancelTicket', this._id)
+      Meteor.call('cancelTicket', this._id);
     }
   }
 });

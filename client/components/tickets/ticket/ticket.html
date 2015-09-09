@@ -2,8 +2,6 @@
   <div class="animated flipInX
               ui fluid card ticket {{#if statusIs 'CLAIMED'}}claimed{{/if}}">
     <div class="content">
-      <i class="right floated red remove link cancel button icon"></i>
-
       <div class="header">
         {{#if name }}
           {{name}}
@@ -36,16 +34,19 @@
     </div>
     <div class="extra content">
       {{#if statusIs "OPEN"}}
+
         {{#if ownsTicket}}
           <div class="right floated author">
             This is you!
           </div>
         {{else}}
+
           {{#if hasClaimedTicket}}
             <button class="disabled primary fluid push button claim">Claim Ticket</button>
           {{else}}
             <button class="primary fluid push button claim">Claim Ticket</button>
           {{/if}}
+
         {{/if}}
       {{/if}}
 
@@ -59,6 +60,9 @@
           </div>
         {{/if}}
       {{/if}}
+
+      <button class="fluid danger push button cancel"> Cancel Ticket </button>
+
     </div>
 
   </div>
