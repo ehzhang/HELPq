@@ -2,6 +2,9 @@
   <div class="animated flipInX
               ui fluid card ticket {{#if statusIs 'CLAIMED'}}claimed{{/if}}">
     <div class="content">
+      {{#if userIs 'admin'}}
+        <i class="right floated red remove link cancel button icon"></i>
+      {{/if}}
       <div class="header">
         {{#if name }}
           {{name}}
@@ -60,8 +63,6 @@
           </div>
         {{/if}}
       {{/if}}
-
-      <button class="fluid danger push button cancel"> Cancel Ticket </button>
 
     </div>
 

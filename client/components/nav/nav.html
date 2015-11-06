@@ -18,6 +18,25 @@
         </div>
       </div>
     </div>
+
+    <div id="mobile-nav">
+      {{#if userIs 'mentor'}}
+        <div class="ui bottom fixed three item labeled icon menu">
+          <a class="item" href="/">
+            <i class="home icon"></i>
+            Home
+          </a>
+          <a class="item" href="/mentor">
+            <i class="inbox icon"></i>
+            Mentor
+          </a>
+          <a class="item" href="/profile">
+            <i class="child icon"></i>
+            Profile
+          </a>
+        </div>
+      {{/if}}
+    </div>
   {{/if}}
 </template>
 
