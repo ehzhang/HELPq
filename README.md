@@ -27,8 +27,6 @@ Mentors should not receive any type of push notifications when tickets are reque
 
 Mentors can claim tickets, complete tickets, or choose to reopen them. Mentors can only claim a single ticket at any given time. There is no ability to message a student through the app in order to encourage a mentor to find that student and help them in person. A student can, however, choose to include other contact information in case contact is needed to clarify location.
 
-[Go directly to setup information](#bring-helpq-to-your-hackathonclassroom)
-
 Features
 ---------
 
@@ -58,9 +56,10 @@ The current queue shows who is currently in the queue and which people are curre
 
 ![Mentor Screen Labeled](./.docs/images/screenshots/mentor-labeled2.png)
 
+Mentors should be mobile, and the HELPq is designed for mentors to browse the help tickets on their smart phones.
+
 If a user is a mentor, they will have an inbox icon in the top right they can click to navigate to the mentor view. If the HELPq is being viewed on mobile or a very narrow window, the app is responsive and will pull up a navigation bar on the bottom for Home, Mentor, and Profile.
 
-Mentors should be mobile, and the HELPq is designed for mentors to browse the help tickets on their smart phones.
 
 #### Claim
 
@@ -129,12 +128,12 @@ Usage Data
 
 We've used this at a bunch of hackathons and we have some data on them :)
 
-| Hackathon | Date | Response Time avg | median | std dev | Completion Time avg | median | std dev | Rating Avg | Users | Mentors | Tickets|
+| Hackathon | Date | Response time average | median | stddev | Completion Time average | median | stddev | Rating Average | Users | Mentors | Tickets|
 |-----------|------|-------------------|--------|---------|---------------------|--------|---------|------------|-------|---------|--------|
-|**Blueprint High School Hackathon 2015** | 2/22/2015 | 5 min 11 sec | 1 min 26 sec | 9 min 54 sec | 10 min 37 sec | 6 min 29 sec | 13 min 23 sec | 4.9 | 193 | 64 | 170 |
-|**Meteor Summer Hackathon 2015** | 8/8/2015 | 6 min 21 sec | 2 min 29 sec | 10 min 58 sec | 5 min 46 sec | 1 min 26 sec | 12 min 3 sec | 4.9 | 68 | 66| 37 |
-|**HackMIT 2015** | 9/19/2015 | 9 min 37 sec | 2 min 48 sec, 28 min | 16 min 30 sec | 10 min 1 sec | 22 min 59 sec | 4.7 | 425 | 242 | 502 |
-|**WHACK 2015** | 10/3/2015 | 7 min 55 sec | 4 min 56 sec | 12 min 30 sec | 18 min 19 sec | 13 min 2 sec | 17 min 27 sec | 4.9 | 87 | 39 | 94 |
+|**Blueprint High School Hackathon 2015** | 2/22/2015 | 5:11 | 1:26 | 9:54 | 10:37 | 6:29 | 13:23 | 4.9 | 193 | 64 | 170 |
+|**Meteor Summer Hackathon 2015** | 8/8/2015 | 6:21 | 2:29 | 10:58 | 5:46 | 1:26 | 12:03 | 4.09 | 68 | 66| 37 |
+|**HackMIT 2015** | 9/19/2015 | 9:37 | 2:48 | 28:00 | 16:30 | 10:01 | 22:59 | 4.7 | 425 | 242 | 502 |
+|**WHACK 2015** | 10/3/2015 | 7:55 | 4:56 | 12:30 | 18:19 | 13:02 | 17:27 | 4.9 | 87 | 39 | 94 |
 
 
 Bring HELPq to your hackathon/classroom!
