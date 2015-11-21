@@ -1,11 +1,9 @@
 HELPq
 ======
 
-An extensible, customizable real-time queue system, built with [Meteor](https://www.meteor.com/).
+An extensible, customizable real-time queue system, built with [Meteor](https://www.meteor.com/)!
 
 ![Home Screen](./.docs/images/screenshots/home.png)
-
-[Go directly to setup information](#bring-helpq-to-your-hackathonclassroom)
 
 What is this?
 ------------
@@ -13,6 +11,7 @@ What is this?
 HELPq was originally built for [HackMIT](https://hackmit.org), but has been used at hackathons like [Blueprint](http://blueprint.hackmit.org), [Meteor Summer Hackathon 2015](http://meteorhack.meteor.com/), [WHACK](http://wellesleyhacks.org/), [MakeMIT](http://makemit.org/) and [WildHacks](http://wildhacks.org/) (among others!).
 
 It is a real-time help queue and mentor management application, targeted at hackathons and classrooms, where there is a need for issues to be claimed and satisfied within minutes. It includes a simple interface for requesting tickets, claiming tickets, administrating users/mentors, and examining metrics.
+
 
 It is built with an emphasis on three fundamental user experiences:
 
@@ -24,10 +23,11 @@ Students should be able to log in and do exactly what they want - submit a ticke
 
 Mentors should not receive any type of push notifications when tickets are requested. Instead, mentors should be pulling from the mentor view and claiming tickets whenever they see them. That way, mentors will not get annoyed by a feed of requests and instead provide high-quality advice because they are themselves actively seeking out people to help.
 
-### In-person interaction
+### Encourage in-person interaction
 
 Mentors can claim tickets, complete tickets, or choose to reopen them. Mentors can only claim a single ticket at any given time. There is no ability to message a student through the app in order to encourage a mentor to find that student and help them in person. A student can, however, choose to include other contact information in case contact is needed to clarify location.
 
+[Go directly to setup information](#bring-helpq-to-your-hackathonclassroom)
 
 Features
 ---------
@@ -129,12 +129,12 @@ Usage Data
 
 We've used this at a bunch of hackathons and we have some data on them :)
 
-| Hackathon | Date | Response Time (avg, median, std dev) | Completion Time (avg, median, std dev) | Rating Avg | Total Users | Total Mentors | Total Tickets|
-|-----------|------|--------------------------------------|----------------------------------------|------------|-------------|---------------|--------------|
-|**Blueprint High School Hackathon 2015** | 2/22/2015 | 5 min 11 sec, 1 min 26 sec, 9 min 54 sec | 10 min 37 sec, 6 min 29 sec, 13 min 23 sec | 4.9 | 193 | 64 | 170 |
-|**Meteor Summer Hackathon 2015** | 8/8/2015 | 6 min 21 sec, 2 min 29 sec, 10 min 58 sec | 5 min 46 sec, 1 min 26 sec, 12 min 3 sec | 4.9 | 68 | 66| 37 |
-|**HackMIT 2015** | 9/19/2015 | 9 min 37 sec, 2 min 48 sec, 28 min | 16 min 30 sec, 10 min 1 sec, 22 min 59 sec | 4.7 | 425 | 242 | 502 |
-|**WHACK 2015** | 10/3/2015 | 7 min 55 sec, 4 min 56 sec, 12 min 30 sec | 18 min 19 sec, 13 min 2 sec, 17 min 27 sec | 4.9 | 87 | 39 | 94 |
+| Hackathon | Date | Response Time avg | median | std dev | Completion Time avg | median | std dev | Rating Avg | Users | Mentors | Tickets|
+|-----------|------|-------------------|--------|---------|---------------------|--------|---------|------------|-------|---------|--------|
+|**Blueprint High School Hackathon 2015** | 2/22/2015 | 5 min 11 sec | 1 min 26 sec | 9 min 54 sec | 10 min 37 sec | 6 min 29 sec | 13 min 23 sec | 4.9 | 193 | 64 | 170 |
+|**Meteor Summer Hackathon 2015** | 8/8/2015 | 6 min 21 sec | 2 min 29 sec | 10 min 58 sec | 5 min 46 sec | 1 min 26 sec | 12 min 3 sec | 4.9 | 68 | 66| 37 |
+|**HackMIT 2015** | 9/19/2015 | 9 min 37 sec | 2 min 48 sec, 28 min | 16 min 30 sec | 10 min 1 sec | 22 min 59 sec | 4.7 | 425 | 242 | 502 |
+|**WHACK 2015** | 10/3/2015 | 7 min 55 sec | 4 min 56 sec | 12 min 30 sec | 18 min 19 sec | 13 min 2 sec | 17 min 27 sec | 4.9 | 87 | 39 | 94 |
 
 
 Bring HELPq to your hackathon/classroom!
