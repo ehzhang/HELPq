@@ -1,6 +1,6 @@
 /*
   DO NOT MODIFY - This file has been generated and will be regenerated
-  Semantic UI v2.1.3
+  Semantic UI v2.1.6
 */
 /*!
  * # Semantic UI - Dimmer
@@ -389,7 +389,7 @@ $.fn.dimmer = function(parameters) {
               colorArray = color.split(','),
               isRGBA     = (colorArray && colorArray.length == 4)
             ;
-            opacity    = settings.opacity || opacity;
+            opacity    = settings.opacity === 0 ? 0 : settings.opacity || opacity;
             if(isRGBA) {
               colorArray[3] = opacity + ')';
               color         = colorArray.join(',');
@@ -694,4 +694,4 @@ $.fn.dimmer.settings = {
 
 };
 
-})( jQuery, window , document );
+})( jQuery, window, document );

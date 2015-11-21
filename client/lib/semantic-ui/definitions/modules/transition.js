@@ -1,6 +1,6 @@
 /*
   DO NOT MODIFY - This file has been generated and will be regenerated
-  Semantic UI v2.1.3
+  Semantic UI v2.1.6
 */
 /*!
  * # Semantic UI - Transition
@@ -232,7 +232,9 @@ $.fn.transition = function() {
               module.show();
             }
             else {
+              module.verbose('Static animation completed');
               module.restore.conditions();
+              settings.onComplete.call(element);
             }
           }
         },
@@ -1073,4 +1075,4 @@ $.fn.transition.settings = {
 };
 
 
-})( jQuery, window , document );
+})( jQuery, window, document );

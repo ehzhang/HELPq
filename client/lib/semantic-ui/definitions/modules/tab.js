@@ -1,6 +1,6 @@
 /*
   DO NOT MODIFY - This file has been generated and will be regenerated
-  Semantic UI v2.1.3
+  Semantic UI v2.1.6
 */
 /*!
  * # Semantic UI - Tab
@@ -111,7 +111,7 @@ $.fn.tab = function(parameters) {
 
         bind: {
           events: function() {
-            // if using $.tab dont add events
+            // if using $.tab don't add events
             if( !$.isWindow( element ) ) {
               module.debug('Attaching tab activation events to element', $module);
               $module
@@ -899,4 +899,4 @@ $.fn.tab.settings = {
 
 };
 
-})( jQuery, window , document );
+})( jQuery, window, document );

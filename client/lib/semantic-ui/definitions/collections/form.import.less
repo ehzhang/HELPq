@@ -1,6 +1,6 @@
 /*
   DO NOT MODIFY - This file has been generated and will be regenerated
-  Semantic UI v2.1.3
+  Semantic UI v2.1.6
 */
 /*!
  * # Semantic UI - Form
@@ -250,15 +250,6 @@
   width: 0px;
 }
 
-/*--------------------
-       Dividers
----------------------*/
-
-.ui.form .divider {
-  clear: both;
-  margin: @dividerMargin;
-}
-
 
 /*--------------------
    Types of Messages
@@ -430,7 +421,7 @@
 }
 
 /*--------------------
-        Warning
+        Error
 ---------------------*/
 
 /* On Form */
@@ -855,7 +846,6 @@
 
 
 /* Sizing Combinations */
-
 .ui.form .fields .wide.field {
   width: @oneWide;
   padding-left: (@gutterWidth / 2);
@@ -947,6 +937,16 @@
     padding-left: 0%;
     padding-right: 0%;
   }
+}
+
+/*--------------------
+     Equal Width
+---------------------*/
+
+.ui[class*="equal width"].form .fields > .field,
+.ui.form [class*="equal width"].fields > .field {
+  width: 100%;
+  flex: 1 1 auto;
 }
 
 /*--------------------
