@@ -4,12 +4,12 @@
     "password": "hunter2"
   },
   "github": {
-    "enable": true,
+    "enable": false,
     "clientId": "github-client-id",
     "secret": "github-secret"
   },
   "facebook": {
-    "enable": true,
+    "enable": false,
     "appId": "facebook-client-id",
     "secret": "facebook-secret"
   },

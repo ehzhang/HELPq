@@ -1,6 +1,6 @@
 /*
   DO NOT MODIFY - This file has been generated and will be regenerated
-  Semantic UI v2.1.3
+  Semantic UI v2.1.6
 */
 /*******************************
         Import Directives
@@ -17,13 +17,13 @@
 ---------------------*/
 
 /* Default site.variables */
-@import "@{themesFolder}/default/globals/site.variables";
+@import "@{themesFolder}/default/globals/site.variables.import.less";
 
 /* Packaged site.variables */
-@import "@{themesFolder}/@{site}/globals/site.variables";
+@import "@{themesFolder}/@{site}/globals/site.variables.import.less";
 
 /* Component's site.variables */
-@import "@{themesFolder}/@{theme}/globals/site.variables";
+@import (optional) "@{themesFolder}/@{theme}/globals/site.variables.import.less";
 
 /* Site theme site.variables */
 @import (optional) "@{siteFolder}/globals/site.variables.import.less";
@@ -34,10 +34,10 @@
 ---------------------*/
 
 /* Default */
-@import "@{themesFolder}/default/@{type}s/@{element}.variables";
+@import "@{themesFolder}/default/@{type}s/@{element}.variables.import.less";
 
 /* Packaged Theme */
-@import (optional) "@{themesFolder}/@{theme}/@{type}s/@{element}.variables";
+@import (optional) "@{themesFolder}/@{theme}/@{type}s/@{element}.variables.import.less";
 
 /* Site Theme */
 @import (optional) "@{siteFolder}/@{type}s/@{element}.variables.import.less";
@@ -60,6 +60,6 @@
 -------------------*/
 
 .loadUIOverrides() {
-  @import (optional) "@{themesFolder}/@{theme}/@{type}s/@{element}.overrides";
+  @import (optional) "@{themesFolder}/@{theme}/@{type}s/@{element}.overrides.import.less";
   @import (optional) "@{siteFolder}/@{type}s/@{element}.overrides.import.less";
 }

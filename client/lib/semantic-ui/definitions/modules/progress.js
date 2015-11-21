@@ -1,6 +1,6 @@
 /*
   DO NOT MODIFY - This file has been generated and will be regenerated
-  Semantic UI v2.1.3
+  Semantic UI v2.1.6
 */
 /*!
  * # Semantic UI - Progress
@@ -93,6 +93,7 @@ $.fn.progress = function(parameters) {
 
         reset: function() {
           module.set.percent(0);
+          module.set.value(0);
         },
 
         complete: function() {
@@ -795,4 +796,4 @@ $.fn.progress.settings = {
 };
 
 
-})( jQuery, window , document );
+})( jQuery, window, document );

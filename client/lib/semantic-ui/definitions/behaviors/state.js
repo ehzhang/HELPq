@@ -1,6 +1,6 @@
 /*
   DO NOT MODIFY - This file has been generated and will be regenerated
-  Semantic UI v2.1.3
+  Semantic UI v2.1.6
 */
 /*!
  * # Semantic UI - State
@@ -696,4 +696,4 @@ $.fn.state.settings = {
 
 
 
-})( jQuery, window , document );
+})( jQuery, window, document );

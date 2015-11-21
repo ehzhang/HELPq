@@ -23,7 +23,7 @@ function formatTime(ms){
   }
   if (s >= 60 && s < 3600){
     var minutes = Math.floor(s / 60);
-    return minutes + (minutes == 1 ? "minute" : "minutes");
+    return minutes + (minutes == 1 ? " minute" : " minutes");
   }
   if (s >= 3600){
     return "1 hour or more";
