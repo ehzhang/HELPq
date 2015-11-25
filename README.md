@@ -142,7 +142,7 @@ Bring HELPq to your hackathon/classroom!
 Requirements
 ------------
 
-Make sure that you hate `meteor` installed.
+Make sure that you have `meteor` installed.
 You can install Meteor through their [website.](https://www.meteor.com/)
 
 
