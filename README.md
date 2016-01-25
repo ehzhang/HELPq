@@ -85,7 +85,7 @@ The announcement section allows you to create announcements for the home screen,
 
 #### Users
 
-The users table lets you see all of the current users, and mark them as mentor or admins. You can also edit other user's information - of course, be responsible with this power!
+The users table lets you see all of the current users, and mark them as mentors or admins. You can also edit other user's information - of course, be responsible with this power!
 
 #### User Creation
 
@@ -186,7 +186,7 @@ Configuration
 To configure login, edit `private/config.json`
 
 In `private/config.json`, provide the appropriate application id/secret combinations
-for either facebook or github authentication, or choose to disable them.
+for either Facebook or Github authentication, or choose to disable them.
 
 #### Branding
 
