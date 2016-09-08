@@ -3,6 +3,32 @@ Meteor.startup(function(){
   // Grab the config
   var config = JSON.parse(Assets.getText('config.json'));
 
+  if (process.env.ADMIN_PASSWORD) {
+    config.admin.password = process.env.ADMIN_PASSWORD
+  }
+  if ((process.env.GITHUB === true) && process.env.GITHUB_CLIENTID && process.env.GITHUB_SECRET){
+    config.admin.github = {
+      enable: true,
+      clientId: process.env.GITHUB_CLIENTID,
+      secret: process.env.GITHUB_SECRET
+    }
+  }
+  if ((process.env.FACEBOOK === true) && process.env.FACEBOOK_APPID && process.env.FACEBOOK_SECRET){
+    config.admin.facebook = {
+      enable: true,
+      appId: process.env.FACEBOOK_APPID,
+      secret: process.env.FACEBOOK_SECRET
+    }
+  }
+  if ((process.env.GITHUB === true) && process.env.GOOGLE_CLIENTID && process.env.GOOGLE_SECRET){
+    config.admin.github = {
+      enable: true,
+      clientId: process.env.GOOGLE_CLIENTID,
+      secret: process.env.GOOGLE_SECRET
+    }
+  }
+
+
   // Create the admin
   createAdmin(config.admin.username, config.admin.password);
 

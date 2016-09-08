@@ -1,4 +1,3 @@
 *.iml
 .idea/
-private/config.json
 .sass-cache/
