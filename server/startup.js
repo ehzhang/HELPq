@@ -8,23 +8,23 @@ Meteor.startup(function(){
   }
   if ((process.env.GITHUB === true) && process.env.GITHUB_CLIENTID && process.env.GITHUB_SECRET){
     config.github = {
-      enable: true,
-      clientId: process.env.GITHUB_CLIENTID,
-      secret: process.env.GITHUB_SECRET
+      'enable': true,
+      'clientId': process.env.GITHUB_CLIENTID,
+      'secret': process.env.GITHUB_SECRET
     }
   }
   if ((process.env.FACEBOOK === true) && process.env.FACEBOOK_APPID && process.env.FACEBOOK_SECRET){
     config.facebook = {
-      enable: true,
-      appId: process.env.FACEBOOK_APPID,
-      secret: process.env.FACEBOOK_SECRET
+      'enable': true,
+      'appId': process.env.FACEBOOK_APPID,
+      'secret': process.env.FACEBOOK_SECRET
     }
   }
   if ((process.env.GOOGLE === true) && process.env.GOOGLE_CLIENTID && process.env.GOOGLE_SECRET){
     config.github = {
-      enable: true,
-      clientId: process.env.GOOGLE_CLIENTID,
-      secret: process.env.GOOGLE_SECRET
+      'enable': true,
+      'clientId': process.env.GOOGLE_CLIENTID,
+      'secret': process.env.GOOGLE_SECRET
     }
   }
 
