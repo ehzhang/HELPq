@@ -20,7 +20,7 @@ Meteor.startup(function(){
       secret: process.env.FACEBOOK_SECRET
     }
   }
-  if ((process.env.GITHUB === true) && process.env.GOOGLE_CLIENTID && process.env.GOOGLE_SECRET){
+  if ((process.env.GOOGLE === true) && process.env.GOOGLE_CLIENTID && process.env.GOOGLE_SECRET){
     config.admin.github = {
       enable: true,
       clientId: process.env.GOOGLE_CLIENTID,
