@@ -88,5 +88,5 @@ function loginPassword(t) {
     return [true, {loginService: 'cas', credentialToken: credentialToken}];
   });
   Reload._migrate(null, {immediateMigration: true});
-  //window.location = loginUrl;
+  window.location = loginUrl;
 }
