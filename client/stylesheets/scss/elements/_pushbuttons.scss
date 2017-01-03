@@ -73,5 +73,8 @@ button.push {
     border-bottom-color: lighten($facebook-blue, 10);
   }
 
-
+  &.cas {
+    background: $cas-gray;
+    border-bottom-color: lighten($cas-gray, 10);
+  }
 }
