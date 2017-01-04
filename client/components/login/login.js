@@ -45,7 +45,7 @@ Template.login.rendered = function(){
 
 function loginPassword(t){
   Meteor.loginWithPassword(
-      $(t.findAll('#username')).val(),
+      $(t.findAll('#username')).val().trim(),
       $(t.findAll('#password')).val(),
       function(error){
         if (error){
