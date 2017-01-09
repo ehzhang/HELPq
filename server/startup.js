@@ -28,7 +28,6 @@ Meteor.startup(function(){
 
     return user;
   });
-
 });
 
 function createAdmin(username, password){

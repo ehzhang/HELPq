@@ -20,7 +20,8 @@
   },
   "settings": {
     "queueEnabled": true,
-    "expirationDelay": 1800000
+    "expirationDelay": 1800000,
+    "apiKey": "abcdef1234"
   },
   "defaultMentor": true
 }
