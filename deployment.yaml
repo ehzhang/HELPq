@@ -1,0 +1,22 @@
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: helpq
+    spec:
+      containers:
+      - name: meteor
+        image: hackgt/helpq
+        ports:
+        - name: http
+          containerPort: 3000
+        env:
+        - name: PORT
+          value: "3000"
+        - name: MONGO_URL
+          value: mongodb://mongo/helpq
+        - name: MONGO_OPLOG_URL
+          value: mongodb://mongo/local
+        - name: RELEASE
+          value: 1.2.1
