@@ -22,9 +22,10 @@ metadata:
 spec:
   replicas: 1
   template:
-    metadata:
+    metadata:    
+      name: helpq
       labels:
-        app: helpq
+        name: helpq
     spec:
       containers:
       - name: meteor
@@ -37,7 +38,7 @@ spec:
           value: "3000"
         - name: MONGO_URL
           value: mongodb://mongo-mongodb/helpq
-        - name: MONGO_OPLOG_URL
-          value: mongodb://mongo-mongodb/local
         - name: RELEASE
           value: 1.2.1
+        - name: ROOT_URL
+          value: http://127.0.0.1
