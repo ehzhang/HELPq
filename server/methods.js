@@ -38,10 +38,11 @@ function createTicket(topic, location, contact) {
     if (userActiveTickets.length > 0) return;
 
     var user = _getUser(this.userId);
+    var name = _getUserName(user);
 
     Tickets.insert({
       userId: user._id,
-      name: _getUserName(user),
+      name: name,
       topic: topic,
       location: location,
       contact: contact,
@@ -50,6 +51,41 @@ function createTicket(topic, location, contact) {
       expiresAt: _settings().expirationDelay > 0 ? Date.now() + _settings().expirationDelay : Infinity,
       rating: null
     });
+
+    // Slack webhook, yo.
+    var payload = {
+      "attachments": [
+        {
+          "fallback": "New ticket from " + name + ": " + topic,
+          "pretext": "New ticket created via HELPq!",
+          "title": "Help requested by " + name,
+          "title_link": Meteor.absoluteUrl() + "mentor",
+          "fields": [
+            {
+              "title": "Topic",
+              "value": topic,
+              "short": false,
+            },
+            {
+              "title": "Location",
+              "value": location,
+              "short": true
+            },
+            {
+              "title": "Contact",
+              "value": contact,
+              "short": true
+            }
+          ],
+          "color": "#3C6EB6"
+        }
+      ],
+      "username": "HELPqbot",
+      "icon_emoji": ":raising_hand:"
+    };
+
+    var slackWebhookUrl = JSON.parse(Assets.getText('config.json')).settings.slackWebhookUrl;
+    Meteor.http.call("POST", slackWebhookUrl, { data: payload });
 
     _log("Ticket Created by " + this.userId);
   }
@@ -71,18 +107,55 @@ function claimTicket(id){
     }).fetch();
 
     if (currentClaim.length === 0){
+      var name =  _getUserName(user);
       Tickets.update({
         _id: id
       },{
         $set: {
           status: "CLAIMED",
           claimId: user._id,
-          claimName: _getUserName(user),
+          claimName: name,
           claimTime: Date.now()
         }
       });
 
       _log("Ticket Claimed by " + this.userId);
+
+      // Slack webhook, yo.
+      var payload = {
+        "attachments": [
+          {
+            "fallback": "Ticket for " + ticket.name + " claimed by " + name,
+            "title": "Ticket for " + ticket.name + " claimed by " + name,
+            "color": "#52A157"
+          }
+        ],
+        "username": "HELPqbot",
+        "icon_emoji": ":raising_hand:"
+      };
+
+      var slackWebhookUrl = JSON.parse(Assets.getText('config.json')).settings.slackWebhookUrl;
+      Meteor.http.call("POST", slackWebhookUrl, { data: payload });
+
+      // If ticket came from Slack, we need to send another message
+      if (ticket.location === "Slack created.") {
+        var payload2 = {
+          "attachments": [
+            {
+              "fallback": "Your ticket has been claimed by " + name,
+              "title": "Your ticket has been claimed by " + name + "!",
+              "color": "#52A157"
+            }
+          ],
+          "username": "HELPqbot",
+          "icon_emoji": ":raising_hand:",
+          "channel": "@" + ticket.name
+        };
+
+        var slackWebhookUrl = JSON.parse(Assets.getText('config.json')).settings.slackWebhookUrl;
+        Meteor.http.call("POST", slackWebhookUrl, { data: payload2 });
+      }
+
       return true;
     }
   }
@@ -109,6 +182,43 @@ function completeTicket(id){
     });
 
     _log("Ticket Completed by " + this.userId);
+
+    // Slack webhook, yo.
+      var payload = {
+        "attachments": [
+          {
+            "fallback": "Ticket for " + ticket.name + " completed!",
+            "title": ":raised_hands: Ticket for " + ticket.name + " completed!",
+            "color": "#52A157"
+          }
+        ],
+        "username": "HELPqbot",
+        "icon_emoji": ":raising_hand:"
+      };
+
+      var slackWebhookUrl = JSON.parse(Assets.getText('config.json')).settings.slackWebhookUrl;
+      Meteor.http.call("POST", slackWebhookUrl, { data: payload });
+
+      // If ticket came from Slack, we need to send another message
+      if (ticket.location === "Slack created.") {
+        var payload2 = {
+          "attachments": [
+            {
+              "fallback": "Your ticket has been marked as completed",
+              "title": "Your ticket has been marked as completed",
+              "text": "If this is not the case, please contact @andrew!",
+              "color": "#52A157"
+            }
+          ],
+          "username": "HELPqbot",
+          "icon_emoji": ":raising_hand:",
+          "channel": "@" + ticket.name
+        };
+
+        var slackWebhookUrl = JSON.parse(Assets.getText('config.json')).settings.slackWebhookUrl;
+        Meteor.http.call("POST", slackWebhookUrl, { data: payload2 });
+      }
+
     return true;
   }
   return false;
@@ -128,6 +238,63 @@ function reopenTicket(id){
       }
     });
     _log("Ticket Reopened: " + id);
+
+    var ticket = Tickets.findOne({_id: id});
+    // Slack webhook, yo.
+    var payload = {
+      "attachments": [
+        {
+          "fallback": "Ticket reopened for " + ticket.name + " (" + ticket.topic + ")",
+          "pretext": "Ticket reopened via HELPq!",
+          "title": "[REOPENED] Help requested by " + ticket.name,
+          "title_link": Meteor.absoluteUrl() + "mentor",
+          "fields": [
+            {
+              "title": "Topic",
+              "value": ticket.topic,
+              "short": false,
+            },
+            {
+              "title": "Location",
+              "value": ticket.location,
+              "short": true
+            },
+            {
+              "title": "Contact",
+              "value": ticket.contact,
+              "short": true
+            }
+          ],
+          "color": "#3C6EB6"
+        }
+      ],
+      "username": "HELPqbot",
+      "icon_emoji": ":raising_hand:"
+    };
+
+    var slackWebhookUrl = JSON.parse(Assets.getText('config.json')).settings.slackWebhookUrl;
+    Meteor.http.call("POST", slackWebhookUrl, { data: payload });
+
+    // If ticket came from Slack, we need to send another message
+    if (ticket.location === "Slack created.") {
+      var payload2 = {
+        "attachments": [
+          {
+            "fallback": "Your ticket has been reopened.",
+            "title": "Your ticket has been reopened.",
+            "text": "Apologies for the inconvenience! If this keeps happening, please contact @andrew.",
+            "color": "#3C6EB6"
+          }
+        ],
+        "username": "HELPqbot",
+        "icon_emoji": ":raising_hand:",
+        "channel": "@" + ticket.name
+      };
+
+      var slackWebhookUrl = JSON.parse(Assets.getText('config.json')).settings.slackWebhookUrl;
+      Meteor.http.call("POST", slackWebhookUrl, { data: payload2 });
+    }
+
     return true;
   }
   return false;
@@ -169,6 +336,24 @@ function cancelTicket(id){
       }
     });
     _log("Ticket Cancelled by " + this.userId);
+
+    // Slack webhook, yo.
+    var payload = {
+      "attachments": [
+        {
+          "fallback": "Ticket cancelled by " + ticket.name,
+          "pretext": "Ticket cancelled via HELPq",
+          "title": "Ticket cancelled by " + ticket.name,
+          "color": "#F15340"
+        }
+      ],
+      "username": "HELPqbot",
+      "icon_emoji": ":raising_hand:"
+    };
+
+    var slackWebhookUrl = JSON.parse(Assets.getText('config.json')).settings.slackWebhookUrl;
+    Meteor.http.call("POST", slackWebhookUrl, { data: payload });
+
     return true;
   }
 }
@@ -195,6 +380,37 @@ function expireTicket(id){
       }
     });
     _log("Ticket Expired " + this.userId);
+
+    // Slack webhook, yo.
+    var payload = {
+      "attachments": [
+        {
+          "fallback": "Ticket for " + ticket.name + " expired.",
+          "pretext": ":warning: Ticket expiration! :warning:",
+          "title": "Ticket for " + ticket.name + "expired.",
+          "fields": [
+            {
+              "title": "Topic",
+              "value": ticket.topic,
+              "short": false,
+            },
+            {
+              "title": "Location",
+              "value": ticket.location,
+              "short": true
+            },
+            {
+              "title": "Contact",
+              "value": ticket.contact,
+              "short": true
+            }
+          ],
+          "color": "#F15340"
+        }
+      ],
+      "username": "HELPqbot",
+      "icon_emoji": ":raising_hand:"
+    };
   }
 }
 

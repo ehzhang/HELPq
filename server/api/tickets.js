@@ -170,11 +170,32 @@ WebApp.connectHandlers.use("/createTicket", function(req, res, next) {
 
   // Delete the ticket.
   ticket_id = ticket._id;
-  Tickets.remove({
+  Tickets.update({
     _id: ticket_id
+  },{
+    $set: {
+      status: "CANCELLED"
+    }
   });
 
-  _log("Ticket Deleted via API for " + name);
+  _log("Ticket Cancelled via API for " + name);
+
+  // Slack webhook, yo.
+  var payload = {
+    "attachments": [
+      {
+        "fallback": "Ticket cancelled by @" + name,
+        "pretext": "Ticket cancelled via Slack",
+        "title": "Ticket cancelled by @" + name,
+        "color": "#F15340"
+      }
+    ],
+    "username": "HELPqbot",
+    "icon_emoji": ":raising_hand:"
+  };
+
+  var slackWebhookUrl = JSON.parse(Assets.getText('config.json')).settings.slackWebhookUrl;
+  Meteor.http.call("POST", slackWebhookUrl, { data: payload });
 
   // Return the ticket.
   response_obj.deleted = true;
@@ -214,16 +235,22 @@ function createTicketGivenNameAndTopic(name, topic){
 
     _log("Ticket Created via API for " + name);
 
-      // Slack webhook, yo.
+    // Slack webhook, yo.
     var payload = {
       "attachments": [
         {
           "fallback": "New ticket from @" + name + ": " + topic,
           "pretext": "New ticket created via Slack",
           "title": "Help requested by @" + name,
-          "text": topic,
           "title_link": Meteor.absoluteUrl() + "mentor",
-          "color": "#3C6EB6"
+          "color": "#3C6EB6",
+          "fields": [
+            {
+              "title": "Topic",
+              "value": topic,
+              "short": false,
+            }
+          ]
         }
       ],
       "username": "HELPqbot",
