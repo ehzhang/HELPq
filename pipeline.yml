@@ -9,8 +9,9 @@ resources:
     type: docker-image
     source:
       repository: hackgt/helpq
-      username: lol
-      password: trololo
+      email: {{dockerhub_email}}
+      username: {{dockerhub_user}}
+      password: {{dockerhub_pass}}
 
 jobs:
   - name: build-helpq
@@ -20,7 +21,3 @@ jobs:
       - put: helpq-image
         params:
           build: helpq
-        get_params:
-          save: true
-      - task: build-test
-        file: helpq/build.yml
