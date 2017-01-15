@@ -36,8 +36,8 @@ spec:
         - name: PORT
           value: "3000"
         - name: MONGO_URL
-          value: mongodb://mongo/helpq
+          value: mongodb://mongo-mongodb/helpq
         - name: MONGO_OPLOG_URL
-          value: mongodb://mongo/local
+          value: mongodb://mongo-mongodb/local
         - name: RELEASE
           value: 1.2.1
