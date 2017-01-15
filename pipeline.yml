@@ -19,7 +19,7 @@ resources:
   - name: hackgt-cluster
     type: k8s-resource
     source:
-      url: https://104.196.175.246
+      url: {{k8s_url}}
       username: {{k8s_user}}
       password: {{k8s_pass}}
       namespace: default
@@ -35,4 +35,4 @@ jobs:
           build: helpq
       - put: hackgt-cluster
         params:
-            spec_path: deployment.yaml
+            spec_path: helpq/deployment.yml
