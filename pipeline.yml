@@ -1,10 +1,14 @@
+resource_types:
+  - name: k8s-resource
+    type: docker-image
+    source:
+      repository: frodenas/k8s-resource
 resources:
   - name: helpq
     type: git
     source:
       uri: https://github.com/HackGT/HELPq.git
       branch: dev
-
   - name: helpq-image
     type: docker-image
     source:
@@ -12,6 +16,14 @@ resources:
       email: {{dockerhub_email}}
       username: {{dockerhub_user}}
       password: {{dockerhub_pass}}
+  - name: hackgt-cluster
+    type: k8s-resource
+    source:
+      url: https://104.196.175.246
+      username: {{k8s_user}}
+      password: {{k8s_pass}}
+      namespace: default
+      skip_tls_verify: true
 
 jobs:
   - name: build-helpq
@@ -21,3 +33,6 @@ jobs:
       - put: helpq-image
         params:
           build: helpq
+      - put: hackgt-cluster
+        params:
+            spec_path: deployment.yaml
