@@ -21,7 +21,8 @@
   "settings": {
     "queueEnabled": true,
     "expirationDelay": 1800000,
-    "apiKey": "abcdef1234"
+    "apiKey": "abcdef1234",
+    "slackWebhookUrl": "https://hooks.slack.com/services/token"
   },
   "defaultMentor": true
 }

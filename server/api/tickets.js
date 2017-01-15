@@ -213,9 +213,30 @@ function createTicketGivenNameAndTopic(name, topic){
     });
 
     _log("Ticket Created via API for " + name);
+
+      // Slack webhook, yo.
+    var payload = {
+      "attachments": [
+        {
+          "fallback": "New ticket from @" + name + ": " + topic,
+          "pretext": "New ticket created via Slack",
+          "title": "Help requested by @" + name,
+          "text": topic,
+          "title_link": Meteor.absoluteUrl() + "mentor",
+          "color": "#3C6EB6"
+        }
+      ],
+      "username": "HELPqbot",
+      "icon_emoji": ":raising_hand:"
+    };
+
+    var slackWebhookUrl = JSON.parse(Assets.getText('config.json')).settings.slackWebhookUrl;
+    Meteor.http.call("POST", slackWebhookUrl, { data: payload });
+
+    return ticket;
   }
 
-  return ticket;
+  return undefined;
 }
 
 /**
