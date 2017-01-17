@@ -17,6 +17,9 @@ Meteor.startup(function(){
   // Add Base Settings
   setBasicSettings(config);
 
+  // Add Slack Settings
+  setSlackSettings(config);
+
   Accounts.onCreateUser(function(options, user){
     if (options.profile){
       user.profile = options.profile;
@@ -88,5 +91,15 @@ function setBasicSettings(config){
     // Remove all documents and then create the singular settings document.
     Settings.remove({});
     Settings.insert(config.settings);
+  }
+}
+
+function setSlackSettings(config){
+  // Check if the settings document already exists
+  var settings = SlackSettings.find({}).fetch();
+  if (settings.length == 0 || settings.length > 1){
+    // Remove all documents and then create the singular settings document.
+    SlackSettings.remove({});
+    SlackSettings.insert(config.slack);
   }
 }

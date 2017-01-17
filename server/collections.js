@@ -18,6 +18,7 @@
  *     completeTime: Number (Milliseconds)
  *     rating: NUMBER
  *     comments: STRING
+ *     slackCreated: BOOLEAN
  *  }
  *
  */
@@ -45,6 +46,18 @@ Announcements = new Meteor.Collection('announcements');
  * }
  */
 Settings = new Meteor.Collection('settings');
+
+/**
+ * Slack settings contain the settings that deal with Slack.
+ *
+ * There is and should only be a single document.
+ * {
+ *  slackEnabled: BOOLEAN
+ *  token: STRING
+ *  slackWebhookUrl: STRING
+ * }
+ */
+SlackSettings = new Meteor.Collection('slackSettings');
 
 /**
  * Users:

@@ -40,54 +40,7 @@ function createTicket(topic, location, contact) {
     var user = _getUser(this.userId);
     var name = _getUserName(user);
 
-    Tickets.insert({
-      userId: user._id,
-      name: name,
-      topic: topic,
-      location: location,
-      contact: contact,
-      timestamp: Date.now(),
-      status: "OPEN",
-      expiresAt: _settings().expirationDelay > 0 ? Date.now() + _settings().expirationDelay : Infinity,
-      rating: null
-    });
-
-    // Slack webhook, yo.
-    var payload = {
-      "attachments": [
-        {
-          "fallback": "New ticket from " + name + ": " + topic,
-          "pretext": "New ticket created via HELPq!",
-          "title": "Help requested by " + name,
-          "title_link": Meteor.absoluteUrl() + "mentor",
-          "fields": [
-            {
-              "title": "Topic",
-              "value": topic,
-              "short": false,
-            },
-            {
-              "title": "Location",
-              "value": location,
-              "short": true
-            },
-            {
-              "title": "Contact",
-              "value": contact,
-              "short": true
-            }
-          ],
-          "color": "#3C6EB6"
-        }
-      ],
-      "username": "HELPqbot",
-      "icon_emoji": ":raising_hand:"
-    };
-
-    var slackWebhookUrl = JSON.parse(Assets.getText('config.json')).settings.slackWebhookUrl;
-    Meteor.http.call("POST", slackWebhookUrl, { data: payload });
-
-    _log("Ticket Created by " + this.userId);
+    return _createTicket(name, topic, location, contact, user._id);
   }
 }
 
@@ -121,39 +74,35 @@ function claimTicket(id){
 
       _log("Ticket Claimed by " + this.userId);
 
-      // Slack webhook, yo.
-      var payload = {
-        "attachments": [
-          {
-            "fallback": "Ticket for " + ticket.name + " claimed by " + name,
-            "title": "Ticket for " + ticket.name + " claimed by " + name,
-            "color": "#52A157"
-          }
-        ],
-        "username": "HELPqbot",
-        "icon_emoji": ":raising_hand:"
-      };
-
-      var slackWebhookUrl = JSON.parse(Assets.getText('config.json')).settings.slackWebhookUrl;
-      Meteor.http.call("POST", slackWebhookUrl, { data: payload });
-
-      // If ticket came from Slack, we need to send another message
-      if (ticket.location === "Slack created.") {
-        var payload2 = {
+      if (_slackSettings().slackEnabled) {
+        // Send Slack msg that ticket was claimed.
+        var payload = {
           "attachments": [
             {
-              "fallback": "Your ticket has been claimed by " + name,
-              "title": "Your ticket has been claimed by " + name + "!",
+              "fallback": "Ticket for " + ticket.name + " claimed by " + name,
+              "title": "Ticket for " + ticket.name + " claimed by " + name,
               "color": "#52A157"
             }
-          ],
-          "username": "HELPqbot",
-          "icon_emoji": ":raising_hand:",
-          "channel": "@" + ticket.name
+          ]
         };
 
-        var slackWebhookUrl = JSON.parse(Assets.getText('config.json')).settings.slackWebhookUrl;
-        Meteor.http.call("POST", slackWebhookUrl, { data: payload2 });
+        _sendWebhookToSlack(payload);
+
+        // If the ticket came from Slack, DM the user.
+        if (ticket.userId === 'Slack') {
+          var dm_payload = {
+            "attachments": [
+              {
+                "fallback": "Your ticket has been claimed by " + name,
+                "title": "Your ticket has been claimed by " + name + "!",
+                "color": "#52A157"
+              }
+            ],
+            "channel": "@" + ticket.name
+          }
+
+          _sendWebhookToSlack(dm_payload);
+        }
       }
 
       return true;
@@ -183,7 +132,8 @@ function completeTicket(id){
 
     _log("Ticket Completed by " + this.userId);
 
-    // Slack webhook, yo.
+    if (_slackSettings().slackEnabled) {
+      // Send Slack msg to mentor feed that Ticket was completed.
       var payload = {
         "attachments": [
           {
@@ -191,33 +141,28 @@ function completeTicket(id){
             "title": ":raised_hands: Ticket for " + ticket.name + " completed!",
             "color": "#52A157"
           }
-        ],
-        "username": "HELPqbot",
-        "icon_emoji": ":raising_hand:"
+        ]
       };
 
-      var slackWebhookUrl = JSON.parse(Assets.getText('config.json')).settings.slackWebhookUrl;
-      Meteor.http.call("POST", slackWebhookUrl, { data: payload });
+      _sendWebhookToSlack(payload);
 
-      // If ticket came from Slack, we need to send another message
-      if (ticket.location === "Slack created.") {
-        var payload2 = {
+      // If the ticket came from Slack, DM the user.
+      if (ticket.userId === 'Slack') {
+        var dm_payload = {
           "attachments": [
             {
-              "fallback": "Your ticket has been marked as completed",
-              "title": "Your ticket has been marked as completed",
-              "text": "If this is not the case, please contact @andrew!",
+              "fallback": "Your ticket has been marked as completed!",
+              "title": "Your ticket has been marked as completed!",
+              "text": "If this is not the case, please contact an admin.",
               "color": "#52A157"
             }
           ],
-          "username": "HELPqbot",
-          "icon_emoji": ":raising_hand:",
           "channel": "@" + ticket.name
         };
 
-        var slackWebhookUrl = JSON.parse(Assets.getText('config.json')).settings.slackWebhookUrl;
-        Meteor.http.call("POST", slackWebhookUrl, { data: payload2 });
+        _sendWebhookToSlack(dm_payload);
       }
+    }
 
     return true;
   }
@@ -240,59 +185,56 @@ function reopenTicket(id){
     _log("Ticket Reopened: " + id);
 
     var ticket = Tickets.findOne({_id: id});
-    // Slack webhook, yo.
-    var payload = {
-      "attachments": [
-        {
-          "fallback": "Ticket reopened for " + ticket.name + " (" + ticket.topic + ")",
-          "pretext": "Ticket reopened via HELPq!",
-          "title": "[REOPENED] Help requested by " + ticket.name,
-          "title_link": Meteor.absoluteUrl() + "mentor",
-          "fields": [
-            {
-              "title": "Topic",
-              "value": ticket.topic,
-              "short": false,
-            },
-            {
-              "title": "Location",
-              "value": ticket.location,
-              "short": true
-            },
-            {
-              "title": "Contact",
-              "value": ticket.contact,
-              "short": true
-            }
-          ],
-          "color": "#3C6EB6"
-        }
-      ],
-      "username": "HELPqbot",
-      "icon_emoji": ":raising_hand:"
-    };
 
-    var slackWebhookUrl = JSON.parse(Assets.getText('config.json')).settings.slackWebhookUrl;
-    Meteor.http.call("POST", slackWebhookUrl, { data: payload });
-
-    // If ticket came from Slack, we need to send another message
-    if (ticket.location === "Slack created.") {
-      var payload2 = {
+    if (_slackSettings().slackEnabled) {
+      // Send Slack msg to mentor feed that Ticket was reopened.
+      var payload = {
         "attachments": [
           {
-            "fallback": "Your ticket has been reopened.",
-            "title": "Your ticket has been reopened.",
-            "text": "Apologies for the inconvenience! If this keeps happening, please contact @andrew.",
+            "fallback": "Ticket reopened for " + ticket.name + " (" + ticket.topic + ")",
+            "pretext": "Ticket reopened!",
+            "title": "[REOPENED] Help requested by " + ticket.name,
+            "title_link": Meteor.absoluteUrl() + "mentor",
+            "fields": [
+              {
+                "title": "Topic",
+                "value": ticket.topic,
+                "short": false,
+              },
+              {
+                "title": "Location",
+                "value": ticket.location,
+                "short": true
+              },
+              {
+                "title": "Contact",
+                "value": ticket.contact,
+                "short": true
+              }
+            ],
             "color": "#3C6EB6"
           }
-        ],
-        "username": "HELPqbot",
-        "icon_emoji": ":raising_hand:",
-        "channel": "@" + ticket.name
+        ]
       };
 
-      var slackWebhookUrl = JSON.parse(Assets.getText('config.json')).settings.slackWebhookUrl;
-      Meteor.http.call("POST", slackWebhookUrl, { data: payload2 });
+      _sendWebhookToSlack(payload)
+
+      // If the ticket came from Slack, DM the user.
+      if (ticket.userId === 'Slack') {
+        var dm_payload = {
+          "attachments": [
+            {
+              "fallback": "Your ticket has been reopened.",
+              "title": "Your ticket has been reopened.",
+              "text": "Apologies for the inconvenience! If this keeps happening, please contact an admin.",
+              "color": "#3C6EB6"
+            }
+          ],
+          "channel": "@" + ticket.name
+        };
+
+        _sendWebhookToSlack(dm_payload);
+      }
     }
 
     return true;
@@ -328,33 +270,7 @@ function cancelTicket(id){
   var ticket = Tickets.findOne({_id: id});
 
   if (authorized.mentor(this.userId) || ticket.userId === this.userId){
-    Tickets.update({
-      _id: id
-    },{
-      $set: {
-        status: "CANCELLED"
-      }
-    });
-    _log("Ticket Cancelled by " + this.userId);
-
-    // Slack webhook, yo.
-    var payload = {
-      "attachments": [
-        {
-          "fallback": "Ticket cancelled by " + ticket.name,
-          "pretext": "Ticket cancelled via HELPq",
-          "title": "Ticket cancelled by " + ticket.name,
-          "color": "#F15340"
-        }
-      ],
-      "username": "HELPqbot",
-      "icon_emoji": ":raising_hand:"
-    };
-
-    var slackWebhookUrl = JSON.parse(Assets.getText('config.json')).settings.slackWebhookUrl;
-    Meteor.http.call("POST", slackWebhookUrl, { data: payload });
-
-    return true;
+    return _cancelTicket(ticket);
   }
 }
 
@@ -381,36 +297,55 @@ function expireTicket(id){
     });
     _log("Ticket Expired " + this.userId);
 
-    // Slack webhook, yo.
-    var payload = {
-      "attachments": [
-        {
-          "fallback": "Ticket for " + ticket.name + " expired.",
-          "pretext": ":warning: Ticket expiration! :warning:",
-          "title": "Ticket for " + ticket.name + "expired.",
-          "fields": [
+    if (_slackSettings().slackEnabled) {
+      // Send Slack msg to feed that a ticket has expired.
+      var payload = {
+        "attachments": [
+          {
+            "fallback": "Ticket for " + ticket.name + " expired.",
+            "pretext": ":warning: Ticket expiration! :warning:",
+            "title": "Ticket for " + ticket.name + "expired.",
+            "fields": [
+              {
+                "title": "Topic",
+                "value": ticket.topic,
+                "short": false,
+              },
+              {
+                "title": "Location",
+                "value": ticket.location,
+                "short": true
+              },
+              {
+                "title": "Contact",
+                "value": ticket.contact,
+                "short": true
+              }
+            ],
+            "color": "#F15340"
+          }
+        ]
+      };
+
+      _sendWebhookToSlack(payload);
+
+      // If the ticket came from Slack, DM the user.
+      if (ticket.userId === 'Slack') {
+        var dm_payload = {
+          "attachments": [
             {
-              "title": "Topic",
-              "value": ticket.topic,
-              "short": false,
-            },
-            {
-              "title": "Location",
-              "value": ticket.location,
-              "short": true
-            },
-            {
-              "title": "Contact",
-              "value": ticket.contact,
-              "short": true
+              "fallback": "Your ticket has expired.",
+              "title": "Your ticket has expired.",
+              "text": "Apologies for the inconvenience! If this keeps happening, please contact an admin.",
+              "color": "#F15340"
             }
           ],
-          "color": "#F15340"
-        }
-      ],
-      "username": "HELPqbot",
-      "icon_emoji": ":raising_hand:"
-    };
+          "channel": "@" + ticket.name
+        };
+
+        _sendWebhookToSlack(dm_payload);
+      }
+    }
   }
 }
 
