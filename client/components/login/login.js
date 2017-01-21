@@ -21,6 +21,11 @@ Template.login.events({
       loginStyle: 'redirect'
     })
   },
+  'click #login-google': function (e, t) {
+    Meteor.loginWithGoogle({
+      loginStyle: 'redirect'
+    })
+  },
   'keyup #password': function (e, t) {
     if (e.keyCode === 13) {
       loginPassword(t);

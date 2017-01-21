@@ -30,6 +30,11 @@
       <button id="login-facebook" class="fluid facebook push button"> Login with Facebook</button>
     {{/if}}
 
+    {{#if enabled.google}}
+      <br>
+      <button id="login-google" class="fluid google push button"> Login with Google</button>
+    {{/if}}
+
     {{#if enabled.cas}}
       <br>
       <button id="login-cas" class="fluid cas push button"> {{constant 'CUSTOM_LOGIN_NAME'}}</button>
