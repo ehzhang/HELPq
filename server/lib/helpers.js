@@ -100,9 +100,9 @@ _createTicket = function(name, topic, location, contact, userId){
         }
       ]
     };
-  }
 
-  _sendWebhookToSlack(payload);
+    _sendWebhookToSlack(payload);
+  }
 
   return ticket;
 };
