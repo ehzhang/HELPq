@@ -202,6 +202,37 @@ To edit copy, edit `lib/constants.js`.
 
 In this file, you will find a place where you can change various strings across the site, including the title of your app.
 
+#### Slack
+
+In order to enable Slack, you'll need to set up both [an incoming webhook](https://my.slack.com/services/new/incoming-webhook/), [a slash command](https://my.slack.com/services/new/slash-commands), and edit `private/config.json` appropriately.
+
+##### Incoming Webhook
+
+HELPq offers an incoming webhook which will post new tickets into a channel of your choice.
+
+In order to enable HELPq's incoming webhook, you'll first need to set up an incoming webhook via Slack's interface. You can do that [here](https://my.slack.com/services/new/incoming-webhook/). When setting up the webhook, you'll want to make note of the "Webhook URL". Grab that URL and edit the `slackWebhookUrl` variable under `slack` with that URL.
+
+Now, all updates to tickets will be posted to that channel!
+
+##### `/ticket` Slash Command
+
+HELPq will accept commands related to tickets via a Slack slash command. With this slash command, users will be able to create, cancel, and view their tickets.
+
+In order to enable HELPq's slash commands, you'll want to create a slash command via Slack's interface. You can do that [here](https://my.slack.com/services/new/slash-commands). You **must** to configure the slash command with the following settings:
+
+- Command: "/ticket"
+- URL: "[HELPq_URL]/ticket"
+- Method: "GET"
+- Autocomplete help text (Usage hint): "[create <topic> | delete | get]"
+
+The rest of the customization settings are up to you! Just make sure to grab the token and edit the `token` variable under `slack` with that token.
+
+Now, users in your Slack will be able to manage tickets via Slack! Your users will also be messaged when the status of their ticket changes. Neat, eh?
+
+##### Enable Slack for HELPq
+
+After you have everything else set up, flip `slackEnabled` under `slack` in `private/config.json` to true and you'll be good to go!
+
 Orientation
 -----------
 
