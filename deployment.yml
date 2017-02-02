@@ -27,9 +27,12 @@ spec:
       labels:
         name: helpq
     spec:
+      imagePullSecrets:
+      - name: myregistrykey
       containers:
       - name: meteor
-        image: hackgt/helpq
+        image: index.docker.io/hackgt/helpq_prod:latest
+        imagePullPolicy: Always
         ports:
         - name: http
           containerPort: 3000
@@ -37,8 +40,8 @@ spec:
         - name: PORT
           value: "3000"
         - name: MONGO_URL
-          value: mongodb://mongo-mongodb/helpq
+          value: mongodb://mongo-prod2-mongodb/helpq
         - name: RELEASE
           value: 1.2.1
         - name: ROOT_URL
-          value: http://127.0.0.1
+          value: https://helpq.hack.gt

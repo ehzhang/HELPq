@@ -74,8 +74,9 @@ button.push {
   }
 
   &.cas {
-    background: $cas-gray;
-    border-bottom-color: lighten($cas-gray, 10);
+    background: $cas-yellow;
+    color: white;
+    border-bottom-color: lighten($cas-yellow, 10);
   }
 
   &.google {

@@ -75,10 +75,11 @@ function addCustomIntegration(cas) {
       service: 'cas'
     }, {
       $set: {
-        baseURL: cas.baseURL,
-        loginURL: cas.loginURL
+        data: cas
       }
     })
+    Meteor.settings.public.cas = cas.public.cas;
+    Meteor.settings.cas = cas.cas;
   }
 }
 

@@ -17,7 +17,7 @@ Template.login.events({
     loginPassword(t);
   },
   'click #login-cas': function (e, t) {
-    loginWithCAS({
+    Meteor.loginWithCas({
       loginStyle: 'redirect'
     })
   },
@@ -64,34 +64,4 @@ function loginPassword(t) {
         }
       }
   )
-}
-
- function loginWithCAS (options, callback) {
-  // support both (options, callback) and (callback).
-  if (!callback && typeof options === 'function') {
-    callback = options;
-    options = {};
-  }
-  
-  var config = ServiceConfiguration.configurations.findOne({
-    service: 'cas'
-  });
-  if (!config) {
-    throw new ServiceConfiguration.ConfigError();
-  }
-  
-  var credentialToken = Random.secret();
-  var loginUrl = config.loginURL + "?service=" + Meteor.absoluteUrl('_cas/') + credentialToken;
-  
-  // TODO: add option for popup vs redirect
-  // if(options.loginStyle=='popup') {
-  //
-  // } else if(options.longinStyle=='redirect') {
-  //
-  // }
-  Reload._onMigrate('oauth', function () {
-    return [true, {loginService: 'cas', credentialToken: credentialToken}];
-  });
-  Reload._migrate(null, {immediateMigration: true});
-  window.location = loginUrl;
 }

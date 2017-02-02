@@ -4,6 +4,7 @@ accounts-github@1.0.6
 accounts-google@1.0.6
 accounts-oauth@1.1.8
 accounts-password@1.1.4
+atoy40:accounts-cas@0.0.2
 autoupdate@1.2.4
 babel-compiler@5.8.24_1
 babel-runtime@0.1.4
