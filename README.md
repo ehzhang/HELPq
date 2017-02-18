@@ -178,6 +178,25 @@ Deploy with:
   meteor deploy <your domain name>.meteor.com
 ```
 
+OR
+
+With Heroku:
+
+* Use [the meteor-buildpack-horse buildpack](https://github.com/AdmitHub/meteor-buildpack-horse.git)
+* Connect with [the MongoLab Heroku plugin](https://elements.heroku.com/addons/mongolab)
+* Set environment variables up as needed:
+    * GITHUB: [true / false] enables or disables GitHub OAuth
+    * GITHUB_CLIENTID
+    * GITHUB_SECRET
+    * FACEBOOK: [true / false] enables or disables Facebook OAuth
+    * FACEBOOK_APPID
+    * FACEBOOK_SECRET
+    * GOOGLE: [true / false] enables or disables Google OAuth
+    * GOOGLE_CLIENTID
+    * GOOGLE_SECRET
+    * ADMIN_PASSWORD: sets the default admin password
+
+
 Configuration
 -------------
 
