@@ -4,9 +4,9 @@
 </p>
 <br>
 
-An extensible, customizable real-time queue system, built with [Meteor](https://www.meteor.com/)!
+HackCU mentor website. Ticketing system to help hackers find available mentors.
 
-Forked from [HELPq](https://github.com/ehzhang/HELPq). Read the original [README here](README.md)
+Forked from [HELPq](https://github.com/ehzhang/HELPq). Read the original [README here](README.md). HELPq  is an extensible, customizable real-time queue system, built with [Meteor](https://www.meteor.com/)!
 
 ## Setup
 
@@ -26,6 +26,9 @@ Copy the `private/config.json.template` into `private/config.json`
 ```sh
   meteor
 ```
+
+Once done, add GitHub credentials for the HackCU Mentors app. It is owned by HackCU Github Organization.
+
 
 ## Run Server
 
