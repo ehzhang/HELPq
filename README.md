@@ -44,6 +44,7 @@ To deploy we will use `meteor up`. To do so first install it by running: `npm in
 
 
 - Create a new folder outside the project
+- Add your ssh keys to ssh-agent. Ex: `ssh-add ~/.ssh/id_rsa`
 - Run `mup init`
 - Edit the generated `mup.js` file to match the following:
 
