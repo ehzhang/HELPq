@@ -47,7 +47,7 @@ To deploy we will use `meteor up`. To do so first install it by running: `npm in
 - Run `mup init`
 - Edit the generated `mup.js` file to match the following:
 
-```
+```js
 module.exports = {
   servers: {
     one: {
