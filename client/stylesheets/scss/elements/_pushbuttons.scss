@@ -63,9 +63,13 @@ button.push {
   }
 
   &.github {
-    color: darken($github-gray, 50);
     background: $github-gray;
     border-bottom-color: lighten($github-gray, 3);
+  }
+
+  &.google {
+    background: $google-red;
+    border-bottom-color: lighten($google-red, 10);
   }
 
   &.facebook {
