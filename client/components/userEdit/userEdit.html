@@ -1,5 +1,6 @@
 <template name="userEdit">
   <div class="user-edit">
+
     <div class="ui form">
       <div class="field">
         <label>Name</label>
@@ -33,7 +34,14 @@
       <div class="field">
         <div class="ui fluid green save button">Save Profile</div>
       </div>
-
+       {{#unless profile.mentor }}
+          <div class="field">
+              <div id="mentor-me" class="ui fluid blue button">Become a mentor!</div>
+          </div>
+       {{/unless}}
+       {{#if profile.mentor }}
+           <p>You are a mentor! Thanks!</p>
+      {{/if}}
       {{#if success }}
         <div class="ui positive message">
           <div class="header">Saved Successfully!</div>
