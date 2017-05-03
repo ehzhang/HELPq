@@ -1,0 +1,29 @@
+{
+    "name": "HELPq",
+    "description": "An extensible, customizable real-time queue system",
+    "env": {
+        "ROOT_URL": "https://{SET THIS}.herokuapp.com/",
+        "ADMIN_PASSWORD": "{SET THIS}",
+        "ADMIN_USERNAME": "admin",
+        "DEFAULT_MENTOR": "true",
+        "FACEBOOK_CLIENT_ID": "facebook-client-id",
+        "FACEBOOK_ENABLE": "false",
+        "FACEBOOK_SECRET": "facebook-secret",
+        "GITHUB_CLIENT_ID": "github-client-id",
+        "GITHUB_ENABLE": "false",
+        "GITHUB_SECRET": "github-secret",
+        "GOOGLE_CLIENT_ID": "google-client-id",
+        "GOOGLE_ENABLE": "false",
+        "GOOGLE_SECRET": "google-secret",
+        "SETTINGS_EXPIRATION_DELAY": "1800000",
+        "SETTINGS_QUEUE_ENABLED": "true"
+    },
+    "addons": [
+        "mongolab"
+    ],
+    "buildpacks": [
+        {
+            "url": "https://github.com/AdmitHub/meteor-buildpack-horse"
+        }
+    ]
+}

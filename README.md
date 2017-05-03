@@ -149,6 +149,12 @@ You can install Meteor through their [website.](https://www.meteor.com/)
 Quickstart
 ----------
 
+#### Heroku
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/ehzhang/HELPq/tree/master)
+
+When deploying to Heroku, you **must** set at least the `ROOT_URL` and `ADMIN_PASSWORD` environment variables.
+
 #### Mac OS X, Linux
 
 ```sh
@@ -168,11 +174,9 @@ Deploy
 ------
 **IMPORTANT**
 
-Without login configuration, you will only be able to login with the admin username and password specified in `private/config.json`.
+Without login configuration, you will only be able to login with the admin username and password specified in `private/config.json` (or the corresponding environment variables).
 
-To change the password of the admin account after deployed, you must manually remove the admin user through the meteor mongo shell, and then redeploy with a new admin username/password value. *This will be changed pretty soon*
-
-Deploy with:
+If you're not using Heroku, you can deploy with:
 
 ```sh
   meteor deploy <your domain name>.meteor.com
@@ -183,10 +187,9 @@ Configuration
 
 #### Login
 
-To configure login, edit `private/config.json`
+To configure login, edit `private/config.json`. Alternatively, you can configure login using the environment variables listed in `app.json` (this is especially useful when using Heroku).
 
-In `private/config.json`, provide the appropriate application id/secret combinations
-for either Facebook or Github authentication, or choose to disable them.
+In `private/config.json` (or the corresponding environment variables), provide the appropriate application id/secret combinations for either Facebook or Github authentication, or choose to disable them.
 
 #### Branding
 
