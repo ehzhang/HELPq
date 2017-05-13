@@ -8,16 +8,16 @@
 //------------------------------
 
 // Primary color of your brand (Used for primary buttons, glows, etc.)
-$brand-primary: #137DC3;
+$brand-primary: #963A20;
 
 // Secondary color of your brand (used for secondary buttons)
-$brand-secondary: #FFBF0A;
+$brand-secondary: #220B0D;
 
 // Success Buttons
 $brand-success: rgb(46, 204, 113);
 
 // Danger/Negative Buttons
-$brand-danger: #FF490A;
+$brand-danger: #ff240b;
 
 // Black
 $black: #2d2d2d;
@@ -29,8 +29,10 @@ $black: #2d2d2d;
 // Facebook Color
 $facebook-blue: #3b5998;
 
+$google-red: #d34836;
+
 // Github Gray
-$github-gray: #e4e4e4;
+$github-gray: #24292e;
 
 // ===============================================================================
 
@@ -52,8 +54,8 @@ $github-gray: #e4e4e4;
 }
 
 @mixin logo-font(){
-  font-family: 'Montserrat', 'Helvetica Neue', 'Helvetica', sans-serif;
-  font-weight: 700;
+  font-family: 'Catamaran', 'Helvetica Neue', 'Helvetica', sans-serif;
+  font-weight: 300;
 }
 
 // ===============================================================================
@@ -82,7 +84,8 @@ $github-gray: #e4e4e4;
   // background-size: cover;
 
   // Background image that repeats
-  background: url(/assets/images/geometry2.png) repeat;
+  background: url(/assets/images/hackcu.png) no-repeat center center;
+  background-size: cover;
 }
 
 
@@ -96,10 +99,10 @@ $github-gray: #e4e4e4;
   // background-size: cover;
 
   // Basic white on brand color:
-  // background: $brand-primary;
+   background: $brand-primary;
 
   // Repeated Background:
-  background: url(/assets/images/geometry2.png) repeat;
+  //background: url(/assets/images/geometry2.png) repeat;
 }
 
 // Footer, which appears on each page.

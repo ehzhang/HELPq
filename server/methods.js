@@ -256,7 +256,8 @@ function updateUser(id, profile){
       'name',
       'email',
       'phone',
-      'company'
+      'company',
+      'mentor'
     ];
 
     // Copy the user profile
@@ -268,6 +269,10 @@ function updateUser(id, profile){
         userProfile[field] = profile[field];
       }
     });
+
+    if (_.isBoolean(profile['mentor'])) {
+      userProfile['mentor'] = profile['mentor'];
+    }
 
     if(_.isArray(profile['skills'])){
       userProfile['skills'] = profile['skills'];

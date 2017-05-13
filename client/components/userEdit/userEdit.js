@@ -26,6 +26,26 @@ Template.userEdit.events({
   'click .delete.skill': function(e, t){
     removeSkill(e, t);
   },
+  'click #mentor-me': function (e, t) {
+      var profile = {
+        'mentor': 'true'
+      };
+
+      Meteor.call("updateUser", t.data._id, profile, function(err){
+          if (err){
+              t.error.set(err);
+              setTimeout(function(){
+                  t.error.set(false);
+              }, 5000)
+          } else {
+              t.success.set(true);
+              setTimeout(function(){
+                  t.success.set(false);
+              }, 5000);
+          }
+      });
+  },
+
   "keyup input[name='skills']": function(e, t){
     if (e.keyCode === 13){
       addSkill(e, t)
