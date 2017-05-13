@@ -1,4 +1,18 @@
 #!/bin/bash
+
+if [ -e private/config.json ]; then
+    
+    while true; do
+        read -p "Warning: config.json already exists, are you sure you want to ovewrite it? (y/n) " yn
+
+        case $yn in
+            [Yy]* ) echo "overwriting..."; break;;
+            [Nn]* ) exit;;
+            *) echo "Invalid response (y/n)"
+        esac
+    done
+fi
+
 cp private/config.json.template private/config.json
 echo "Server side config created."
 echo "Edit it in private/config.json to add Facebook or GitHub integration."
