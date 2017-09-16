@@ -1,42 +1,39 @@
 // Startup Functions
 Meteor.startup(function () {
-  // Grab the config
-  var config = JSON.parse(Assets.getText('config.json'));
-  
   // Create the admin
-  createAdmin(config.admin.username, config.admin.password);
-  
+  createAdmin(Meteor.settings.admin.username, Meteor.settings.admin.password);
+
   // Clear Service integrations
   ServiceConfiguration.configurations.remove({});
-  
+
   // Add Service Integrations
-  addServiceIntegration('github', config.github);
-  addFacebookIntegration(config.facebook);
-  addServiceIntegration('google', config.google);
-  addCustomIntegration(config.cas);
-  
+  addServiceIntegration('github', Meteor.settings.github);
+  addFacebookIntegration(Meteor.settings.facebook);
+  addServiceIntegration('google', Meteor.settings.google);
+  addCustomIntegration(Meteor.settings.cas);
+
   // Add Base Settings
   setBasicSettings(config);
-  
+
   Accounts.onCreateUser(function (options, user) {
     if (options.profile) {
       user.profile = options.profile;
-      
-      if (config.defaultMentor) {
+
+      if (Meteor.settings.defaultMentor) {
         user.profile.mentor = true;
       }
     }
-    
+
     return user;
   });
-  
+
 });
 
 function createAdmin(username, password) {
   var user = Meteor.users.findOne({
     username: username
   });
-  
+
   if (!user) {
     Accounts.createUser({
       username: username,
@@ -46,14 +43,14 @@ function createAdmin(username, password) {
       }
     });
   }
-  
+
   Meteor.users.update({
     username: username
   }, {
     $set: {
       'profile.admin': true
     }
-  })
+  });
 }
 
 function addServiceIntegration(service, config) {
@@ -77,7 +74,7 @@ function addCustomIntegration(cas) {
       $set: {
         data: cas
       }
-    })
+    });
     Meteor.settings.public.cas = cas.public.cas;
     Meteor.settings.cas = cas.cas;
   }
