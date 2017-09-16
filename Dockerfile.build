@@ -1,7 +1,18 @@
-FROM danieldent/meteor:1.1.0.2
+FROM ubuntu:trusty
+
+RUN apt-get update && apt-get install -y \
+    npm \
+    nodejs \
+    curl \
+    g++-4.8
+
+RUN ln -s $(which nodejs) /bin/node
+
+RUN curl 'https://install.meteor.com/?release=1.2.1' | sh
 
 CMD cd /src && \
-    meteor build --directory build && \
+    APP_ENV=production meteor build --directory /tmp/build && \
+    mv /tmp/build /src/build && \
     cd /src/build/bundle/programs/server && \
-    npm install
+    CXX=g++-4.8 CC=gcc-4.8 npm install
 

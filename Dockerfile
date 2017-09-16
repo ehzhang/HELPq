@@ -1,5 +1,5 @@
-FROM node:8-alpine
+FROM mhart/alpine-node:base-0.10
 
 ADD ./build /src
 
-RUN cd /src/bundle/ && node main.js
+CMD cd /src/bundle/ && node main.js
