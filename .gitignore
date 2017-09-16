@@ -2,3 +2,5 @@
 .idea/
 private/config.json
 .sass-cache/
+
+build
