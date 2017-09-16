@@ -28,7 +28,7 @@ image_name=$(echo "$image_name" | tr '[:upper:]' '[:lower:]')
 build_project_source() {
     if [[ -f Dockerfile.build ]]; then
         local build_image_name
-        build_image_name="$(basename "$(pwd)")-build"
+        build_image_name="${image_name}-build"
         $docker build -f Dockerfile.build --rm -t "$build_image_name" .
         $docker run -w '/src' -v "$(pwd):/src" "$build_image_name"
         sudo chown -R "$(id -u):$(id -g)" .
@@ -38,7 +38,7 @@ build_project_source() {
 test_project_source() {
     if [[ -f Dockerfile.test ]]; then
         local test_image_name
-        test_image_name="$(basename "$(pwd)")-test"
+        test_image_name="${image_name}-test"
         $docker build -f Dockerfile.test --rm -t "$test_image_name" .
         $docker run -w '/src' -v "$(pwd):/src" "$test_image_name"
         sudo chown -R "$(id -u):$(id -g)" .
