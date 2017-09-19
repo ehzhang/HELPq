@@ -1,25 +1,40 @@
 // Startup Functions
 Meteor.startup(function () {
+  var fs = Meteor.npmRequire("fs");
+  var path = Meteor.npmRequire("path");
+
+  var settings_text;
+  try {
+    settings_text = Assets.getText('config.json');
+  } catch (err) {
+    console.log("Could not find 'config.json' in default location.");
+    var settings_path = process.env.SETTINGS_FILE;
+    console.log("Looking for it in", settings_path);
+
+    settings_text = fs.readFileSync(settings_path);
+  }
+  var settings = JSON.parse(settings_text);
+
   // Create the admin
-  createAdmin(Meteor.settings.admin.username, Meteor.settings.admin.password);
+  createAdmin(settings.admin.username, settings.admin.password);
 
   // Clear Service integrations
   ServiceConfiguration.configurations.remove({});
 
   // Add Service Integrations
-  addServiceIntegration('github', Meteor.settings.github);
-  addFacebookIntegration(Meteor.settings.facebook);
-  addServiceIntegration('google', Meteor.settings.google);
-  addCustomIntegration(Meteor.settings.cas);
+  addServiceIntegration('github', settings.github);
+  addFacebookIntegration(settings.facebook);
+  addServiceIntegration('google', settings.google);
+  addCustomIntegration(settings.cas);
 
   // Add Base Settings
-  setBasicSettings(config);
+  setBasicSettings(settings);
 
   Accounts.onCreateUser(function (options, user) {
     if (options.profile) {
       user.profile = options.profile;
 
-      if (Meteor.settings.defaultMentor) {
+      if (settings.defaultMentor) {
         user.profile.mentor = true;
       }
     }
