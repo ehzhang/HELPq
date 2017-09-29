@@ -1,0 +1,4 @@
+---
+applications:
+- name: watson-hackathon-help
+  buildpack: https://github.com/cloudfoundry-community/cf-meteor-buildpack.git
