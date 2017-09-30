@@ -18,6 +18,10 @@
     "clientId": "google-client-id",
     "secret": "google-secret"
   },
+  "cas": {
+    "enable": false,
+    "loginURL": "https://example.com/cas/login"
+  },
   "settings": {
     "queueEnabled": true,
     "expirationDelay": 1800000
