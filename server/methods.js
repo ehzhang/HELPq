@@ -43,7 +43,7 @@ function createTicket(topic, location, contact, expirationInMinutes) {
 
     if (_settings().expirationDelay > 0) {
       expiresAt = Date.now() + _settings().expirationDelay;
-    } else if (_settings().expirationDelay === -1 && expirationInMinutes) {
+    } else if (_settings().expirationDelay === -1 && expirationInMinutes > 0) {
       expiresAt = Date.now() + 1000 * 60 * expirationInMinutes;
     }
 

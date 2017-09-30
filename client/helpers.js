@@ -23,3 +23,7 @@ UI.registerHelper('isEqual', function(a, b){
 UI.registerHelper('getExpirationDelay', function(){
   return Settings.findOne().expirationDelay;
 });
+
+UI.registerHelper('both', function(a, b){
+  return a && b;
+});

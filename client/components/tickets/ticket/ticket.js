@@ -19,6 +19,15 @@ Template.ticket.helpers({
   },
   hasClaimedTicket: function(){
     return Tickets.find({status: "CLAIMED", claimId: Meteor.user()._id}).fetch().length > 0;
+  },
+  isExpirable: function(){
+    return this.expiresAt !== Infinity;
+  },
+  relativeExpirationString: function(){
+    return "Ticket expiration: " + moment(this.expiresAt).from(ReactiveNow.get());
+  },
+  actualExpirationString: function(){
+    return "(" + moment(this.expiresAt).format('h:mm') + ")";
   }
 });
 
