@@ -22,7 +22,7 @@ Meteor.methods({
   setSetting : setSetting
 });
 
-function createTicket(topic, location, contact) {
+function createTicket(topic, location, contact, expirationInMinutes) {
   // Must be logged in and queue must be open
   if (authorized.user(this.userId) && _settings().queueEnabled) {
     // User can't have more than one
@@ -39,6 +39,14 @@ function createTicket(topic, location, contact) {
 
     var user = _getUser(this.userId);
 
+    var expiresAt = Infinity;
+
+    if (_settings().expirationDelay > 0) {
+      expiresAt = Date.now() + _settings().expirationDelay;
+    } else if (_settings().expirationDelay === -1 && expirationInMinutes) {
+      expiresAt = Date.now() + 1000 * 60 * expirationInMinutes;
+    }
+
     Tickets.insert({
       userId: user._id,
       name: _getUserName(user),
@@ -47,7 +55,7 @@ function createTicket(topic, location, contact) {
       contact: contact,
       timestamp: Date.now(),
       status: "OPEN",
-      expiresAt: _settings().expirationDelay > 0 ? Date.now() + _settings().expirationDelay : Infinity,
+      expiresAt: expiresAt,
       rating: null
     });
 
@@ -122,7 +130,7 @@ function reopenTicket(id){
     },{
       $set: {
         status: 'OPEN',
-        expiresAt: _settings().expirationDelay > 0 ? Date.now() + _settings().expirationDelay : Infinity,
+        // expiresAt: _settings().expirationDelay > 0 ? Date.now() + _settings().expirationDelay : Infinity,
         claimId: null,
         claimName: null
       }
