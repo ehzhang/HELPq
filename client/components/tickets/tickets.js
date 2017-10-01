@@ -3,6 +3,9 @@ Template.tickets.helpers({
     return Tickets.find({
       status: {
         $in: ['OPEN', 'CLAIMED']
+      },
+      expiresAt: {
+        $gt: InstantReactiveNow.get()
       }
     }).fetch();
   }
