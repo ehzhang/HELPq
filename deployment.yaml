@@ -5,7 +5,7 @@ git:
 wants:
     mongo: true
 env:
-    ROOT_URL: https://helpq-custom-expiration.pr.hack.gt
+    ROOT_URL: https://helpq-multiple-tickets.pr.hack.gt
     
 files:
   /etc/helpq:
