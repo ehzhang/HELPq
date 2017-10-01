@@ -82,10 +82,10 @@
                      class="clean"
                      placeholder="{{constant 'TICKET_PANEL_CONTACT_PLACEHOLDER'}}">
 
-              <br>
-              {{constant 'TICKET_PANEL_EXPIRATION'}}
-              <br>
               {{#if isEqual -1 getExpirationDelay}}
+                <br>
+                {{constant 'TICKET_PANEL_EXPIRATION'}}
+                <br>
                 <input id="expirationDelay"
                        type="number"
                        name="expirationDelay"
