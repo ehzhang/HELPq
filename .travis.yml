@@ -1,0 +1,20 @@
+dist: trusty
+language: ruby
+
+
+sudo: required
+services:
+  - docker
+
+
+script: |
+  .travis.d/build.sh &&
+  cd .travis.d && bundle install --path vendor/bundle &&
+  bundle exec ruby pr_autodeploy.rb
+
+env:
+  global:
+    - HACKGPROJECT_REV="a4089e26eea6f51517a0e00330e1296bb05cfef4"
+
+    - DOCKER_ID_USER="hackgt"
+

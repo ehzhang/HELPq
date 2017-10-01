@@ -4,6 +4,20 @@
   color: white;
 
   >.container {
+
+    #logo {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      display: none;
+      left: 50%;
+    }
+    @media only screen and (min-width: 768px) {
+      #logo {
+        display: block;
+      }
+    }
+    
+
     @include vertical-align();
     button {
       margin: 0 auto;

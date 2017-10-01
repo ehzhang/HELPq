@@ -91,6 +91,9 @@ function getActiveTickets(){
         {
           status: {
             $in: ["OPEN", "CLAIMED"]
+          },
+          expiresAt: {
+            $gt: Date.now()
           }
         }, {
           sort: {

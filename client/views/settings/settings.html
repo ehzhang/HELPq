@@ -22,6 +22,7 @@
     <h3 class="ui dividing header">
       Ticket Expiration
     </h3>
+
     <div class="ui form">
 
       <div class="grouped inline fields">
@@ -47,6 +48,12 @@
           <div class="ui radio checkbox" data-name="expire">
             <input type="radio" value="0" name="expirationDelay">
             <label>Tickets Don't Expire</label>
+          </div>
+        </div>
+        <div class="field">
+          <div class="ui radio checkbox" data-name="expire">
+            <input type="radio" value="-1" name="expirationDelay">
+            <label>Assign Tickets Custom Expiration Times</label>
           </div>
         </div>
       </div>
