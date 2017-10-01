@@ -4,3 +4,10 @@ git:
 
 wants:
     mongo: true
+
+files:
+  /etc/helpq:
+    secret: true
+    contents:
+      settings.json:
+        env: SETTINGS_FILE
