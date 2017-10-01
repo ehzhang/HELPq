@@ -2,3 +2,14 @@ git:
     remote: https://github.com/HackGT/helpq.git
     branch: dev
 
+wants:
+    mongo: true
+env:
+    ROOT_URL: https://helpq-custom-expiration.pr.hack.gt
+    
+files:
+  /etc/helpq:
+    secret: true
+    contents:
+      settings.json:
+        env: SETTINGS_FILE

@@ -15,3 +15,15 @@ UI.registerHelper('constant', function(variable){
 UI.registerHelper('userIs', function(role){
   return authorized[role]();
 });
+
+UI.registerHelper('isEqual', function(a, b){
+  return a === b;
+});
+
+UI.registerHelper('getExpirationDelay', function(){
+  return Settings.findOne().expirationDelay;
+});
+
+UI.registerHelper('both', function(a, b){
+  return a && b;
+});
