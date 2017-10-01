@@ -38,6 +38,10 @@
       <br>
       {{#if isExpirable}}
         <small>{{relativeExpirationString}} {{actualExpirationString}}</small>
+        <div class="expirationDiv">
+          <div style="width: {{formatPercent percentDone}}; background-color: {{getColor percentDone}}" class="expirationBar"></div>
+        </div>
+
       {{/if}}
     </div>
     <div class="extra content">

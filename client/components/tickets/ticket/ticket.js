@@ -28,6 +28,27 @@ Template.ticket.helpers({
   },
   actualExpirationString: function(){
     return "(" + moment(this.expiresAt).format('h:mm') + ")";
+  },
+  percentDone: function(){
+    //number between 0 and 1
+    if (this.expiresAt === Infinity) {
+      return 0;
+    }
+
+    var totalDuration = this.expiresAt - this.timestamp;
+
+    if (totalDuration === 0 || this.expiresAt < InstantReactiveNow.get()) {
+      return 1;
+    }
+
+    return 1 - (this.expiresAt - InstantReactiveNow.get()) / (this.expiresAt - this.timestamp);
+  },
+  formatPercent: function(percent){
+    //takes a value like 0.8 and outputs 80%
+    return percent * 100 + "%";
+  },
+  getColor: function(percent){
+    return 'hsl(' + (1 - percent) * 120 + ', 75%, 50%)'
   }
 });
 
