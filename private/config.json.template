@@ -20,7 +20,10 @@
   },
   "settings": {
     "queueEnabled": true,
-    "expirationDelay": 1800000
+    "expirationDelay": 1800000,
+  },
+  "LCS": {
+    "authURL":"FIXME"
   },
   "defaultMentor": true
 }
