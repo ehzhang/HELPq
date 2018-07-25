@@ -8,7 +8,7 @@ Meteor.addLCSLogin = function(config){
       console.log(Meteor.users.findOne({username:username}))
       if(!Meteor.users.findOne({username:username})){
 	
-	console.log(_settings());
+	console.log(_settings());//
 	console.log("url",config.authURL);
 	console.log(username,password);
 	const LCSResponse = HTTP.call('POST', config.authURL, {
@@ -27,7 +27,7 @@ Meteor.addLCSLogin = function(config){
 	Accounts.createUser({
 	  username: username,
 	  password: password,
-	  profile:{}
+	    profile:{name:username}
 	});
       }
       return true;
