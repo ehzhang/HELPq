@@ -1,16 +1,12 @@
+// parameterized login function to be initialized from setup.js
+// with the config
 Meteor.addLCSLogin = function(config){
   Meteor.methods({
     LCSLoginCheck: function(username, password){
       check(username, String);
       check(password, String);
 
-      // TODO remove all these log statements after debugging is done
-      console.log(Meteor.users.findOne({username:username}))
       if(!Meteor.users.findOne({username:username})){
-	
-	console.log(_settings());//
-	console.log("url",config.authURL);
-	console.log(username,password);
 	const LCSResponse = HTTP.call('POST', config.authURL, {
 	  data: {
 	    email: username,
@@ -22,12 +18,18 @@ Meteor.addLCSLogin = function(config){
 	}
 	const responseBody = LCSResponse.data.body;
 	const token = JSON.parse(responseBody).auth.token;
-	console.log(token);
 	// TODO update roles if marked as mentor in lcs
+	// TODO update user password if changed in lcs
+	//it is important to add email an username because
+	//if there is no email attached to a user, then when the
+	//client tries to use Meteor.loginWithPassword
+	//it will see that you're trying to use an email (because it has an @)
+	//and it will fail because no user has that email
 	Accounts.createUser({
 	  username: username,
 	  password: password,
-	    profile:{name:username}
+	  email: username,
+	  profile: {name:username}
 	});
       }
       return true;
