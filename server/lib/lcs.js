@@ -36,7 +36,7 @@ Meteor.addLCSLogin = function(config){
     const userInDB = Meteor.users.findOne({username: username});
     
     // TODO update roles if marked as mentor in lcs
-    // TODO update user password if changed in lcs
+    // TODO test pasword change by mocking lcs enpoint
     if(!userInDB && !LCSToken){
       return false;
     }else if(!userInDB && LCSToken){
