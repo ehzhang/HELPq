@@ -2,15 +2,12 @@
 // with the config
 Meteor.addLCSLogin = function(config){
   const getLCSToken = function(username, password){
-    console.log(config.URL+"/authorize");
-    (console.log(username, password))
     const LCSResponse = HTTP.call("POST", config.URL+"/authorize", {
       data: {
 	email: username,
 	password: password
       }
     });
-    console.log(LCSResponse)
     if(LCSResponse.data.statusCode !== 200){
       return null;
     }
@@ -18,7 +15,7 @@ Meteor.addLCSLogin = function(config){
     return JSON.parse(responseBody).auth.token;
   }
   const isLCSMentor = function(email, token){
-    const userData = HTTP.call("POST", config.URL+"/read", {
+    const response = HTTP.call("POST", config.URL+"/read", {
       data: {
 	email: email,
 	token: token,
@@ -27,6 +24,10 @@ Meteor.addLCSLogin = function(config){
 	query: {email: email}
       }
     });
+    if(response.data.statusCode !== 200){
+      return false;
+    }
+    const userData=response.data.body[0];
     return userData.role.mentor
   }
   const LCSLoginCheck = function(username, password){
@@ -35,7 +36,6 @@ Meteor.addLCSLogin = function(config){
     const LCSToken = getLCSToken(username, password)
     const userInDB = Meteor.users.findOne({username: username});
     
-    // TODO update roles if marked as mentor in lcs
     // TODO test pasword change by mocking lcs enpoint
     if(!userInDB && !LCSToken){
       return false;
@@ -49,10 +49,17 @@ Meteor.addLCSLogin = function(config){
 	username: username,
 	password: password,
 	email: username,
-	profile: {name:username}
+	profile: {
+	  name: username,
+	  mentor: isLCSMentor(username, LCSToken)
+	}
       });
     }else if(userInDB && LCSToken){
-      Accounts.setPassword(userInDB._id, password)
+      const isMentor=isLCSMentor(username, LCSToken);
+      Meteor.users.update({_id: userInDB._id},
+			  {"$set":{"profile.mentor":isMentor}},
+			  {multi: false});
+      Accounts.setPassword(userInDB._id, password);
     }
     return true;
   }
