@@ -16,6 +16,10 @@ We actively welcome your pull requests!
 
 However, before you begin, please create an issue so we can determine if the work, feature, or bugfix either has someone already working on it as a part of the current roadmap, or if the feature is not something that would belong in HELPq in a HackRU context, or should even be bumped up to MIT's HELPq for more general use.
 
+there should probably be only one pull request per issue and similar issues should be merged if it makes sence to do a pull request for both.
+
+each pull request should also have atleast one reviewer.
+
 This is mostly meant for discussion, so we can discuss things fully and make a really awesome product :)
 
 Issues
