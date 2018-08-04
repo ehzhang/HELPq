@@ -23,7 +23,7 @@
     "expirationDelay": 1800000
   },
   "LCS": {
-    "authURL":"FIXME"
+    "URL":"FIXME"
   },
   "defaultMentor": true
 }
