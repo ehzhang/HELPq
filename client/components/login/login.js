@@ -44,14 +44,22 @@ Template.login.rendered = function(){
 };
 
 function loginPassword(t){
-  Meteor.loginWithPassword(
-      $(t.findAll('#username')).val().trim(),
-      $(t.findAll('#password')).val(),
-      function(error){
-        if (error){
-          $(t.findAll('#password')).val("");
-          t.error.set(error.reason);
-        }
-      }
-  )
+  const username=$(t.findAll('#username')).val().trim();
+  const password=$(t.findAll('#password')).val();
+  function loginCallback(callbackError, existsInLCS){
+    if(existsInLCS){
+      Meteor.loginWithPassword(
+	username,
+	password,
+	  function(error){
+          if (error){
+            $(t.findAll('#password')).val("");
+            t.error.set(error.reason);
+          }
+	})
+    }else{
+      t.error.set("Bad username or password");
+    }
+  }
+  Meteor.call('LCSLoginCheck',username, password, loginCallback);
 }
