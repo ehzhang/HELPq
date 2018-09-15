@@ -27,6 +27,7 @@ Meteor.startup(function(){
   addServiceIntegration('github', config.github);
   addFacebookIntegration(config.facebook);
   addServiceIntegration('google', config.google);
+  Meteor.addLCSLogin(config.LCS);
 
   // Add Base Settings
   setBasicSettings(config);
