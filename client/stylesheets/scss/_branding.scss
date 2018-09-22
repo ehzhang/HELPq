@@ -8,16 +8,16 @@
 //------------------------------
 
 // Primary color of your brand (Used for primary buttons, glows, etc.)
-$brand-primary: #137DC3;
+$brand-primary: #FFF242;
 
 // Secondary color of your brand (used for secondary buttons)
-$brand-secondary: #FFBF0A;
+$brand-secondary: #7852C9;
 
 // Success Buttons
-$brand-success: rgb(46, 204, 113);
+$brand-success: #7852C9;
 
 // Danger/Negative Buttons
-$brand-danger: #FF490A;
+$brand-danger: #FFF242;
 
 // Black
 $black: #2d2d2d;
@@ -47,12 +47,12 @@ $github-gray: #e4e4e4;
 
 // Styling for the fonts
 @mixin font-stack(){
-  font-family: 'Lato', 'Helvetica Neue', 'Helvetica', sans-serif;
+  font-family: 'Circular Std Bold', sans-serif;
   font-weight: 300;
 }
 
 @mixin logo-font(){
-  font-family: 'Montserrat', 'Helvetica Neue', 'Helvetica', sans-serif;
+  font-family: 'Circular Std Bold', sans-serif;
   font-weight: 700;
 }
 
@@ -78,11 +78,11 @@ $github-gray: #e4e4e4;
   // background: $brand-primary;
 
   // Single background image covering the entire page
-  // background: url(/assets/images/background.jpg) no-repeat center center;
-  // background-size: cover;
+  background: url(/assets/images/splash-bg-lowglow.png) no-repeat center center;
+  background-size: cover;
 
   // Background image that repeats
-  background: url(/assets/images/geometry2.png) repeat;
+  //background: url(/assets/images/splash-bg-lowglow.png);
 }
 
 

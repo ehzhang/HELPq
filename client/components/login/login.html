@@ -5,6 +5,12 @@
         {{error}}
       </div>
     {{/if}}
+    {{#if loading}}
+      <img class="loginimg" src="/assets/images/loading.gif">
+    {{else}}
+      <img class="loginimg" src="/assets/images/logop.png">
+    {{/if}}
+      
     <div class="ui login-password form">
 
       <div class="field">

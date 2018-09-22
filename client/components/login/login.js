@@ -1,5 +1,6 @@
 Template.login.onCreated(function(){
   this.error = new ReactiveVar();
+  this.loading = new ReactiveVar();
 });
 
 Template.login.events({
@@ -14,6 +15,7 @@ Template.login.events({
     });
   },
   'click #login-password': function(e, t){
+    t.loading.set(true);
     loginPassword(t);
   },
   'keyup #password': function(e, t){
@@ -36,6 +38,9 @@ Template.login.helpers({
   },
   error: function(){
     return Template.instance().error.get();
+  },
+  loading: function(){
+    return Template.instance().loading.get();
   }
 });
 
@@ -58,6 +63,7 @@ function loginPassword(t){
           }
 	})
     }else{
+      t.loading.set(false);
       t.error.set("Bad username or password");
     }
   }

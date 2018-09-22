@@ -1,0 +1,29 @@
+{
+  "admin": {
+    "username": "admin",
+    "password": "hunter2"
+  },
+  "github": {
+    "enable": false,
+    "clientId": "github-client-id",
+    "secret": "github-secret"
+  },
+  "facebook": {
+    "enable": false,
+    "appId": "facebook-client-id",
+    "secret": "facebook-secret"
+  },
+  "google": {
+    "enable": false,
+    "clientId": "google-client-id",
+    "secret": "google-secret"
+  },
+  "settings": {
+    "queueEnabled": true,
+    "expirationDelay": 1800000
+  },
+  "LCS": {
+    "URL":""
+  },
+  "defaultMentor": true
+}
