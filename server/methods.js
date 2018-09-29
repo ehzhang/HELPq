@@ -78,6 +78,7 @@ function claimTicket(id){
           status: "CLAIMED",
           claimId: user._id,
           claimName: _getUserName(user),
+	  claimSlack: ((user.profile.phone)? user.profile.phone : ""),
           claimTime: Date.now()
         }
       });
