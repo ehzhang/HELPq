@@ -35,8 +35,6 @@ Meteor.addLCSLogin = function(config){
     check(password, String);
     const LCSToken = getLCSToken(username, password)
     const userInDB = Meteor.users.findOne({username: username});
-    const user=LCSData(username, LCSToken);//move later
-    console.log(user);//rjfewo
 
     // TODO test pasword change by mocking lcs enpoint
     if(!userInDB && !LCSToken){
@@ -47,6 +45,7 @@ Meteor.addLCSLogin = function(config){
       //client tries to use Meteor.loginWithPassword
       //it will see that you're trying to use an email (because it has an @)
       //and it will fail because no user has that email
+      const user=LCSData(username, LCSToken);
       Accounts.createUser({
 	username: username,
 	password: password,
@@ -57,6 +56,9 @@ Meteor.addLCSLogin = function(config){
 	  mentor: user.role.mentor
 	}
       });
+    }else if(userInDB&&LCSToken){
+      console.log("reset");
+      Accounts.setPassword(userInDB._id, password, {logout: false});
     }
     return true;
   }
