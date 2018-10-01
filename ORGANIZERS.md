@@ -15,6 +15,7 @@ anyone with an Account on hackru.org can login to HelpQ. users can be manually a
 6. Mentor closes the ticket on HelpQ
 7. Hacker optionally gives feedback for the ticket.
 
+## [Paper Backup](https://github.com/HackRU/helpq/blob/master/paperBackup.pdf)
 
 ## Adding mentors
 By default when users log in they are not marked as mentors for obvious reasons. if a mentor already has an account on hackru.org they can be directed to log in and will appear in the admin panel.
@@ -31,4 +32,4 @@ HelpQ has a few administration tasks that can be done from the admin panel
 If a Hacker comes to the table saying that the mentor hasn't found them you should be able to see which mentor claimed their ticket in the admin panel and track them down. Likewise you have hackers emails so if a hacker goes MIA and the contact info they were forced to provide doesn't work, then they could potentially be looked up in LCS. but if they don't come to the mentor table then the issue probably wouldn't be serious enough to warrant that
 
 ## Notes
-There should probably be someone at the mentor table with admin access at all times, unless the mentor table is closed. In cause there are issues I Will provide some Paper backup forms additional copies may need to be made. I will provide my phone number in the event there is an issue and I can't be found. If you think I'm asleep then wake me up, I live on college ave And I'll likely be there almost the whole event. In the event we need to go to paper backup I will have forms on standby at the mentor table and the process will be very similar to the online one, but with paper.
+There should probably be someone at the mentor table with admin access at all times, unless the mentor table is closed. In cause there are issues I Will provide some Paper backup forms additional copies may need to be made. I will provide my phone number in the event there is an issue and I can't be found. If you think I'm asleep then wake me up, I live on college ave And I'll likely be there almost the whole event. In the event we need to go to paper backup I will have forms on standby  at the mentor table. The form is also [here](https://github.com/HackRU/helpq/blob/master/paperBackup.pdf) on github and the process will be very similar to the online one, but with paper.
