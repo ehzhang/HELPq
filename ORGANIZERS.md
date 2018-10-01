@@ -1,4 +1,4 @@
-# HelpQ for Organizers/volunteers
+# HelpQ for Organizers/Volunteers
 
 ## What is HelpQ
 HelqQ is kind of like a virtual line that people can wait in to get help from mentors.
