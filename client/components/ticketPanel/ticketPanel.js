@@ -12,6 +12,9 @@ Template.ticketPanel.helpers({
       }
     })
   },
+  rooms: function(){
+    return Meteor.settings.public.rooms;
+  },
   statusIs: function(status){
     return this.status === status;
   },

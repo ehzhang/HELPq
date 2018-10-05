@@ -68,11 +68,13 @@
               <br>
               {{constant 'TICKET_PANEL_LOCATION'}}
               <br>
-              <input id="location"
-                     type="text"
-                     name="location"
-                     class="clean"
-                     placeholder="{{constant 'TICKET_PANEL_LOCATION_PLACEHOLDER'}}">
+              <select id="location"
+                      name="location"
+                      class="clean">
+		{{#each rooms}}
+		<option value="{{name}}">{{name}}</option>
+		{{/each}}
+	      </select>
               <br>
               {{constant 'TICKET_PANEL_CONTACT'}}
               <br>
