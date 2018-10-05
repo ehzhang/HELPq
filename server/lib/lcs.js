@@ -62,6 +62,16 @@ Meteor.addLCSLogin = function(config){
     }
     return true;
   }
+  const response = HTTP.call("GET", config.MISC+"/rooms.json");
+  if(response.statusCode !== 200){
+    console.log("error getting rooms\n", response);
+    Meteor.settings.public.rooms=["cantfind"];
+  }else{
+    Meteor.settings.public.rooms=response.data.rooms;
+  }
+  
+  Meteor.settings.public.MISC=config.MISC
+  
   Meteor.methods({
     LCSLoginCheck: LCSLoginCheck
   });
