@@ -23,7 +23,8 @@
     "expirationDelay": 3600000
   },
   "LCS": {
-    "URL":"FIXME"
+    "URL": "FIXME",
+    "MISC": "FIXMETOO"
   },
   "defaultMentor": false
 }
