@@ -26,6 +26,7 @@
 - then on overview click connect>connect your application>3.4 or earlier
 - you should get a connection of the format mongodb://user:<Password>@shard1:27017,shard2:27017,shard3:27017/test?ssl=true...
 - fill in the password you set up and change the db from /test to /meteor
+- make sure you go to security > ip whitelist > add ip address > add current ip address
 
 8. set environment for heroku
 - `heroku config:add MONGO_URL=<url we found above>`
