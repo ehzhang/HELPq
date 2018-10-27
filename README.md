@@ -3,7 +3,9 @@
 ## Description
 this is a configuration and extension of MIT's helpq specifically for HackRU
 the main idea is to integrate it with lcs and other HackRU type things
-the [HELPq readme](HELPQ.md) may give some more insight on HELPq specifically
+the [HELPq readme](HELPQ.md) may give some more insight on HELPq specifically.
+for more information about meteor and how this fork integrates with LCS see
+[how it works](HOWITWORKS.md)
 
 ## Inspiration
 Originally we used a slackbot in order to provide mentorship to hackers during
