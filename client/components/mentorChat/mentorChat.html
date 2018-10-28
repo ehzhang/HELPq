@@ -1,0 +1,29 @@
+<template name="mentorChat">
+  <div class="mentorChat">
+    <div class="ui segment">
+      {{#if queueEnabled}}
+
+        {{#if currentTicket}}
+          {{#with currentTicket}}
+            {{#if statusIs "CLAIMED"}}
+              <div class="content">                                                                           
+                <div>                                                                                         
+                  <div class="ui message left floated">                                                       
+                    <p>{{name}}: I am sitting at table #3</p>                                                 
+                  </div>                                                                                      
+                  <div class="ui message right floated">                                                      
+                    <p>{{claimName}}: Ok, be right there</p>                                                            
+                  </div>                                                                                      
+                </div>                                                                                        
+                <div class="ui input action" style="width: 100%;">                                            
+                  <input type="text" placeholder="Send a message to the participant..."/>                     
+                  <div class="ui button">Send</div>                                                           
+                </div>                                                                                        
+              </div>                                                                                          
+            {{/if}}
+          {{/with}}
+        {{/if}}
+      {{/if}}
+    </div>
+  </div>
+</template>
