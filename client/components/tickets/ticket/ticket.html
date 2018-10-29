@@ -35,6 +35,20 @@
       <strong> Contact: </strong>
       {{contact}}
     </div>
+    <div class="content">
+      <div>
+        <div class="ui message left floated">
+          <p>{{name}}: I am sitting at table #3</p>
+        </div>
+        <div class="ui message right floated">
+          <p>You: Ok, be right there</p>
+        </div>
+      </div>
+      <div class="ui input action" style="width: 100%;">
+        <input type="text" placeholder="Send a message to the participant..."/>
+        <div class="ui button">Send</div>
+      </div>
+    </div>
     <div class="extra content">
       {{#if statusIs "OPEN"}}
 
