@@ -1,8 +1,9 @@
 // parameterized login function to be initialized from setup.js
 // with the config
 Meteor.addLCSLogin = function(config){
+  // sends username and password to lcs and returns a login token or null
   const getLCSToken = function(username, password){
-    const LCSResponse = HTTP.call("POST", config.URL+"/authorize", {
+    const LCSResponse = HTTP.call("POST", config.URL + "/authorize", {
       data: {
 	email: username,
 	password: password
@@ -14,8 +15,10 @@ Meteor.addLCSLogin = function(config){
     const responseBody = LCSResponse.data.body;
     return JSON.parse(responseBody).auth.token;
   }
+
+  // takes an email and a token an returns a users data from lcs
   const LCSData = function(email, token){
-    const response = HTTP.call("POST", config.URL+"/read", {
+    const response = HTTP.call("POST", config.URL + "/read", {
       data: {
 	email: email,
 	token: token,
@@ -25,11 +28,16 @@ Meteor.addLCSLogin = function(config){
       }
     });
     if(response.data.statusCode !== 200){
-      return false;
+      return null;
     }
-    const userData=response.data.body[0];
+    const userData = response.data.body[0];
     return userData;
   }
+
+  // returns true if a user is in the database or in LCS
+  // if a user is in LCS but not the database they are inserted
+  // if they are in both lcs and the database theire password
+  // and role is updated
   const LCSLoginCheck = function(username, password){
     check(username, String);
     check(password, String);
@@ -45,7 +53,7 @@ Meteor.addLCSLogin = function(config){
       //client tries to use Meteor.loginWithPassword
       //it will see that you're trying to use an email (because it has an @)
       //and it will fail because no user has that email
-      const user=LCSData(username, LCSToken);
+      var user = LCSData(username, LCSToken);
       Accounts.createUser({
 	username: username,
 	password: password,
@@ -57,19 +65,25 @@ Meteor.addLCSLogin = function(config){
 	}
       });
     }else if(userInDB&&LCSToken){
-      console.log("reset");
+      var user = LCSData(username, LCSToken);
+      Meteor.users.update({username: username},
+                          {$set: {"profile.mentor": user.role.mentor}},
+                          {multi: false});
       Accounts.setPassword(userInDB._id, password, {logout: false});
     }
     return true;
   }
-  const response = HTTP.call("GET", config.MISC+"/rooms.json");
+
+  // get rooms for the client
+  const response = HTTP.call("GET", config.MISC + "/rooms.json");
   if(response.statusCode !== 200){
     console.log("error getting rooms\n", response);
-    Meteor.settings.public.rooms=["cantfind"];
+    Meteor.settings.public.rooms=[];
   }else{
     Meteor.settings.public.rooms=response.data.rooms;
   }
-  
+
+  // give client misc endpoint
   Meteor.settings.public.MISC=config.MISC
   
   Meteor.methods({
