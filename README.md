@@ -18,12 +18,7 @@ HackRU, and we found this
 + run `./create_config`
 + run `meteor`
 ### for production
-+ install nginx and configure for https
-+ add config to proxy port 80 and 443 to 3000 (the meteor port)
-+ run dev install instructions
-+ change config if necessary to get stronger passwords/secret
-+ have mentors sign in with lcs
-+ manually mark mentor users as needed from the admin account
++ see [install](INSTALL.md)
 
 ## Style Guide
 try to follow [airbnb's lead](https://github.com/airbnb/javascript).
