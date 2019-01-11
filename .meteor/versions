@@ -5,7 +5,7 @@ accounts-oauth@1.1.16
 accounts-password@1.5.1
 allow-deny@1.1.0
 autoupdate@1.5.0
-babel-compiler@7.2.2
+babel-compiler@7.2.4
 babel-runtime@1.3.0
 base64@1.0.11
 binary-heap@1.0.11
@@ -28,7 +28,7 @@ ddp-server@2.2.0
 deps@1.0.12
 diff-sequence@1.1.1
 dynamic-import@0.5.0
-ecmascript@0.12.2
+ecmascript@0.12.4
 ecmascript-runtime@0.7.0
 ecmascript-runtime-client@0.8.0
 ecmascript-runtime-server@0.7.1
@@ -39,7 +39,7 @@ facebook-config-ui@1.0.2
 facebook-oauth@1.5.0
 fetch@0.1.0
 flemay:less-autoprefixer@1.2.0
-fourseven:scss@3.13.0
+fourseven:scss@4.10.0
 geojson-utils@1.0.10
 github-config-ui@1.0.1
 github-oauth@1.2.2
@@ -71,7 +71,7 @@ mizzao:timesync@0.5.0
 mizzao:user-status@0.6.8
 mobile-experience@1.0.5
 mobile-status-bar@1.0.14
-modern-browsers@0.1.2
+modern-browsers@0.1.3
 modules@0.13.0
 modules-runtime@0.10.3
 momentjs:moment@2.22.2
@@ -85,7 +85,7 @@ oauth@1.2.6
 oauth2@1.2.1
 observe-sequence@1.0.16
 ordered-dict@1.1.0
-promise@0.11.1
+promise@0.11.2
 random@1.1.0
 rate-limit@1.0.9
 reactive-dict@1.2.1
@@ -96,7 +96,7 @@ routepolicy@1.1.0
 semantic:ui@2.3.1
 semantic:ui-data@2.3.1
 service-configuration@1.0.11
-session@1.1.8
+session@1.2.0
 sha@1.0.9
 shell-server@0.4.0
 socket-stream-client@0.2.2
@@ -113,5 +113,5 @@ tracker@1.2.0
 ui@1.0.13
 underscore@1.0.10
 url@1.2.0
-webapp@1.7.0
+webapp@1.7.1
 webapp-hashing@1.0.9
