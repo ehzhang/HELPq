@@ -3,32 +3,34 @@
 # 'meteor add' and 'meteor remove' will edit this file for you,
 # but you can also edit it by hand.
 
-accounts-github
-service-configuration
+accounts-github@1.0.11
+service-configuration@1.0.11
 iron:router
 
-accounts-facebook
+accounts-facebook@1.0.11
 momentjs:moment
-reactive-var
-underscore
-accounts-password
+reactive-var@1.0.11
+underscore@1.0.10
+accounts-password@1.3.1
 mizzao:user-status
 chart:chart
 fourseven:scss
 semantic:ui
 flemay:less-autoprefixer
-standard-minifiers
-meteor-base
-mobile-experience
-mongo
+meteor-base@1.0.4
+mobile-experience@1.0.4
+mongo@1.1.14
 blaze-html-templates
-session
-jquery
-tracker
-logging
-reload
-random
-ejson
+session@1.1.7
+jquery@1.11.10
+tracker@1.1.1
+logging@1.1.16
+reload@1.1.11
+random@1.0.10
+ejson@1.0.13
 spacebars
-check
-http
+check@1.2.4
+http@1.2.10
+standard-minifier-css
+standard-minifier-js
+shell-server
