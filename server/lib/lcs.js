@@ -61,13 +61,17 @@ Meteor.addLCSLogin = function(config){
 	profile: {
 	  name: (user.first_name)? user.first_name : "anonymous",
 	  username: username,
-	  mentor: user.role.mentor
+	  mentor: user.role.mentor,
+          admin: user.role.director
 	}
       });
     }else if(userInDB&&LCSToken){
       var user = LCSData(username, LCSToken);
       Meteor.users.update({username: username},
-                          {$set: {"profile.mentor": user.role.mentor}},
+                          {$set: {
+                            "profile.mentor": user.role.mentor,
+                            "profile.admin": user.role.director
+                          }},
                           {multi: false});
       Accounts.setPassword(userInDB._id, password, {logout: false});
     }
