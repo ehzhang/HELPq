@@ -8,16 +8,16 @@
 //------------------------------
 
 // Primary color of your brand (Used for primary buttons, glows, etc.)
-$brand-primary: #FFF242;
+$brand-primary: #5A7A96;
 
 // Secondary color of your brand (used for secondary buttons)
 $brand-secondary: #7852C9;
 
 // Success Buttons
-$brand-success: #7852C9;
+$brand-success: #5FFFDC;
 
 // Danger/Negative Buttons
-$brand-danger: #FFF242;
+$brand-danger: #FF80CF;
 
 // Black
 $black: #2d2d2d;
@@ -78,7 +78,7 @@ $github-gray: #e4e4e4;
   // background: $brand-primary;
 
   // Single background image covering the entire page
-  background: url(/assets/images/splash-bg-lowglow.png) no-repeat center center;
+  background: url(/assets/images/casc-green2_blurred10-uhhh.png) no-repeat center center;
   background-size: cover;
 
   // Background image that repeats
@@ -89,7 +89,7 @@ $github-gray: #e4e4e4;
 // Banner which appears under the nav, and on each page.
 #banner {
   // Font color
-  color: white;
+  color: #5A7A96;
 
   // Single background image covering
   // background: url(/assets/images/background.jpg) no-repeat center center;
@@ -100,6 +100,15 @@ $github-gray: #e4e4e4;
 
   // Repeated Background:
   background: url(/assets/images/geometry2.png) repeat;
+}
+
+.header {
+    color: #5A7A96;
+}
+
+.subheader {
+    color: #5A7A96;
+    font-weight: 700;
 }
 
 // Footer, which appears on each page.
