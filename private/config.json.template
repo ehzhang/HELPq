@@ -23,8 +23,8 @@
     "expirationDelay": 3600000
   },
   "LCS": {
-    "URL": "FIXME",
-    "MISC": "FIXMETOO"
+    "URL": "https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest",
+    "MISC": "http://hackru-misc.s3-website-us-west-2.amazonaws.com"
   },
   "defaultMentor": false
 }

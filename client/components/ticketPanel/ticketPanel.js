@@ -12,9 +12,6 @@ Template.ticketPanel.helpers({
       }
     })
   },
-  rooms: function(){
-    return Meteor.settings.public.rooms;
-  },
   statusIs: function(status){
     return this.status === status;
   },
@@ -69,7 +66,11 @@ Template.ticketPanel.helpers({
     }
 
     return moment(ticket.expiresAt).from(ReactiveNow.get());
-  }
+  },
+  floorplan: function(){
+    console.log("Call me maybe");
+    return Meteor.settings.public.MISC+"/floorplan.jpg";
+  },
 });
 
 Template.ticketPanel.rendered = function(){
@@ -77,6 +78,28 @@ Template.ticketPanel.rendered = function(){
 };
 
 Template.ticketPanel.events({
+  'click #location': function(event){ //Displays Map UI
+      //$('#location').val("LOL"); //Temporary for Testing
+      document.getElementsByClassName('map')[0].style.display = 'block';
+  },
+  'click #map': function(){ //Pins user's click location
+      var $map_confirm = $('#map_confirm');
+      $('#location').val(event.clientX, event.clientY);
+      $map_confirm.removeClass('disabled');
+      createPin(event.clientX, event.clientY);
+      console.log("clientX: " + event.clientX + " - clientY: " + event.clientY);
+  },
+  'click #map_cancel': function(){ //Exit Map UI
+      $('#location').val(null);
+      document.getElementsByClassName('map')[0].style.display = 'none';
+      console.log("EXIT");
+  },
+  'click #map_confirm': function(){ //Confirm Location
+      if($('#location').val().length > 0){
+        document.getElementsByClassName('map')[0].style.display = 'none';
+        console.log("CONFIRM");
+      }
+  },
   'click #submit': function(){
     return createTicket();
   },
@@ -99,6 +122,17 @@ Template.ticketPanel.events({
     }
   }
 });
+
+function createPin(x, y){
+  console.log("Pinned by a pin");
+  var nPin = document.createElement("pin");
+  nPin.setAttribute('src', "/public/assets/images/pin.png");
+  nPin.style.position = "absolute";
+  nPin.style.zIndex = 5;
+  nPin.style.left = x+'px';
+  nPin.style.top = y+'px';
+  document.body.appendChild(nPin);
+}
 
 function isValid(){
   return $('#topic').val().length > 0 &&

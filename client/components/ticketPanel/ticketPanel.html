@@ -45,10 +45,24 @@
           {{#if unratedTicket}}
 
             {{#with unratedTicket }}
-              {{> ticketPanelRating }}
+   > ticketPanelRating }}
             {{/with}}
 
           {{else}}
+            <div class="map">
+              <input id="map"
+                type="image"
+                name ="location"
+                src= "{{floorplan}}"
+                class="btTxt submit"
+                >
+                <button id="map_cancel" class="primary push fluid button">
+                  Cancel
+                </button>
+                <button id="map_confirm" class="disabled primary push fluid button">
+                  Confirm
+                </button>
+            </div>
             <div class="title">
               <p>
                 <strong>
@@ -67,15 +81,11 @@
                      placeholder="{{constant 'TICKET_PANEL_TOPIC_PLACEHOLDER'}}">
               <br>
               {{constant 'TICKET_PANEL_LOCATION'}}
+              <button id="location" class="primary push fluid button">
+                {{constant 'TICKET_PANEL_FLOORMAP'}}
+              </button>
               <br>
-              <select id="location"
-                      name="location"
-                      class="clean">
-		{{#each rooms}}
-		<option value="{{name}}">{{name}}</option>
-		{{/each}}
-	      </select>
-              <br>
+
               {{constant 'TICKET_PANEL_CONTACT'}}
               <br>
               <input id="contact"
