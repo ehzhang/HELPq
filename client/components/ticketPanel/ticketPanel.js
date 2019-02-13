@@ -124,14 +124,21 @@ Template.ticketPanel.events({
 });
 
 function createPin(x, y){
-  console.log("Pinned by a pin");
-  var nPin = document.createElement("pin");
-  nPin.setAttribute('src', "/public/assets/images/pin.png");
+  var newx = x - 340; //FIND A WAY TO GET RID OF MAGIC NUMBERS
+  var newy = y - 270; //FIND A WAY TO GET RID OF MAGIC NUMBERS
+  console.log(x + " -> " + newx);
+  console.log(y + " -> " + newy);
+  document.getElementsByClassName('pin')[0].style.display = 'block';
+  document.getElementsByClassName('pin')[0].style.left = newx+'px';
+  document.getElementsByClassName('pin')[0].style.top = newy+'px';
+  console.log(document.getElementsByClassName('pin')[0].style.left + " : " + document.getElementsByClassName('pin')[0].style.top);
+  /*var nPin = document.createElement("pin");
+  nPin.setAttribute('src', "/assets/images/pin.png");
   nPin.style.position = "absolute";
   nPin.style.zIndex = 5;
   nPin.style.left = x+'px';
   nPin.style.top = y+'px';
-  document.body.appendChild(nPin);
+  document.body.appendChild(nPin);*/
 }
 
 function isValid(){

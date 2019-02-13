@@ -11,6 +11,14 @@
     margin-right: auto;
     text-align: center;
   }
+  .pin{
+    display: none;
+    position: absolute;
+    width: 10%;
+    left: 0px;
+    top: 0px;
+    z-index: 3;
+  }
   .cancel {
     padding-bottom: 20px;
     color: red;
