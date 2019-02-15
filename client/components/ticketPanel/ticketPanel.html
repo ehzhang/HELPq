@@ -45,7 +45,7 @@
           {{#if unratedTicket}}
 
             {{#with unratedTicket }}
-   > ticketPanelRating }}
+	    {{> ticketPanelRating }}
             {{/with}}
 
           {{else}}
@@ -87,6 +87,7 @@
             <button id="location" class="primary push fluid button">
               {{constant 'TICKET_PANEL_FLOORMAP'}}
             </button>
+	    <input id="pin-location" type="hidden" value=""/>
 	    <div class="content">
               <br>
 

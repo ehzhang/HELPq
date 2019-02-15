@@ -1,3 +1,8 @@
+const pinLeftOffset = 25;
+const pinTopOffset = 62;
+const topPadding = 16;
+const leftPadding = 15;
+
 Template.ticketPanel.onCreated(function(){
   this.subscribe("userTickets");
 });
@@ -68,7 +73,6 @@ Template.ticketPanel.helpers({
     return moment(ticket.expiresAt).from(ReactiveNow.get());
   },
   floorplan: function(){
-    console.log("Call me maybe");
     return Meteor.settings.public.MISC+"/floorplan.jpg";
   },
 });
@@ -79,26 +83,57 @@ Template.ticketPanel.rendered = function(){
 
 Template.ticketPanel.events({
   'click #location': function(event){ //Displays Map UI
-      //$('#location').val("LOL"); //Temporary for Testing
-      document.getElementsByClassName('map')[0].style.display = 'block';
+    $('.map').css('display', 'block');
+    const map = $('.map')
+    const ratio = .8;
+    const windowWidth = $(window).width();
+    const offset = map.offset();
+    if (windowWidth > 760) {
+      //size it with some padding
+      map.width(windowWidth * ratio);
+      offset.left = windowWidth * (1 - ratio) / 2;
+    } else {
+      //no padding
+      map.width(windowWidth);
+      offset.left = 0;
+    }
+    map.offset(offset);
   },
-  'click #map': function(){ //Pins user's click location
-      var $map_confirm = $('#map_confirm');
-      $('#location').val(event.clientX, event.clientY);
-      $map_confirm.removeClass('disabled');
-      createPin(event.clientX, event.clientY);
-      console.log("clientX: " + event.clientX + " - clientY: " + event.clientY);
+  'click #map': function(event){ //Pins user's click location
+    var $map_confirm = $('#map_confirm');
+    console.log(event);
+    $('#location').val(event.pageX, event.pageY);
+    $map_confirm.removeClass('disabled');
+    createPin(event.clientX, event.clientY);
+    console.log("clientX: " + event.clientX + " - clientY: " + event.clientY);
+
+    // set pin-location
+    const map = $('.map');
+    const pin = $('.pin');
+    
+    const poff = pin.offset();
+    const moff = map.offset();
+
+    const top = poff.top - moff.top + pinTopOffset - topPadding;
+    const left = poff.left - moff.left + pinLeftOffset - topPadding;
+
+    const width = map.width();
+    const height = map.height();
+    
+    $('#pin-location').val((top/height)+","+(left/width));
   },
   'click #map_cancel': function(){ //Exit Map UI
-      $('#location').val(null);
-      document.getElementsByClassName('map')[0].style.display = 'none';
-      console.log("EXIT");
+    $('#pin-location').val('');
+    $('#map_confirm').addClass('disabled')
+    createPin(-1000, -1000);
+    $('.map').css('display', 'none');
   },
   'click #map_confirm': function(){ //Confirm Location
-      if($('#location').val().length > 0){
-        document.getElementsByClassName('map')[0].style.display = 'none';
-        console.log("CONFIRM");
-      }
+    console.log($('#pin-location').val())
+    if($('#pin-location').val() != '') {
+      
+      $('.map').css('display', 'none');
+    }
   },
   'click #submit': function(){
     return createTicket();
@@ -124,33 +159,21 @@ Template.ticketPanel.events({
 });
 
 function createPin(x, y){
-  var newx = x - 340; //FIND A WAY TO GET RID OF MAGIC NUMBERS
-  var newy = y - 270; //FIND A WAY TO GET RID OF MAGIC NUMBERS
-  console.log(x + " -> " + newx);
-  console.log(y + " -> " + newy);
-  document.getElementsByClassName('pin')[0].style.display = 'block';
-  document.getElementsByClassName('pin')[0].style.left = newx+'px';
-  document.getElementsByClassName('pin')[0].style.top = newy+'px';
-  console.log(document.getElementsByClassName('pin')[0].style.left + " : " + document.getElementsByClassName('pin')[0].style.top);
-  /*var nPin = document.createElement("pin");
-  nPin.setAttribute('src', "/assets/images/pin.png");
-  nPin.style.position = "absolute";
-  nPin.style.zIndex = 5;
-  nPin.style.left = x+'px';
-  nPin.style.top = y+'px';
-  document.body.appendChild(nPin);*/
+  const scroll = $(document).scrollTop();
+  $('.pin').css('display', 'block');
+  $('.pin').offset({top: y - pinTopOffset + scroll, left: x - pinLeftOffset});
 }
 
 function isValid(){
   return $('#topic').val().length > 0 &&
-         $('#location').val().length > 0 &&
+         $('#pin-location').val() != "" &&
          $('#contact').val().length > 0
 }
 
 function getTicket(){
   return {
     topic: $('#topic').val(),
-    location: $('#location').val(),
+    location: $('#pin-location').val(),
     contact: $('#contact').val()
   }
 }
