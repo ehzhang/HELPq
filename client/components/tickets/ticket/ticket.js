@@ -2,6 +2,9 @@ Template.ticket.rendered = function(){
 };
 
 Template.ticket.helpers({
+  floorplan: function(){
+    return Meteor.settings.public.MISC+"/floorplan.jpg";
+  },
   statusIs: function(status){
     return this.status === status;
   },
@@ -23,6 +26,44 @@ Template.ticket.helpers({
 });
 
 Template.ticket.events({
+  'click #see-location': function(event){
+    const map = $('#map' + this._id);
+    const pin = $('#pin' + this._id);
+
+    //set visible
+    map.css('display', 'block');
+
+    // set size of map
+    const ratio = .8;
+    const windowWidth = $(window).width();
+    const offset = map.offset();
+    console.log(windowWidth, offset);
+    if (windowWidth > 760) {
+      // size it with some padding
+      map.width(windowWidth * ratio);
+      offset.left = windowWidth * (1 - ratio) / 2;
+    } else {
+      // no padding
+      map.width(windowWidth);
+      offset.left = 0;
+    }
+    map.offset(offset);
+    
+    //move pin
+    const loc = this.location.split(',');
+    const top = parseFloat(loc[0]) * map.height();
+    const left = parseFloat(loc[1]) * map.width();
+    
+    const pinOffset = Object.assign({}, map.offset());
+    console.log(pinOffset);
+    pinOffset.top += top;
+    pinOffset.left += left;
+    console.log(top, left, pinOffset);
+    pin.offset(pinOffset);
+  },
+  'click #map-close': function(){
+    $('#map' + this._id).css('display', 'none');
+  },
   'click .claim.button': function(){
     Meteor.call('claimTicket', this._id);
   },

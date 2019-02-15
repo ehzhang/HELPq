@@ -1,5 +1,24 @@
 .tickets {
   text-align: center;
+  .map {
+    display: none;
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    margin: -14px;
+    text-align: center;
+    #map {
+      width: 100%;
+    }
+  }
+  .pin{
+    position: absolute;
+    width: 10%;
+    left: 0px;
+    top: 0px;
+    z-index: 3;
+  }
+
   .ticket {
     text-align: left;
     font-size: 1.2em;
