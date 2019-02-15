@@ -49,7 +49,7 @@
             {{/with}}
 
           {{else}}
-            <div class="map">
+            <div class="map ui segment">
               <img class="pin" src="/assets/images/pin.png">
               <input id="map"
                 type="image"
@@ -60,6 +60,7 @@
                 <button id="map_cancel" class="primary push fluid button">
                   Cancel
                 </button>
+		<br>
                 <button id="map_confirm" class="disabled primary push fluid button">
                   Confirm
                 </button>
@@ -82,9 +83,11 @@
                      placeholder="{{constant 'TICKET_PANEL_TOPIC_PLACEHOLDER'}}">
               <br>
               {{constant 'TICKET_PANEL_LOCATION'}}
-              <button id="location" class="primary push fluid button">
-                {{constant 'TICKET_PANEL_FLOORMAP'}}
-              </button>
+	    </div>
+            <button id="location" class="primary push fluid button">
+              {{constant 'TICKET_PANEL_FLOORMAP'}}
+            </button>
+	    <div class="content">
               <br>
 
               {{constant 'TICKET_PANEL_CONTACT'}}
