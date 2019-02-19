@@ -61,6 +61,10 @@ function loginPassword(t){
             $(t.findAll('#password')).val("");
             t.error.set(error.reason);
           }
+          if (Meteor.user().profile.mentor){
+              console.log("MENTOR!");
+              window.location.replace("/mentor");
+          }
 	})
     }else{
       t.loading.set(false);
