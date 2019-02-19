@@ -67,10 +67,11 @@ all routes below require ?token= or will give {ok: false, err: "unauthorized"} 4
 - {start: token}
   + responds {ok: true} if token is invalid
 - {newQStatus}
-- {newTicket} only sent if mentor
+- {newTickets} only sent if mentor
 
 ##js api
-- login(username, pass): promise<{token, user: {isMentor: bool, name: ""}> throws BadLogin
+- login(username, pass): promise<{token, user: {roles:
+  {mentor: bool, admin: bool}, name: ""}}> throws BadLogin
 - loginToken(token): promise<token, isMentor: bool> throws BadLogin
   + login in puts token in local storage
 - logOut()
