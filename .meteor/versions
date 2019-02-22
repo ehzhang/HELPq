@@ -1,6 +1,7 @@
 accounts-base@1.2.2
 accounts-facebook@1.0.6
 accounts-github@1.0.6
+accounts-google@1.0.6
 accounts-oauth@1.1.8
 accounts-password@1.1.4
 autoupdate@1.2.4
@@ -35,6 +36,7 @@ flemay:less-autoprefixer@1.2.0
 fourseven:scss@3.4.1
 geojson-utils@1.0.4
 github@1.1.4
+google@1.1.7
 hot-code-push@1.0.0
 html-tools@1.0.5
 htmljs@1.0.5
