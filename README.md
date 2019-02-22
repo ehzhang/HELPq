@@ -205,9 +205,8 @@ In `private/config.json` (or the corresponding environment variables), provide t
 1. Put your info (event name, email, logo)
 1. On the sidebar, select "Facebook login" > "Settings"
 1. Put `{YOUR URL}/_oauth/facebook?close` and `{YOUR URL}/_oauth/facebook` in "Valid OAuth Redirect URLs"
-  * Add localhost for testing, if needed
 1. From "Settings" > "Basic", copy the `app ID` and `secret` to `private/config.json`
-1. Unclear if necessary, but you can use this [privacy policy generator](https://termsfeed.com/privacy-policy/generator/) to generate a policy for your app, before making the app "live"
+1. Unclear if necessary, but you can use this [privacy policy generator](https://termsfeed.com/privacy-policy/generator/) to generate a policy for your app, before making the app "live" (you can only test from localhost if the app is in "development")
 
 ##### Google OAuth
 1. Go to [Google Sign-In](https://developers.google.com/identity/sign-in/web/sign-in)
