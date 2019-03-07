@@ -1,5 +1,5 @@
-const pinLeftOffset = 25;
-const pinTopOffset = 62;
+const pinLeftOffset = 0;
+const pinTopOffset = 0;
 const topPadding = 16;
 const leftPadding = 15;
 
