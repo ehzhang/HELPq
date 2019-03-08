@@ -1,11 +1,11 @@
 <template name="ticket">
   <div id="map{{_id}}" class="map ui segment">
     <img id="pin{{_id}}" class="pin" src="/assets/images/arrow.png">
-    <input id="map"
+    <input id="mapimg{{_id}}"
            type="image"
            name ="location"
            src= "{{floorplan}}"
-	   class="btTxt submit"
+	   class="btTxt submit mapimg"
            >
     <button id="map-close" class="primary push fluid button">
       Close

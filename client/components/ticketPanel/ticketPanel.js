@@ -102,25 +102,21 @@ Template.ticketPanel.events({
   'click #map': function(event){ //Pins user's click location
     var $map_confirm = $('#map_confirm');
     console.log(event);
-    $('#location').val(event.pageX, event.pageY);
+    const orig = event.originalEvent;
     $map_confirm.removeClass('disabled');
-    createPin(event.clientX, event.clientY);
-    console.log("clientX: " + event.clientX + " - clientY: " + event.clientY);
+    createPin(orig.layerX, orig.layerY);
 
     // set pin-location
-    const map = $('.map');
-    const pin = $('.pin');
-    
-    const poff = pin.offset();
-    const moff = map.offset();
+    const map = $('#map')[0];
+    const pin = $('.pin')[0];
 
-    const top = poff.top - moff.top + pinTopOffset - topPadding;
-    const left = poff.left - moff.left + pinLeftOffset - topPadding;
-
-    const width = map.width();
-    const height = map.height();
-    
-    $('#pin-location').val((top/height)+","+(left/width));
+    const x = pin.offsetLeft - map.offsetLeft;
+    const xpercent = x / map.width;
+    const y = pin.offsetTop - map.offsetTop;
+    const ypercent = y / map.height;
+    console.log(x,y);
+    console.log(xpercent, ypercent);
+    $('#pin-location').val(xpercent+","+ypercent);
   },
   'click #map_cancel': function(){ //Exit Map UI
     $('#pin-location').val('');
@@ -131,7 +127,7 @@ Template.ticketPanel.events({
   'click #map_confirm': function(){ //Confirm Location
     console.log($('#pin-location').val())
     if($('#pin-location').val() != '') {
-      
+
       $('.map').css('display', 'none');
     }
   },
@@ -160,8 +156,9 @@ Template.ticketPanel.events({
 
 function createPin(x, y){
   const scroll = $(document).scrollTop();
-  $('.pin').css('display', 'block');
-  $('.pin').offset({top: y - pinTopOffset + scroll, left: x - pinLeftOffset});
+  const pin = $('.pin');
+  const pinElem = pin[0];
+  pinElem.style = "display: block; top: "+y+"px;left: "+x+"px";
 }
 
 function isValid(){

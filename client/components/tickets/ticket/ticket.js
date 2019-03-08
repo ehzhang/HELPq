@@ -28,6 +28,7 @@ Template.ticket.helpers({
 Template.ticket.events({
   'click #see-location': function(event){
     const map = $('#map' + this._id);
+    const mapimg = $('#mapimg' + this._id);
     const pin = $('#pin' + this._id);
 
     //set visible
@@ -51,10 +52,11 @@ Template.ticket.events({
     
     //move pin
     const loc = this.location.split(',');
-    const top = parseFloat(loc[0]) * map.height();
-    const left = parseFloat(loc[1]) * map.width();
+    console.log(this.location);
+    const top = parseFloat(loc[1]) * mapimg.height();
+    const left = parseFloat(loc[0]) * mapimg.width();
     
-    const pinOffset = Object.assign({}, map.offset());
+    const pinOffset = Object.assign({}, mapimg.offset());
     console.log(pinOffset);
     pinOffset.top += top;
     pinOffset.left += left;
