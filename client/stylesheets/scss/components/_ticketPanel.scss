@@ -1,11 +1,11 @@
 .ticketPanel {
   text-align: center;
   position: relative;
-  z-index: 100;
+  z-index: 102;
   .map {
     display: none;
     position: absolute;
-    z-index: 2;
+    z-index: 102;
     width: 100%;
     margin: -14px;
     text-align: center;
@@ -16,7 +16,7 @@
     width: 4%;
     left: 0px;
     top: 0px;
-    z-index: 3;
+    z-index: 103;
   }
   .cancel {
     padding-bottom: 20px;
