@@ -1,0 +1,27 @@
+{
+  "name": "helpq",
+  "version": "0.2.1",
+  "description": "an extensible real-time queue application, for mentorship @ hackathons and classrooms http://ehz.io/HELPq-data",
+  "main": "client/app.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.2.0",
+    "bcrypt": "^3.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ehzhang/HELPq.git"
+  },
+  "author": "ehzhang",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ehzhang/HELPq/issues"
+  },
+  "homepage": "https://github.com/ehzhang/HELPq#readme"
+}
