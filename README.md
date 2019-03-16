@@ -213,7 +213,7 @@ In `private/config.json` (or the corresponding environment variables), provide t
 1. Click on "Configure a project"
 1. Create a new project for HelpQ
   * For "Where are you calling from?", select "Web Server"
-  * Put `{YOUR URL}/_oauth/facebook?close` and `{YOUR URL}/_oauth/facebook` in "Valid OAuth Redirect URLs"
+  * Put `{YOUR URL}/_oauth/google?close` and `{YOUR URL}/_oauth/google` in "Valid OAuth Redirect URLs"
     * Add localhost for testing, if needed
 1. Click the link to go to the GCP console once you're done
 1. Put your info (event name, email, logo) on the "OAuth Consent Screen" tab
