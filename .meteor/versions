@@ -1,6 +1,7 @@
 accounts-base@1.4.3
 accounts-facebook@1.3.2
 accounts-github@1.4.2
+accounts-google@1.3.2
 accounts-oauth@1.1.16
 accounts-password@1.5.1
 allow-deny@1.1.0
@@ -43,6 +44,7 @@ fourseven:scss@4.10.0
 geojson-utils@1.0.10
 github-config-ui@1.0.1
 github-oauth@1.2.2
+google-oauth@1.2.6
 hot-code-push@1.0.4
 html-tools@1.0.11
 htmljs@1.0.11

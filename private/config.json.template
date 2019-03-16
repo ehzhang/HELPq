@@ -22,5 +22,5 @@
     "queueEnabled": true,
     "expirationDelay": 1800000
   },
-  "defaultMentor": true
+  "defaultMentor": false
 }

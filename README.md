@@ -191,6 +191,34 @@ To configure login, edit `private/config.json`. Alternatively, you can configure
 
 In `private/config.json` (or the corresponding environment variables), provide the appropriate application id/secret combinations for either Facebook or Github authentication, or choose to disable them.
 
+##### GitHub OAuth
+1. Navigate to settings page of GitHub user/organization
+1. Click "OAuth Apps"
+1. Click "New OAuth App" and fill out the information (name, email, logo)
+  * For Authorization callback URL, put `{YOUR URL}/_oauth/github`, and `localhost:3000/_oauth/github` for debugging
+1. Copy the `client id` and `secret` to `private/config.json`
+
+##### Facebook OAuth
+1. Go to the [Facebook App Dashboard](https://developers.facebook.com/apps)
+1. Click "Add a New App"
+  * For scenario, choose "Integrate Facebook login"
+1. Put your info (event name, email, logo)
+1. On the sidebar, select "Facebook login" > "Settings"
+1. Put `{YOUR URL}/_oauth/facebook?close` and `{YOUR URL}/_oauth/facebook` in "Valid OAuth Redirect URLs"
+1. From "Settings" > "Basic", copy the `app ID` and `secret` to `private/config.json`
+1. Unclear if necessary, but you can use this [privacy policy generator](https://termsfeed.com/privacy-policy/generator/) to generate a policy for your app, before making the app "live" (you can only test from localhost if the app is in "development")
+
+##### Google OAuth
+1. Go to [Google Sign-In](https://developers.google.com/identity/sign-in/web/sign-in)
+1. Click on "Configure a project"
+1. Create a new project for HelpQ
+  * For "Where are you calling from?", select "Web Server"
+  * Put `{YOUR URL}/_oauth/facebook?close` and `{YOUR URL}/_oauth/facebook` in "Valid OAuth Redirect URLs"
+    * Add localhost for testing, if needed
+1. Click the link to go to the GCP console once you're done
+1. Put your info (event name, email, logo) on the "OAuth Consent Screen" tab
+1. Copy `client id` and `secret` to `private/config.json`
+
 #### Branding
 
 For front end branding, edit `client/stylesheets/scss/_branding.scss`
