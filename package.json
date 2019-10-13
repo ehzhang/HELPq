@@ -1,0 +1,15 @@
+{
+  "name": "helpq",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HackRU/helpq.git"
+  },
+  "bugs": {
+    "url": "https://github.com/HackRU/helpq/issues"
+  },
+  "homepage": "https://github.com/HackRU/helpq#readme",
+  "dependencies": {
+    "babel-runtime": "^6.26.0"
+  }
+}

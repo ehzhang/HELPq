@@ -2,4 +2,6 @@
 .idea/
 private/config.json
 .sass-cache/
+node_modules/
+npm_debug.log
 *~
