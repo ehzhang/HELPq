@@ -3,7 +3,7 @@
     "description": "An extensible, customizable real-time queue system",
     "env": {
         "ROOT_URL": "https://tartanhacks-queue.herokuapp.com/",
-        "ADMIN_PASSWORD": "scottylabs20",
+        "ADMIN_PASSWORD": "secret",
         "ADMIN_USERNAME": "admin",
         "DEFAULT_MENTOR": "true",
         "FACEBOOK_CLIENT_ID": "facebook-client-id",
