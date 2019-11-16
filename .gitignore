@@ -2,3 +2,4 @@
 .idea/
 private/config.json
 .sass-cache/
+app.json
