@@ -64,7 +64,9 @@
                      type="text"
                      name="topic"
                      class="clean"
-                     placeholder="{{constant 'TICKET_PANEL_TOPIC_PLACEHOLDER'}}">
+                     placeholder="{{constant 'TICKET_PANEL_TOPIC_PLACEHOLDER'}}"
+                     onfocus="this.placeholder=''"
+                     onblur="this.placeholder={{constant 'TICKET_PANEL_TOPIC_PLACEHOLDER'}}">
               <br>
               {{constant 'TICKET_PANEL_LOCATION'}}
               <br>
@@ -72,7 +74,9 @@
                      type="text"
                      name="location"
                      class="clean"
-                     placeholder="{{constant 'TICKET_PANEL_LOCATION_PLACEHOLDER'}}">
+                     placeholder="{{constant 'TICKET_PANEL_LOCATION_PLACEHOLDER'}}"
+                     onfocus="this.placeholder=''"
+                     onblur="this.placeholder={{constant 'TICKET_PANEL_LOCATION_PLACEHOLDER'}}">
               <br>
               {{constant 'TICKET_PANEL_CONTACT'}}
               <br>
@@ -80,7 +84,9 @@
                      type="text"
                      name="contact"
                      class="clean"
-                     placeholder="{{constant 'TICKET_PANEL_CONTACT_PLACEHOLDER'}}">
+                     placeholder="{{constant 'TICKET_PANEL_CONTACT_PLACEHOLDER'}}"
+                     onfocus="this.placeholder=''"
+                     onblur="this.placeholder={{constant 'TICKET_PANEL_CONTACT_PLACEHOLDER'}}">
             </div>
             <br>
             <button id="submit" class="primary push disabled fluid button">
