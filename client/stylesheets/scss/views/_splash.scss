@@ -2,6 +2,8 @@
   height: 100%;
   width: 100%;
   color: white;
+  font-weight: bold;
+  font-size:130%;
 
   >.container {
     @include vertical-align();
