@@ -39,10 +39,18 @@ function topMentors(num){
         return Meteor.users.findOne({_id: id, 'profile.mentor': true});
       })
       .map(function(id){
+        ifOneTicket = ""
+        if(mentors[id].ratings.length == 1){
+          ifOneTicket = "Ticket"
+        }
+        else{
+          ifOneTicket = "Tickets"
+        }
         return {
           profile: Meteor.users.findOne({_id: id}).profile,
           rating: laplaceSmooth(mentors[id].ratings),
-          numTickets: mentors[id].ratings.length
+          numTickets: mentors[id].ratings.length,
+          properGrammar: ifOneTicket
         }
       })
       .sort(function(a, b){
