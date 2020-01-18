@@ -3,12 +3,12 @@
     <div id="nav">
       <div class="ui secondary inverted menu">
         <a class="icon item" href="/">
-          <i class="ui home icon"></i>
+          <i class="ui home big icon"></i>
         </a>
 
         {{#if userIs 'admin'}}
           <a class="icon item" href="/admin">
-            <i class="ui settings icon"></i>
+            <i class="ui settings big icon"></i>
           </a>
         {{/if}}
 
@@ -27,7 +27,7 @@
             Home
           </a>
           <a class="item" href="/mentor">
-            <i class="inbox icon"></i>
+            <i class="users icon"></i>
             Mentor
           </a>
           <a class="item" href="/profile">
@@ -43,7 +43,8 @@
 <template name="navMentor">
   {{#if userIs 'mentor'}}
     <a class="icon item" href="/mentor">
-      <i class="ui inbox icon"></i>
+        <p class="text">Mentor</p>
+
       {{#if openTickets}}
         <div class="ui tiny floating notification red label">
           {{ openTickets }}

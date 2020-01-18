@@ -1,5 +1,7 @@
 #banner {
-  margin-bottom: 8px;
+  margin-bottom: 12px;
+  line-height:2.5em;
+
   .content {
     @include logo-font();
     line-height: 40px;
