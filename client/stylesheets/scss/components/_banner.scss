@@ -4,6 +4,7 @@
 
   .content {
     @include logo-font();
+    line-height: 40px;
     font-size: 3em;
     letter-spacing: .2em;
     color: white;

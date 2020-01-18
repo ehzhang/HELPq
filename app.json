@@ -5,7 +5,7 @@
         "ROOT_URL": "https://tartanhacks-queue.herokuapp.com/",
         "ADMIN_PASSWORD": "secret",
         "ADMIN_USERNAME": "admin",
-        "DEFAULT_MENTOR": "true",
+        "DEFAULT_MENTOR": "false",
         "FACEBOOK_CLIENT_ID": "facebook-client-id",
         "FACEBOOK_ENABLE": "true",
         "FACEBOOK_SECRET": "facebook-secret",
