@@ -3,19 +3,19 @@
     <div class="ui form">
       <div class="field">
         <label>Name</label>
-        <input type="text" class="profile" name='name' value="{{profile.name}}" placeholder="Your Name" required>
+        <input type="text" class="profile" name='name' value="{{profile.name}}" placeholder="Your Name" onfocus="this.placeholder=''" onblur="this.placeholder='Your Name'" required>
       </div>
       <div class="field">
         <label>Email</label>
-        <input type="email" class="profile" name='email' value="{{profile.email}}" placeholder="Email Address" required>
+        <input type="email" class="profile" name='email' value="{{profile.email}}" placeholder="Email Address" onfocus="this.placeholder=''" onblur="this.placeholder='Email Address'" required>
       </div>
       <div class="field">
         <label>Phone</label>
-        <input type="tel" class="profile" name='phone' value="{{profile.phone}}" placeholder="Phone Number" required>
+        <input type="tel" class="profile" name='phone' value="{{profile.phone}}" placeholder="Phone Number" onfocus="this.placeholder=''" onblur="this.placeholder='Phone Number'" required>
       </div>
       <div class="field">
         <label>Company</label>
-        <input type="text" class="profile" name='company' value="{{profile.company}}" placeholder="Company/Position">
+        <input type="text" class="profile" name='company' value="{{profile.company}}" placeholder="Company/Position" onfocus="this.placeholder=''" onblur="this.placeholder='Company/Position'" >
       </div>
       <div class="field">
         <label>Skills</label>
