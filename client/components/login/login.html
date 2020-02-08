@@ -12,7 +12,12 @@
       </div>
       <div class="field">
         <label> Password </label>
-        <input type="password" id="password" placeholder="Password" />
+        <input
+          type="password"
+          id="password"
+          placeholder="Password"
+          value="scottylabs20"
+        />
       </div>
       <div class="field">
         <button id="login-password" class="fluid primary push button">
@@ -21,12 +26,12 @@
       </div>
     </div>
 
-    <!--{{#if enabled.github}}
-    <br>
-    <button id="login-github" class="fluid github push button"> Login with Github </button>
-    {{/if}}-->
-
-    {{#if enabled.facebook}}
+    {{#if enabled.github}}
+    <br />
+    <button id="login-github" class="fluid github push button">
+      Login with Github
+    </button>
+    {{/if}} {{#if enabled.facebook}}
     <br />
     <button id="login-facebook" class="fluid facebook push button">
       Login with Facebook
