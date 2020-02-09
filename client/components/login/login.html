@@ -25,7 +25,10 @@
           Login
         </button>
       </div>
-      <button id="mentor-toggle">Mentor Login</button>
+      <div id="mentor-toggle" class="ui toggle checkbox">
+        <input id="mentor-toggle-value" type="checkbox" name="mentor-toggle" />
+        <label>Mentor Login</label>
+      </div>
     </div>
 
     {{#if enabled.github}}
