@@ -1,35 +1,43 @@
 <template name="login">
   <div id="login" class="ui segment">
     {{#if error}}
-      <div class="ui small error message">
-        {{error}}
-      </div>
+    <div class="ui small error message">
+      {{error}}
+    </div>
     {{/if}}
     <div class="ui login-password form">
-
       <div class="field">
         <label> Username </label>
-        <input type="text" id='username' placeholder="Username">
+        <input type="text" id="username" placeholder="Username" />
       </div>
 
       <div class="field" id= "password-block">
         <label> Password </label>
-        <input type="password" id='password' placeholder="Password">
+        <input
+          type="password"
+          id="password"
+          placeholder="Password"
+          value="scottylabs20"
+        />
       </div>
       <div class="field">
-        <button id="login-password" class="fluid primary push button"> Login </button>
+        <button id="login-password" class="fluid primary push button">
+          Login
+        </button>
       </div>
       <button id="mentor-toggle">Mentor Login</button>
     </div>
    
     {{#if enabled.github}}
-    <br>
-    <button id="login-github" class="fluid github push button"> Login with Github </button>
-    {{/if}}
-
-    {{#if enabled.facebook}}
-    <br>
-    <button id="login-facebook" class="fluid facebook push button"> Login with Facebook</button>
+    <br />
+    <button id="login-github" class="fluid github push button">
+      Login with Github
+    </button>
+    {{/if}} {{#if enabled.facebook}}
+    <br />
+    <button id="login-facebook" class="fluid facebook push button">
+      Login with Facebook
+    </button>
     {{/if}}
   </div>
 </template>
