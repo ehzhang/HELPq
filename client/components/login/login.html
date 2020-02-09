@@ -11,15 +11,28 @@
         <label> Username </label>
         <input type="text" id='username' placeholder="Username">
       </div>
-      <div class="field">
+
+      
+    
+
+
+      <div class="field" id= "password-block">
         <label> Password </label>
         <input type="password" id='password' placeholder="Password">
       </div>
+
+
+
       <div class="field">
         <button id="login-password" class="fluid primary push button"> Login </button>
       </div>
-    </div>
 
+      <button id="mentor-toggle">I am not a Mentor</button>
+      
+
+
+    </div>
+   
     {{#if enabled.github}}
     <br>
     <button id="login-github" class="fluid github push button"> Login with Github </button>
