@@ -18,13 +18,12 @@ Template.login.events({
   },
   'click #mentor-toggle': function(){
     var x = document.getElementById("password-block");
-
-          console.log(x)
-          if (x.style.display==="none"){
-            x.style.display = "block";
-          } else {
-            x.style.display = "none";
-          }
+    console.log(x)
+    if (x.style.display==="none"){
+      x.style.display = "block";
+    } else {
+      x.style.display = "none";
+    }
   },
 
   'keyup #password': function(e, t){
@@ -33,7 +32,6 @@ Template.login.events({
     }
   }
 });
-
 
 Template.login.helpers({
   enabled: function(){
