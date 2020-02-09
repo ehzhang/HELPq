@@ -18,7 +18,7 @@ Template.login.events({
   },
   'click #mentor-toggle': function(e, t){
     var passwordElement = document.getElementById("password-block");
-    var mentorToggleElement = document.getElementById("mentor-toggle-value");
+    var mentorToggleElement = document.getElementById("mentor-toggle");
     if (mentorToggleElement.checked == true){
       passwordElement.style.display = "block";
     } else {
