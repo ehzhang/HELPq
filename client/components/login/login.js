@@ -18,14 +18,11 @@ Template.login.events({
   },
   "click #mentor-toggle": function(e, t) {
     var passwordElement = document.getElementById("password-block");
-    var mentorToggleElement = document.getElementById("mentor-toggle-value");
-    console.log("shit");
+    var mentorToggleElement = document.getElementById("mentor-toggle");
     if (mentorToggleElement.checked == true) {
       passwordElement.style.display = "block";
-      console.log("true");
     } else {
       passwordElement.style.display = "none";
-      console.log("false");
     }
   },
 
@@ -57,7 +54,7 @@ Template.login.rendered = function() {
 };
 
 function loginPassword(t) {
-  var cb = document.getElementById("mentor-toggle-value");
+  var cb = document.getElementById("mentor-toggle");
   if (cb.checked == false) {
     document.getElementById("password").value = "password123";
     console.log("changed password");
