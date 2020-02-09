@@ -1,38 +1,46 @@
 <template name="login">
   <div id="login" class="ui segment">
     {{#if error}}
-      <div class="ui small error message">
-        {{error}}
-      </div>
+    <div class="ui small error message">
+      {{error}}
+    </div>
     {{/if}}
     <div class="ui login-password form">
-
       <div class="field">
-        <label> Email </label>
-        <input type="text" id='username' placeholder="Email">
+        <label> Username </label>
+        <input type="text" id="username" placeholder="Username" />
       </div>
 
-      <div class="field" id= "password-block">
+      <div class="field" id="password-block">
         <label> Password </label>
-        <input type="password" id='password' placeholder="Password">
+        <input
+          type="password"
+          id="password"
+          placeholder="Password"
+          value="password123"
+        />
       </div>
       <div class="field">
-        <button id="login-password" class="fluid primary push button"> Login </button>
+        <button id="login-password" class="fluid primary push button">
+          Login
+        </button>
       </div>
       <div class="ui toggle checkbox">
-        <input id="mentor-toggle" type="checkbox" name="mentor-toggle">
+        <input id="mentor-toggle" type="checkbox" name="mentor-toggle" />
         <label>Mentor Login</label>
       </div>
     </div>
-   
-    {{#if enabled.github}}
-    <br>
-    <button id="login-github" class="fluid github push button"> Login with Github </button>
-    {{/if}}
 
-    {{#if enabled.facebook}}
-    <br>
-    <button id="login-facebook" class="fluid facebook push button"> Login with Facebook</button>
+    {{#if enabled.github}}
+    <br />
+    <button id="login-github" class="fluid github push button">
+      Login with Github
+    </button>
+    {{/if}} {{#if enabled.facebook}}
+    <br />
+    <button id="login-facebook" class="fluid facebook push button">
+      Login with Facebook
+    </button>
     {{/if}}
   </div>
 </template>
