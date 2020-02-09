@@ -16,13 +16,16 @@ Template.login.events({
   'click #login-password': function(e, t){
     loginPassword(t);
   },
-  'click #mentor-toggle': function(){
-    var x = document.getElementById("password-block");
-    console.log(x)
-    if (x.style.display==="none"){
-      x.style.display = "block";
+  'click #mentor-toggle': function(e, t){
+    var passwordElement = document.getElementById("password-block");
+    var mentorToggleElement = document.getElementById("mentor-toggle-value");
+    console.log("shit")
+    if (mentorToggleElement.checked == true){
+      passwordElement.style.display = "block";
+      console.log("true")
     } else {
-      x.style.display = "none";
+      passwordElement.style.display = "none";
+      console.log("false")
     }
   },
 
