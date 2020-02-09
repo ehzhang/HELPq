@@ -16,6 +16,16 @@ Template.login.events({
   'click #login-password': function(e, t){
     loginPassword(t);
   },
+  'click #mentor-toggle': function(){
+    var x = document.getElementById("password-block");
+    console.log(x)
+    if (x.style.display==="none"){
+      x.style.display = "block";
+    } else {
+      x.style.display = "none";
+    }
+  },
+
   'keyup #password': function(e, t){
     if (e.keyCode === 13){
       loginPassword(t);
