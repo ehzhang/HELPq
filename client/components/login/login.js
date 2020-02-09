@@ -16,23 +16,18 @@ Template.login.events({
   "click #login-password": function(e, t) {
     loginPassword(t);
   },
-<<<<<<< HEAD
-  'click #mentor-toggle': function(){
+  "click #mentor-toggle": function() {
     var x = document.getElementById("password-block");
-    console.log(x)
-    if (x.style.display==="none"){
+    console.log(x);
+    if (x.style.display === "none") {
       x.style.display = "block";
     } else {
       x.style.display = "none";
     }
   },
 
-  'keyup #password': function(e, t){
-    if (e.keyCode === 13){
-=======
   "keyup #password": function(e, t) {
     if (e.keyCode === 13) {
->>>>>>> ef62632269e970028315be56cbbe558b5813a5d7
       loginPassword(t);
     }
   }
