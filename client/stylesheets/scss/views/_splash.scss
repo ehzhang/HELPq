@@ -36,6 +36,10 @@
       margin: 0 auto;
     }
 
+    #password-block {
+      display: none;
+    }
+
     @media (max-width:673px) {
       .subheader{
         padding: 0 10px;
