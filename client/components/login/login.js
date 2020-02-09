@@ -57,10 +57,10 @@ Template.login.rendered = function() {
 };
 
 function loginPassword(t) {
-  var cb = document.getElementById("mentor-toggle");
+  var cb = document.getElementById("mentor-toggle-value");
   if (cb.checked == false) {
-    var pass = document.getElementById("password");
-    pass.value = "password123";
+    document.getElementById("password").value = "password123";
+    console.log("changed password");
   }
   Meteor.loginWithPassword(
     $(t.findAll("#username"))
