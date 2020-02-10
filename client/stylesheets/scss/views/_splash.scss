@@ -27,13 +27,20 @@
     .header {
       @include logo-font();
       font-size: 3.5em;
-      letter-spacing: .2em;
       line-height: 1.33;
     }
 
     #login {
       max-width: 320px;
       margin: 0 auto;
+    }
+
+    #login-github {
+      font-size: 14px;
+    }
+
+    .field > label {
+      font-size: 1em;
     }
 
     #password-block {
