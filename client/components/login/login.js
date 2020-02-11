@@ -59,9 +59,9 @@ function loginPassword(t) {
     document.getElementById("password").value = "password123";
   }
   Meteor.loginWithPassword(
-    $(t.findAll("#username"))
+    {username:($(t.findAll("#username"))
       .val()
-      .trim(),
+      .trim())},
     $(t.findAll("#password")).val(),
     function(error) {
       if (error) {
